@@ -6,7 +6,7 @@
 #    By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/01 14:31:21 by xvoorvaa      #+#    #+#                  #
-#    Updated: 2022/04/14 16:41:51 by xvoorvaa      ########   odam.nl          #
+#    Updated: 2022/04/14 18:30:33 by xvoorvaa      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,9 +23,12 @@ LIBFT_DIR		=	./libft
 LIBFT_H			=	$(LIBFT_DIR)/INC
 LIBFT_A			=	$(LIBFT_DIR)/libft.a
 
-SOURCES			=	SRC/cub3d.c
+SOURCES			=	SRC/cub3d.c \
+					SRC/file_validation.c \
+					SRC/error_msg.c \
+					SRC/read_file.c
 
-HEADERS		:= $(MLX_H) INC/cub3d.h $(LIBFT_H)
+HEADERS		:= $(MLX_H) INC/cub3d.h INC/error.h $(LIBFT_H)
 OBJS		:= $(SOURCES:.c=.o)
 OBJECTS		:= $(patsubst $(SRC_DIR)/%,$(OBJ_DIR)/%,$(OBJS))
 
