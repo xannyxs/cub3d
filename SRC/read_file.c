@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/14 18:25:30 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/04/14 19:17:39 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/04/14 19:25:21 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,24 @@
 #include <unistd.h> /* close */
 #include <stdlib.h>
 
+#include <stdio.h>
+
 static int	get_line(t_vars *vars, int fd)
 {
+	int		i;
 	char	*line;
+	char	**all_lines;
 
 	(void) vars;
+	i = 0;
+	all_lines = malloc(sizeof(char *) * (4));
 	while (get_next_line(fd, &line) > 0)
-		write(1, "CHECK\n", 7);
+	{
+		all_lines[i] = line;
+		printf("line %d | %s\n", i, all_lines[i]);
+		i++;
+		free(line);
+	}
 	free(line);
 	return (SUCCES);
 }
