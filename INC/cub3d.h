@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 21:22:16 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/04/14 18:30:02 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/04/14 18:58:48 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,12 @@ int32_t	main(int argc, char *argv[]);
 bool	is_cub_file_valid(char *argv[], t_vars *vars);
 
 int		read_file(char *cub_file, t_vars *vars);
+
+/*
+	UTILS
+*/
+
+int		get_next_line(int fd, char **line);
 
 /*
 	ERROR

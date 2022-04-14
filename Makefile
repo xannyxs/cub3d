@@ -6,7 +6,7 @@
 #    By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/01 14:31:21 by xvoorvaa      #+#    #+#                  #
-#    Updated: 2022/04/14 18:30:33 by xvoorvaa      ########   odam.nl          #
+#    Updated: 2022/04/14 19:01:22 by xvoorvaa      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,8 @@ LIBFT_A			=	$(LIBFT_DIR)/libft.a
 SOURCES			=	SRC/cub3d.c \
 					SRC/file_validation.c \
 					SRC/error_msg.c \
-					SRC/read_file.c
+					SRC/read_file.c \
+					SRC/get_next_line.c 
 
 HEADERS		:= $(MLX_H) INC/cub3d.h INC/error.h $(LIBFT_H)
 OBJS		:= $(SOURCES:.c=.o)
