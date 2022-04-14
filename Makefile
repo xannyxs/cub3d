@@ -6,7 +6,7 @@
 #    By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/01 14:31:21 by xvoorvaa      #+#    #+#                  #
-#    Updated: 2022/04/13 21:53:08 by xvoorvaa      ########   odam.nl          #
+#    Updated: 2022/04/14 16:41:51 by xvoorvaa      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,19 +16,21 @@ CFLAGS			=	-Wall -Wextra -Werror
 OBJ_DIR			=	OBJ
 SRC_DIR			=	SRC
 INC_DIR			=	INC
-MLX_DIR			=	MLX42
-MLX_H			=	$(wildcard $(MLX_DIR)/*.h)
+MLX_DIR			=	./MLX42
+MLX_H			=	$(MLX_DIR)/include/
 MLX_A			=	$(MLX_DIR)/libmlx42.a
+LIBFT_DIR		=	./libft
+LIBFT_H			=	$(LIBFT_DIR)/INC
+LIBFT_A			=	$(LIBFT_DIR)/libft.a
 
-SRCS			=	$(SRC_DIR)/cub3d.c $(MLX_H)
+SOURCES			=	SRC/cub3d.c
 
-OBJS			=	$(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
-HEADERS			=	INC/cub3d.h $(MLX_DIR)/include/MLX42/MLX42.h
+HEADERS		:= $(MLX_H) INC/cub3d.h $(LIBFT_H)
+OBJS		:= $(SOURCES:.c=.o)
+OBJECTS		:= $(patsubst $(SRC_DIR)/%,$(OBJ_DIR)/%,$(OBJS))
 
-ifdef DEBUG
+ifdef LEAKS
 	CFLAGS += -g3 -fsanitize=address
-else
-	CFLAGS += -O2
 endif
 
 GREEN			=	\033[1;32m
@@ -41,37 +43,45 @@ MESSAGE			= "$(BLUE)---\nCompiling done! Run ./$(NAME)\n---$(NC)"
 COMP_MESSAGE	= "$(GREEN)Building C object... $(NC)%-33.33s\r\n"
 REM_MESSAGE		= "$(RED)Removing files...$(NC)"
 
+GLFW_LIB := $(shell brew --prefix glfw)
+
 all:	$(NAME)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADERS) | $(OBJ_DIR)
 	@mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) -c $< -o $@ -I$(INC_DIR) -I$(MLX_DIR)
+	@$(CC) $(CFLAGS) -c $< -o $@ -I$(INC_DIR) -I$(MLX_H) -I$(LIBFT_H)
 
 $(OBJ_DIR):
-	mkdir $@
+	@mkdir $@
+
+$(NAME): $(MLX_A) $(LIBFT_A) $(OBJECTS)
+	$(CC) $(CFLAGS) $(OBJECTS) -o $(NAME) $(MLX_A) -lglfw \
+		-L$(GLFW_LIB)/lib $(LIBFT_A)
+	@echo $(START)
+	@printf $(COMP_MESSAGE) $(SOURCES)
+	@echo $(MESSAGE)
+
+$(LIBFT_A): $(LIBFT_H)
+	$(MAKE) -C $(LIBFT_DIR)
 
 $(MLX_A): $(MLX_H)
 	$(MAKE) -C $(MLX_DIR)
 
-$(NAME): $(OBJS)
-	@echo $(START)
-	@printf $(COMP_MESSAGE) $(SRCS)
-	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -L$(MLX_A) -lglfw
-	@echo $(MESSAGE)
-
 clean:
 	@echo "\n"
+	@echo $(OBJECTS)
 	@rm -rf $(OBJ_DIR)
 	@printf $(REM_MESSAGE)
 	@echo "\n"
 
 
-fclean:		clean
+fclean:	clean
 	@rm -f $(NAME)
 	@rm -rf $(NAME).dSYM
 	@rm -f $(MLX_A)
+	$(MAKE) -C $(MLX_DIR) $@
+	$(MAKE) -C $(LIBFT_DIR) $@
 
 re:			fclean all
 
 .PHONY:		all clean fclean re
-
