@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 21:21:04 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/04/14 18:36:06 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/04/15 19:14:21 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,11 @@ int32_t	main(int argc, char *argv[])
 		non_fatal_error(ARGC_ERROR);
 		return (EXIT_FAILURE);
 	}
-	if (is_cub_file_valid(argv, &vars) == false)
+	if (is_cub_file_valid(argv[1], &vars) == false)
 		return (EXIT_FAILURE);
 	vars.mlx = mlx_init(WIDTH, HEIGHT, "CUB3D of XVOORVAA", true);
 	if (!vars.mlx)
-		fatal_perror("malloc");
+		fatal_perror("mlx");
 	vars.img = mlx_new_image(vars.mlx, 128, 128);
 	ft_memset(vars.img->pixels, 255, vars.img->width * vars.img->height * sizeof(int));
 	mlx_image_to_window(vars.mlx, vars.img, 0, 0);

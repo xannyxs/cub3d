@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 21:22:16 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/04/15 16:04:45 by xander        ########   odam.nl         */
+/*   Updated: 2022/04/15 19:11:28 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,18 @@
 # define SUCCES 0
 # define ERROR 1
 
-typedef struct s_vars
+typedef struct	s_map
 {
+	char				**map_grid;
+	unsigned int		width;
+	unsigned int		height;
+}	t_map;
+
+typedef struct	s_vars
+{
+	t_map		map_data;
 	mlx_t		*mlx;
 	mlx_image_t	*img;
-	char		**map;
 }	t_vars;
 
 /*
@@ -36,9 +43,11 @@ int32_t	main(int argc, char *argv[]);
 	FILE CHECK
 */
 
-bool	is_cub_file_valid(char *argv[], t_vars *vars);
+bool	is_cub_file_valid(char *cub_file, t_vars *vars);
 
 int		read_file(char *cub_file, t_vars *vars);
+
+int		check_map(t_map *map_data);
 
 /*
 	UTILS

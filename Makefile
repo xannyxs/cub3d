@@ -6,7 +6,7 @@
 #    By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/01 14:31:21 by xvoorvaa      #+#    #+#                  #
-#    Updated: 2022/04/15 16:06:02 by xander        ########   odam.nl          #
+#    Updated: 2022/04/15 16:30:02 by xvoorvaa      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,12 +23,7 @@ LIBFT_DIR		=	./libft
 LIBFT_H			=	$(LIBFT_DIR)/INC
 LIBFT_A			=	$(LIBFT_DIR)/libft.a
 
-SOURCES			=	SRC/cub3d.c \
-					SRC/file_validation.c \
-					SRC/error_msg.c \
-					SRC/read_file.c \
-					SRC/get_next_line.c \
-					SRC/wrapped/open_fd.c
+SOURCES			=	$(shell find $(SRC_DIR) -type f -name "*.c")
 
 HEADERS		:= $(MLX_H) INC/cub3d.h INC/error.h $(LIBFT_H)
 OBJS		:= $(SOURCES:.c=.o)
