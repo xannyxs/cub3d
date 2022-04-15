@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 21:22:16 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/04/14 18:58:48 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/04/15 16:04:45 by xander        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct s_vars
 {
 	mlx_t		*mlx;
 	mlx_image_t	*img;
+	char		**map;
 }	t_vars;
 
 /*
@@ -52,5 +53,11 @@ int		get_next_line(int fd, char **line);
 void	non_fatal_error(char *msg);
 
 void	fatal_perror(char *msg);
+
+/*
+	WRAPPED
+*/
+
+int		open_fd(char *cub_file);
 
 #endif

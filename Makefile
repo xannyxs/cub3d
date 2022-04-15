@@ -6,7 +6,7 @@
 #    By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/01 14:31:21 by xvoorvaa      #+#    #+#                  #
-#    Updated: 2022/04/14 19:01:22 by xvoorvaa      ########   odam.nl          #
+#    Updated: 2022/04/15 16:06:02 by xander        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,14 +27,17 @@ SOURCES			=	SRC/cub3d.c \
 					SRC/file_validation.c \
 					SRC/error_msg.c \
 					SRC/read_file.c \
-					SRC/get_next_line.c 
+					SRC/get_next_line.c \
+					SRC/wrapped/open_fd.c
 
 HEADERS		:= $(MLX_H) INC/cub3d.h INC/error.h $(LIBFT_H)
 OBJS		:= $(SOURCES:.c=.o)
 OBJECTS		:= $(patsubst $(SRC_DIR)/%,$(OBJ_DIR)/%,$(OBJS))
 
-ifdef LEAKS
+ifdef DEBUG
 	CFLAGS += -g3 -fsanitize=address
+else
+	CFLAGS += -Ofast
 endif
 
 GREEN			=	\033[1;32m
