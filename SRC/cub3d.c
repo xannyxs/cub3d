@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 21:21:04 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/04/16 21:37:43 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/04/16 22:26:56 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 #include <stdio.h>
 #include <unistd.h>
 
-#define WIDTH 720
-#define HEIGHT 480
+#define WIDTH 1280
+#define HEIGHT 1024
 
 static void	hook(void *param)
 {
@@ -61,10 +61,10 @@ int32_t	main(int argc, char *argv[])
 	if (argc != 2)
 	{
 		non_fatal_error(ARGC_ERROR);
-		return (EXIT_FAILURE);
+		return (ERROR);
 	}
 	if (is_cub_file_valid(argv[1], &vars) == false)
-		return (EXIT_FAILURE);
+		return (ERROR);
 	vars.mlx = mlx_init(WIDTH, HEIGHT, "Cherries & Crabs", false);
 	if (!vars.mlx)
 		fatal_perror("mlx");
@@ -73,5 +73,6 @@ int32_t	main(int argc, char *argv[])
 	mlx_loop_hook(vars.mlx, &hook, &vars);
 	mlx_loop(vars.mlx);
 	mlx_terminate(vars.mlx);
+	ft_free_array(vars.map_data.map_grid);
 	return (EXIT_SUCCESS);
 }

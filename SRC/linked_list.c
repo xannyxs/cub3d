@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/16 20:55:59 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/04/16 21:23:20 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/04/16 22:09:16 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,7 @@ void	new_node(t_node **head, char *content)
 	t_node	*new_node;
 	t_node	*last_node;
 
-	new_node = malloc(sizeof(t_node));
-	if (!new_node)
-		fatal_perror("maloc");
+	new_node = ft_malloc(sizeof(t_node));
 	new_node->content = content;
 	new_node->next = NULL;
 	if (*head == NULL)
