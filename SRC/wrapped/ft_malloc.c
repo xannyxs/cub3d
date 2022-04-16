@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   open_fd.c                                          :+:    :+:            */
+/*   ft_malloc.c                                        :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: xander <xander@student.codam.nl>             +#+                     */
+/*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/04/15 16:04:15 by xander        #+#    #+#                 */
-/*   Updated: 2022/04/15 16:06:45 by xander        ########   odam.nl         */
+/*   Created: 2022/04/16 21:29:56 by xvoorvaa      #+#    #+#                 */
+/*   Updated: 2022/04/16 21:47:04 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "error.h"
 
-#include <unistd.h>
-#include <fcntl.h>
+#include <stdlib.h>
 
-int	open_fd(char *cub_file)
+void	*ft_malloc(size_t size)
 {
-	int	fd;
+	void	*ptr;
 
-	fd = open(cub_file, O_RDONLY);
-	if (fd < 0)
-		fatal_perror(cub_file);
-	return (fd);
+	ptr = malloc(size);
+	if (!ptr)
+		fatal_perror("malloc");
+	return (ptr);
 }

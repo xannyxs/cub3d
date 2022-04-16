@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 21:22:16 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/04/15 19:11:28 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/04/16 21:46:56 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,24 @@
 
 # include "MLX42/MLX42.h"
 # include <stdbool.h>
+# include <stddef.h>
 
 # define SUCCES 0
 # define ERROR 1
+
+typedef struct	s_node
+{
+	char 			*content;
+	struct s_node	*next;
+}	t_node;
+
+typedef struct	s_textures
+{
+	mlx_image_t	*north_wall;
+	mlx_image_t	*west_wall;
+	mlx_image_t	*east_wall;
+	mlx_image_t	*south_wall;
+}	t_textures;
 
 typedef struct	s_map
 {
@@ -29,8 +44,8 @@ typedef struct	s_map
 typedef struct	s_vars
 {
 	t_map		map_data;
+	t_textures	textures;
 	mlx_t		*mlx;
-	mlx_image_t	*img;
 }	t_vars;
 
 /*
@@ -56,17 +71,21 @@ int		check_map(t_map *map_data);
 int		get_next_line(int fd, char **line);
 
 /*
-	ERROR
-*/
-
-void	non_fatal_error(char *msg);
-
-void	fatal_perror(char *msg);
-
-/*
 	WRAPPED
 */
 
-int		open_fd(char *cub_file);
+int		ft_open(char *cub_file);
+
+void	*ft_malloc(size_t size);
+
+/*
+	LINKED LIST
+*/
+
+void			new_node(t_node **head, char *content);
+
+void			ft_free_list(t_node **head);
+
+size_t			ft_lstlen(t_node *head);
 
 #endif

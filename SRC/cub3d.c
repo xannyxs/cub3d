@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 21:21:04 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/04/15 19:14:21 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/04/16 21:37:43 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 #include <stdio.h>
 #include <unistd.h>
 
-#define WIDTH 256
-#define HEIGHT 256
+#define WIDTH 720
+#define HEIGHT 480
 
 static void	hook(void *param)
 {
@@ -29,14 +29,29 @@ static void	hook(void *param)
 	vars = param;
 	if (mlx_is_key_down(vars->mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(vars->mlx);
-	if (mlx_is_key_down(vars->mlx, MLX_KEY_UP))
-		vars->img->instances[0].y -= 5;
-	if (mlx_is_key_down(vars->mlx, MLX_KEY_DOWN))
-		vars->img->instances[0].y += 5;
 	if (mlx_is_key_down(vars->mlx, MLX_KEY_LEFT))
-		vars->img->instances[0].x -= 5;
+	{
+		vars->textures.north_wall->instances[0].x -= 5;
+		vars->textures.west_wall->instances[0].x -= 5;
+		// vars->textures.east_wall->instances[0].x -= 5;
+		// vars->textures.south_wall->instances[0].x -= 5;
+	}
 	if (mlx_is_key_down(vars->mlx, MLX_KEY_RIGHT))
-		vars->img->instances[0].x += 5;
+	{
+		vars->textures.north_wall->instances[0].x += 5;
+		vars->textures.west_wall->instances[0].x += 5;
+		// vars->textures.east_wall->instances[0].x += 5;
+		// vars->textures.south_wall->instances[0].x += 5;
+	}
+}
+
+static void	create_wall(mlx_t **mlx, mlx_image_t **wall, int32_t x, int32_t y, uint32_t colour)
+{
+	*wall = mlx_new_image(*mlx, 720, 128);
+	for (int i = 0; i < 720; i++)
+		for (int j = 0; j < 128; j++)
+			mlx_put_pixel(*wall, i, j, colour);
+	mlx_image_to_window(*mlx, *wall, x, y);
 }
 
 int32_t	main(int argc, char *argv[])
@@ -50,12 +65,11 @@ int32_t	main(int argc, char *argv[])
 	}
 	if (is_cub_file_valid(argv[1], &vars) == false)
 		return (EXIT_FAILURE);
-	vars.mlx = mlx_init(WIDTH, HEIGHT, "CUB3D of XVOORVAA", true);
+	vars.mlx = mlx_init(WIDTH, HEIGHT, "Cherries & Crabs", false);
 	if (!vars.mlx)
 		fatal_perror("mlx");
-	vars.img = mlx_new_image(vars.mlx, 128, 128);
-	ft_memset(vars.img->pixels, 255, vars.img->width * vars.img->height * sizeof(int));
-	mlx_image_to_window(vars.mlx, vars.img, 0, 0);
+	create_wall(&vars.mlx, &vars.textures.north_wall, 0, 128, 0xFF00FF);
+	create_wall(&vars.mlx, &vars.textures.west_wall, 720, 128, 0xFF000F);
 	mlx_loop_hook(vars.mlx, &hook, &vars);
 	mlx_loop(vars.mlx);
 	mlx_terminate(vars.mlx);

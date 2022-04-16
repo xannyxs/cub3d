@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/15 16:28:08 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/04/15 19:09:01 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/04/16 21:49:39 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,13 +66,10 @@ static int	check_player(t_map map_data)
 	{
 		while (map_data.map_grid[y][x])
 		{
-			if (map_data.map_grid[y][x] == 'N')
-				return (SUCCES);
-			else if (map_data.map_grid[y][x] == 'E')
-				return (SUCCES);
-			else if (map_data.map_grid[y][x] == 'S')
-				return (SUCCES);
-			else if (map_data.map_grid[y][x] == 'W')
+			if (map_data.map_grid[y][x] == 'N' || \
+				map_data.map_grid[y][x] == 'E' || \
+				map_data.map_grid[y][x] == 'S' ||\
+				map_data.map_grid[y][x] == 'W')
 				return (SUCCES);
 			x++;
 		}

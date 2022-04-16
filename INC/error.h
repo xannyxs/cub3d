@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/14 17:58:30 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/04/15 19:15:44 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/04/16 20:57:32 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,14 @@
 # define MISSING_WALL "-- Missing wall surrounding the map --"
 # define MISSING_PLAYER "-- Missing player --"
 # define UNKNOWN_CHAR "-- Unknown character in map --"
+
+/*
+	ERROR
+*/
+
+void	non_fatal_error(char *msg);
+
+void	fatal_perror(char *msg);
 
 /*
 	List of mallocs:

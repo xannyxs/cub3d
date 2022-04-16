@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/14 18:25:30 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/04/15 19:10:39 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/04/16 21:47:27 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,70 +17,55 @@
 #include <unistd.h> /* close */
 #include <stdlib.h> /* malloc */
 
-static size_t	count_file_lines(char *cub_file)
-{
-	int		fd;
-	char	*line;
-	size_t	amount_of_lines;
-
-	amount_of_lines = 0;
-	fd = open_fd(cub_file);
-	while (get_next_line(fd, &line) > 0)
-	{
-		amount_of_lines++;
-		free(line);
-	}
-	if (!amount_of_lines)
-	{
-		non_fatal_error(EMPTY_FILE);
-		return (0);
-	}
-	amount_of_lines++;
-	free(line);
-	close(fd);
-	return (amount_of_lines);
-}
-
-/*
-**	This function is not really safe.
-**	Please take a good look at it.
-*/
-static int	get_lines(char *cub_file, t_vars *vars, size_t amount_of_lines)
+static void	alloc_list_to_array(t_map *map_data, t_node **file_content)
 {
 	int		i;
-	int		fd;
-	char	*line;
+	t_node	*temp;
 
 	i = 0;
-	fd = open_fd(cub_file);
-	vars->map_data.map_grid = malloc(sizeof(char *) * (amount_of_lines + 1));
-	if (!vars->map_data.map_grid)
-		fatal_perror("malloc");
-	while (get_next_line(fd, &line) > 0)
+	temp = *file_content;
+	map_data->map_grid = ft_malloc(ft_lstlen(*file_content) * sizeof(char *));
+	while (temp->next != NULL)
 	{
-		vars->map_data.map_grid[i] = line;
+		map_data->map_grid[i] = temp->content;
 		i++;
+		temp = temp->next;
 	}
-	if (!vars->map_data.map_grid)
+	map_data->map_grid[i] = NULL;
+	ft_free_list(file_content);
+}
+
+static int	get_lines(char *cub_file, t_node **file_content)
+{
+	int		fd;
+	int		err;
+	char	*line;
+
+	err = 1;
+	fd = ft_open(cub_file);
+	while (err > 0)
 	{
-		non_fatal_error(GNL_ERROR);
-		return (ERROR);
+		err = get_next_line(fd, &line);
+		if (err == -1)
+		{
+			close(fd);
+			non_fatal_error(GNL_ERROR);
+			return (ERROR);
+		}
+		new_node(file_content, line);
 	}
-	vars->map_data.map_grid[i] = line;
-	i++;
-	vars->map_data.map_grid[i] = NULL;
+	new_node(file_content, line);
 	close(fd);
 	return (SUCCES);
 }
 
 int	read_file(char *cub_file, t_vars *vars)
 {
-	size_t	amount_of_lines;
+	t_node	*file_content;
 
-	amount_of_lines = count_file_lines(cub_file);
-	if (amount_of_lines <= 0)
+	file_content = NULL;
+	if (get_lines(cub_file, &file_content))
 		return (ERROR);
-	if (get_lines(cub_file, vars, amount_of_lines))
-		return (ERROR);
+	alloc_list_to_array(&vars->map_data, &file_content);
 	return (SUCCES);
 }
