@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 21:22:16 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/04/16 21:46:56 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/06/03 14:51:48 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@
 
 # define SUCCES 0
 # define ERROR 1
+
+# define WIDTH 1280
+# define HEIGHT 1024
+# define MOVE_SPEED 1
 
 typedef struct	s_node
 {
@@ -36,47 +40,62 @@ typedef struct	s_textures
 
 typedef struct	s_map
 {
-	char				**map_grid;
+	char				**world_map;
 	unsigned int		width;
 	unsigned int		height;
 }	t_map;
 
+typedef struct s_data
+{
+	double	pos_x;
+	double	pos_y;
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
+	double	camera_x;
+	double	raydir_x;
+	double	raydir_y;
+}	t_data;
+
+
 typedef struct	s_vars
 {
+	mlx_t		*mlx;
 	t_map		map_data;
 	t_textures	textures;
-	mlx_t		*mlx;
+	t_data		data;
 }	t_vars;
 
 /*
 	CUB3D
 */
 
-int32_t	main(int argc, char *argv[]);
+int32_t			main(int argc, char *argv[]);
 
 /*
 	FILE CHECK
 */
 
-bool	is_cub_file_valid(char *cub_file, t_vars *vars);
+bool			is_cub_file_valid(char *cub_file, t_vars *vars);
 
-int		read_file(char *cub_file, t_vars *vars);
+int				read_file(char *cub_file, t_vars *vars);
 
-int		check_map(t_map *map_data);
+int				check_map(t_map *map_data);
 
 /*
 	UTILS
 */
 
-int		get_next_line(int fd, char **line);
+int				get_next_line(int fd, char **line);
 
 /*
 	WRAPPED
 */
 
-int		ft_open(char *cub_file);
+int				ft_open(char *cub_file);
 
-void	*ft_malloc(size_t size);
+void			*ft_malloc(size_t size);
 
 /*
 	LINKED LIST

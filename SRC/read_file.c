@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/14 18:25:30 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/04/16 21:47:27 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/06/03 16:02:04 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@ static void	alloc_list_to_array(t_map *map_data, t_node **file_content)
 
 	i = 0;
 	temp = *file_content;
-	map_data->map_grid = ft_malloc(ft_lstlen(*file_content) * sizeof(char *));
+	map_data->world_map = ft_malloc(ft_lstlen(*file_content) * sizeof(char *));
 	while (temp->next != NULL)
 	{
-		map_data->map_grid[i] = temp->content;
+		map_data->world_map[i] = temp->content;
 		i++;
 		temp = temp->next;
 	}
-	map_data->map_grid[i] = NULL;
+	map_data->world_map[i] = NULL;
 	ft_free_list(file_content);
 }
 
@@ -59,6 +59,11 @@ static int	get_lines(char *cub_file, t_node **file_content)
 	return (SUCCES);
 }
 
+/*
+	Reads file of user by using "get_next_line"
+	and puts it in a linked list.
+	It will convert the linked list to an 2D Array.
+*/
 int	read_file(char *cub_file, t_vars *vars)
 {
 	t_node	*file_content;

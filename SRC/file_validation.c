@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/14 17:14:15 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/04/15 19:15:28 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/06/03 16:02:50 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@
 
 #include <stddef.h> /* free */
 
+/*
+	Function that checks if the map file has a ".cub"
+	extention at the end.
+*/
 static bool	is_cub_extension(char *argv)
 {
 	int		i;
@@ -39,8 +43,8 @@ static bool	is_cub_extension(char *argv)
 }
 
 /*
-**	No error msgs here!
-**	Do it in the functions that are called here.
+	No error msgs here!
+	Do it in the functions that are called here.
 */
 bool	is_cub_file_valid(char *cub_file, t_vars *vars)
 {

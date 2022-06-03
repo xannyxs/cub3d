@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 21:21:04 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/04/16 22:26:56 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/06/03 15:21:39 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,39 +19,34 @@
 #include <stdio.h>
 #include <unistd.h>
 
-#define WIDTH 1280
-#define HEIGHT 1024
+static void	set_values(t_data *data)
+{
+	data->pos_x = 5;
+	data->pos_y = 5;
+	data->dir_x = -1;
+	data->dir_y = 0;
+	data->plane_x = 0;
+	data->plane_y = 0.66;
+}
 
-static void	hook(void *param)
+static void	movement_hook(void *param)
 {
 	t_vars	*vars;
 
 	vars = param;
 	if (mlx_is_key_down(vars->mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(vars->mlx);
-	if (mlx_is_key_down(vars->mlx, MLX_KEY_LEFT))
+	if (mlx_is_key_down(vars->mlx, MLX_KEY_UP))
 	{
-		vars->textures.north_wall->instances[0].x -= 5;
-		vars->textures.west_wall->instances[0].x -= 5;
-		// vars->textures.east_wall->instances[0].x -= 5;
-		// vars->textures.south_wall->instances[0].x -= 5;
+		// if (vars->map_data.world_map[int(vars->data.pos_x + vars->data.dir_x * MOVE_SPEED)][int(pos_y)] == '0')
+		// 	vars->data.pos_x += vars->data.dir_x * MOVE_SPEED;
+		// if (vars->map_data.world_map[int(vars->data.pos_x)][int(vars->data.pos_y + dir_y * move_speed)] == '0')
+		// 	vars->data.pos_y += vars->data.dir_y * MOVE_SPEED;
 	}
 	if (mlx_is_key_down(vars->mlx, MLX_KEY_RIGHT))
 	{
 		vars->textures.north_wall->instances[0].x += 5;
-		vars->textures.west_wall->instances[0].x += 5;
-		// vars->textures.east_wall->instances[0].x += 5;
-		// vars->textures.south_wall->instances[0].x += 5;
 	}
-}
-
-static void	create_wall(mlx_t **mlx, mlx_image_t **wall, int32_t x, int32_t y, uint32_t colour)
-{
-	*wall = mlx_new_image(*mlx, 720, 128);
-	for (int i = 0; i < 720; i++)
-		for (int j = 0; j < 128; j++)
-			mlx_put_pixel(*wall, i, j, colour);
-	mlx_image_to_window(*mlx, *wall, x, y);
 }
 
 int32_t	main(int argc, char *argv[])
@@ -65,14 +60,13 @@ int32_t	main(int argc, char *argv[])
 	}
 	if (is_cub_file_valid(argv[1], &vars) == false)
 		return (ERROR);
-	vars.mlx = mlx_init(WIDTH, HEIGHT, "Cherries & Crabs", false);
+	vars.mlx = mlx_init(WIDTH, HEIGHT, "CUB3D", false);
 	if (!vars.mlx)
 		fatal_perror("mlx");
-	create_wall(&vars.mlx, &vars.textures.north_wall, 0, 128, 0xFF00FF);
-	create_wall(&vars.mlx, &vars.textures.west_wall, 720, 128, 0xFF000F);
-	mlx_loop_hook(vars.mlx, &hook, &vars);
+	set_values(&vars.data);
+	mlx_loop_hook(vars.mlx, &movement_hook, &vars);
 	mlx_loop(vars.mlx);
 	mlx_terminate(vars.mlx);
-	ft_free_array(vars.map_data.map_grid);
+	ft_free_array(vars.map_data.world_map);
 	return (EXIT_SUCCESS);
 }
