@@ -6,51 +6,41 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/15 16:28:08 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/06/03 15:57:25 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/06/06 20:31:44 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include "libft.h"
 #include "error.h"
-
-#include <stdio.h>
-#include <unistd.h>
 
 #define WALL '1'
 #define EMPTY '0'
-
-static int	loop_through_line(char *map_line, char object)
-{
-	unsigned int	x;
-
-	x = 0;
-	while (map_line[x])
-	{
-		if (map_line[x] != object && map_line[x] != ' ')
-			return (ERROR);
-		x++;
-	}
-	return (SUCCES);
-}
 
 static int	check_wall(t_map map_data)
 {
 	unsigned int	x;
 	unsigned int	y;
+	char			**temp_world_map;
 
 	x = 0;
 	y = 1;
-	if (loop_through_line(map_data.world_map[0], WALL))
+	temp_world_map = map_data.world_map;
+	if (loop_through_line(temp_world_map[0], WALL))
 		return (ERROR);
 	while (y < map_data.height)
 	{
-		if (map_data.world_map[y][0] != WALL && map_data.world_map[y][0] != ' ')
+		if (temp_world_map[y][0] != WALL && temp_world_map[y][0] != ' ')
 			return (ERROR);
-		else if (map_data.world_map[y][map_data.width] != WALL && map_data.world_map[y][map_data.width] != ' ')
+		else if (temp_world_map[y][ft_strlen(temp_world_map[y])] != WALL && \
+			temp_world_map[y][ft_strlen(temp_world_map[y])] != ' ' && \
+			temp_world_map[y][ft_strlen(temp_world_map[y])] != 0)
 			return (ERROR);
 		y++;
 	}
-	if (loop_through_line(map_data.world_map[map_data.height], WALL))
+	if (loop_through_line(temp_world_map[map_data.height], WALL))
+		return (ERROR);
+	if (check_for_holes(map_data))
 		return (ERROR);
 	return (SUCCES);
 }
@@ -128,6 +118,11 @@ static void	get_map_size(t_map *map_data)
 int	check_map(t_map *map_data)
 {
 	get_map_size(map_data);
+	if (check_unknown(*map_data))
+	{
+		non_fatal_error(UNKNOWN_CHAR);
+		return (ERROR);
+	}
 	if (check_wall(*map_data))
 	{
 		non_fatal_error(MISSING_WALL);
@@ -136,11 +131,6 @@ int	check_map(t_map *map_data)
 	if (check_player(*map_data))
 	{
 		non_fatal_error(MISSING_PLAYER);
-		return (ERROR);
-	}
-	if (check_unknown(*map_data))
-	{
-		non_fatal_error(UNKNOWN_CHAR);
 		return (ERROR);
 	}
 	return (SUCCES);
