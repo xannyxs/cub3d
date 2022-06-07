@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 21:22:16 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/06/06 12:10:55 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/06/07 17:36:44 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,5 +110,16 @@ void			new_node(t_node **head, char *content);
 void			ft_free_list(t_node **head);
 
 size_t			ft_lstlen(t_node *head);
+
+
+/*
+	CHECK_MAP
+*/
+
+int				check_player(t_map map_data);
+
+int				check_wall(t_map map_data);
+
+int				check_unknown(t_map map_data);
 
 #endif

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   check_map_utils.c                                  :+:    :+:            */
+/*   check_wall_utils.c                                 :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/06 12:09:47 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/06/06 20:33:57 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/06/07 17:34:47 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int	loop_through_line(char *map_line, char object)
 	x = 0;
 	while (map_line[x])
 	{
-		if (map_line[x] != object && map_line[x] != EMPTY)
+		if (map_line[x] != object)
 			return (ERROR);
 		x++;
 	}
