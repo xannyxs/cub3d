@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/07 17:33:39 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/06/07 17:35:20 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/06/09 15:10:17 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,14 @@
 #define EMPTY '0'
 
 /*
-	Made it a temp_world_map because of norm...
+	Made a "char **temp_world_map" because of norm...
+
+	I first check if the first row is OK,
+	then I check if the map has wall on the side.
+	At last, I check if the last row is OK.
+
+	At the end I check if there are any holes in the map,
+	and if they are viable.
 */
 int	check_wall(t_map map_data)
 {

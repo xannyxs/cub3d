@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/15 16:28:08 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/06/07 18:00:52 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/06/09 15:08:22 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,13 @@ static void	get_map_size(t_map *map_data)
 	map_data->height = y - 1;
 }
 
+/*
+	I first check for unknown chars,
+	then I check if the map is correctly surrounded by walls.
+	Last but not least, I check if I only have one player on the map.
+
+	I check for a player twice, because of the error code. Could be much better.
+*/
 int	check_map(t_map *map_data)
 {
 	get_map_size(map_data);

@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 21:22:16 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/06/07 19:26:52 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/06/09 15:12:41 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,16 @@
 # define HEIGHT 1024
 # define MOVE_SPEED 1
 
+/*
+	Needed to get the file lines.
+*/
 typedef struct	s_node
 {
 	char 			*content;
 	struct s_node	*next;
 }	t_node;
 
+// Testing...
 typedef struct	s_textures
 {
 	mlx_image_t	*north_wall;
@@ -38,6 +42,9 @@ typedef struct	s_textures
 	mlx_image_t	*south_wall;
 }	t_textures;
 
+/*
+	All the map data in one struct.
+*/
 typedef struct	s_map
 {
 	char				**world_map;
@@ -45,6 +52,9 @@ typedef struct	s_map
 	unsigned int		height;
 }	t_map;
 
+/*
+	All raytracing data.
+*/
 typedef struct s_data
 {
 	double	pos_x;
@@ -58,7 +68,9 @@ typedef struct s_data
 	double	raydir_y;
 }	t_data;
 
-
+/*
+	All data, like map data, raycasting data, MLX & textures.
+*/
 typedef struct	s_vars
 {
 	mlx_t		*mlx;
