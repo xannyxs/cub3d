@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 21:21:04 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/06/03 15:21:39 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/06/07 19:41:56 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ int32_t	main(int argc, char *argv[])
 	if (!vars.mlx)
 		fatal_perror("mlx");
 	set_values(&vars.data);
+	mlx_loop_hook(vars.mlx, &raycasting_hook, &vars);
 	mlx_loop_hook(vars.mlx, &movement_hook, &vars);
 	mlx_loop(vars.mlx);
 	mlx_terminate(vars.mlx);

@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 21:22:16 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/06/07 17:36:44 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/06/07 19:26:52 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ typedef struct	s_vars
 */
 
 int32_t			main(int argc, char *argv[]);
+
+void			raycasting_hook(void *param);
 
 /*
 	FILE CHECK
