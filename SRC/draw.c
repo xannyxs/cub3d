@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   raycasting.c                                       :+:    :+:            */
+/*   draw.c                                             :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/06/07 19:27:12 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/06/09 18:28:12 by xvoorvaa      ########   odam.nl         */
+/*   Created: 2022/06/09 16:13:36 by xvoorvaa      #+#    #+#                 */
+/*   Updated: 2022/06/09 18:07:27 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-
-
-void	raycasting_hook(void *param)
+void	draw_hook(void *param)
 {
-	int		x;
+	int	x = 0;
+	int	y = 0;
 	t_vars	*vars;
 
-	x = 0;
 	vars = param;
-	while (x < WIDTH)
+	while (y < 30)
 	{
-		cast_ray(vars->data[i]);
-		i++;
+		while (x < 30)
+		{
+			mlx_put_pixel(vars->textures.screen, x, y, 0xFFFFFF);
+			x++;
+		}
+		x = 0;
+		y++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 21:22:16 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/06/09 15:12:41 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/06/09 16:43:05 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct	s_node
 // Testing...
 typedef struct	s_textures
 {
+	mlx_image_t	*screen;
 	mlx_image_t	*north_wall;
 	mlx_image_t	*west_wall;
 	mlx_image_t	*east_wall;
@@ -76,7 +77,7 @@ typedef struct	s_vars
 	mlx_t		*mlx;
 	t_map		map_data;
 	t_textures	textures;
-	t_data		data;
+	t_data		data[WIDTH + 1];
 }	t_vars;
 
 /*
@@ -86,6 +87,8 @@ typedef struct	s_vars
 int32_t			main(int argc, char *argv[]);
 
 void			raycasting_hook(void *param);
+
+void			draw_hook(void *param);
 
 /*
 	FILE CHECK
