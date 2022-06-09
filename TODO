@@ -1,0 +1,25 @@
+---- SWENNE
+
+link tutorial raycasting
+includes makefile
+linked lists functions add?
+fix check_wall
+upgrade clean check_player
+study allowed functions
+
+
+---- XANDER
+
+() talk patrick masterclass
+() prepare map checker 
+() MLX42 not on github?
+
+---- BOTH
+
+wildcards makefile
+discuss bonus (wall collisions + minimap)
+maybe swap libft
+
+--- INFO FOR EVAL:
+
+install glfw (check MLX42 github)
