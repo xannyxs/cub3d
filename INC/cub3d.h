@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 21:22:16 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/06/09 16:43:05 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/06/10 14:24:46 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,15 +58,41 @@ typedef struct	s_map
 */
 typedef struct s_data
 {
-	double	pos_x;
-	double	pos_y;
-	double	dir_x;
-	double	dir_y;
-	double	plane_x;
-	double	plane_y;
-	double	camera_x;
-	double	raydir_x;
-	double	raydir_y;
+	bool			hit;
+	int				map_x;
+	int				map_y;
+	int				step_x;
+	int				step_y;
+	int				side;
+	int				line_height;
+	int				draw_start;
+	int				draw_end;
+	int				forward;
+	int				backwards;
+	int				left;
+	int				right;
+	int				rot_left;
+	int				rot_right;
+	double			pos_x;
+	double			pos_y;
+	double			dir_x;
+	double			dir_y;
+	double			plane_x;
+	double			plane_y;
+	double			camera_x;
+	double			raydir_x;
+	double			raydir_y;
+	double			side_dist_x;
+	double			side_dist_y;
+	double			delta_dist_x;
+	double			delta_dist_y;
+	double			perp_wall_dist;
+	double			step_size;
+	double			const_rad;
+	double			wall_x;
+	double			x_tex;
+	double			y_tex;
+	double			y_tex_step;
 }	t_data;
 
 /*
@@ -77,7 +103,7 @@ typedef struct	s_vars
 	mlx_t		*mlx;
 	t_map		map_data;
 	t_textures	textures;
-	t_data		data[WIDTH + 1];
+	t_data		*data;
 }	t_vars;
 
 /*
@@ -138,5 +164,11 @@ int				check_player(t_map map_data);
 int				check_wall(t_map map_data);
 
 int				check_unknown(t_map map_data);
+
+/*
+	MOVEMENT
+*/
+
+void			movement_hook(void *param);
 
 #endif
