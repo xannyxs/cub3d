@@ -1,7 +1,7 @@
 ---- SWENNE
 
-() link tutorial raycasting
-() includes makefile
+(x) link tutorial raycasting
+() includes and clean makefile
 () fix check_wall
 () upgrade clean check_player
 () study allowed functions
@@ -11,7 +11,7 @@
 
 (x) talk patrick masterclass
 (x) prepare/comment map_checker 
-() MLX42 not on github?
+(x) MLX42 not on github?
 
 
 ---- BOTH
@@ -22,7 +22,13 @@
 () extra linked lists functions?
 
 
---- INFO FOR EVAL:
+--- HOW TO RUN:
 
 install glfw (check MLX42 github)
-submodules issue: git pull --recurse-submodules
+    ➜  ~ brew update
+    ➜  ~ brew install glfw
+submodules issue: 
+    (check ssh permission - try cloning on github desktop)
+    ➜ git pull --recurse-submodules
+    ➜ https://github.com/codam-coding-college/MLX42.git
+
