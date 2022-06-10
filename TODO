@@ -5,10 +5,13 @@
 () fix check_wall
 () upgrade clean check_player
 () study allowed functions
-
+() main fun names clearer
+>>>> add struct on s_map parsing of floor/cealing and pathing of walls
+() mlx collors F/C parsing
 
 ---- XANDER
 
+() struct xy
 (x) talk patrick masterclass
 (x) prepare/comment map_checker 
 (x) MLX42 not on github?
@@ -20,6 +23,8 @@
 () discuss bonus (wall collisions + minimap)
 () maybe swap libft
 () extra linked lists functions?
+() check subject error printing (lowcaps?)
+() xpm or pnd discuss.
 
 
 --- HOW TO RUN:
