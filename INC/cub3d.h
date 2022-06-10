@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 21:22:16 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/06/10 14:24:46 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/06/10 16:44:48 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ typedef struct	s_vars
 	mlx_t		*mlx;
 	t_map		map_data;
 	t_textures	textures;
-	t_data		*data;
+	t_data		data;
 }	t_vars;
 
 /*
@@ -135,6 +135,8 @@ int				get_next_line(int fd, char **line);
 int				loop_through_line(char *map_line, char object);
 
 bool			check_for_holes(t_map map_data);
+
+void			find_player(t_vars *vars);
 
 /*
 	WRAPPED

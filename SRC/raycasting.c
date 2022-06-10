@@ -6,13 +6,15 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/07 19:27:12 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/06/10 14:21:11 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/06/10 17:31:36 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 #include <stdio.h>
+
+#define WALL '1'
 
 void	set_ray_pos(t_data *data, unsigned int x)
 {
@@ -55,22 +57,22 @@ void	set_ray_delta(t_data *data)
 
 void	perform_DDA(t_vars *vars)
 {
-	while (vars->data->hit == false)
+	while (vars->data.hit == false)
 	{
-		if (vars->data->side_dist_x < vars->data->side_dist_y)
+		if (vars->data.side_dist_x < vars->data.side_dist_y)
 		{
-			vars->data->side_dist_x += vars->data->delta_dist_x;
-			vars->data->map_x += vars->data->step_x;
-			vars->data->side = 0;
+			vars->data.side_dist_x += vars->data.delta_dist_x;
+			vars->data.map_x += vars->data.step_x;
+			vars->data.side = 0;
 		}
 		else
 		{
-			vars->data->side_dist_y += vars->data->delta_dist_y;
-			vars->data->map_y += vars->data->step_y;
-			vars->data->side = 1;
+			vars->data.side_dist_y += vars->data.delta_dist_y;
+			vars->data.map_y += vars->data.step_y;
+			vars->data.side = 1;
 		}
-		if (vars->map_data.world_map[vars->data->map_x][vars->data->map_y] > 0)
-			vars->data->hit = true;
+		if (vars->map_data.world_map[vars->data.map_x][vars->data.map_y] == WALL)
+			vars->data.hit = true;
 	} 
 }
 
@@ -83,7 +85,20 @@ void	raycasting_hook(void *param)
 	vars = param;
 	while (x < WIDTH)
 	{
-		set_ray_pos(vars->data, x);
+		set_ray_pos(&vars->data, x);
 		x++;
 	}
+	set_ray_delta(&vars->data);
+	perform_DDA(vars);
+	if (vars->data.side == 0)
+		vars->data.perp_wall_dist = (vars->data.side_dist_x - vars->data.delta_dist_x);
+	else
+		vars->data.perp_wall_dist = (vars->data.side_dist_y - vars->data.delta_dist_y);
+	vars->data.line_height = (int)(HEIGHT / vars->data.perp_wall_dist);
+	vars->data.draw_start = -vars->data.line_height / 2 + HEIGHT / 2;
+	if (vars->data.draw_start < 0)
+		vars->data.draw_start = 0;
+	vars->data.draw_end = vars->data.line_height / 2 + HEIGHT / 2;
+	if (vars->data.draw_end >= HEIGHT)
+		vars->data.draw_end = HEIGHT - 1;
 }

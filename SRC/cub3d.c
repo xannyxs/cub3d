@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 21:21:04 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/06/10 14:24:17 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/06/10 17:31:20 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,16 @@
 
 #include <stdlib.h> /* Malloc */
 
-static void	set_values(t_data *data)
+#include <stdio.h>
+
+static void	set_values(t_vars *vars)
 {
-	data->pos_x = 5;
-	data->pos_y = 5;
-	data->dir_x = -1;
-	data->dir_y = 0;
-	data->plane_x = 0;
-	data->plane_y = 0.66;
-	data->hit = false;
+	find_player(vars);
+	vars->data.dir_x = -1;
+	vars->data.dir_y = 0;
+	vars->data.plane_x = 0;
+	vars->data.plane_y = 0.66;
+	vars->data.hit = false;
 }
 
 /*
@@ -34,8 +35,7 @@ static void	set_values(t_data *data)
 */
 static void	init_sys(t_vars *vars)
 {
-	vars->data = ft_malloc(sizeof(t_data));
-	set_values(vars->data);
+	set_values(vars);
 	vars->textures.screen = mlx_new_image(vars->mlx, WIDTH, HEIGHT);
 	mlx_image_to_window(vars->mlx, vars->textures.screen, 150, 150);
 }
