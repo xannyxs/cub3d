@@ -11,7 +11,7 @@
 
 () struct xy (keep style)
 (x) talk patrick masterclass
-(x) prepare/comment map_checker 
+(x) prepare/comment map_checker
 (x) MLX42 not on github?
 
 ---- BOTH
@@ -30,7 +30,7 @@
 install glfw (check MLX42 github)
     ➜  ~ brew update
     ➜  ~ brew install glfw
-submodules issue: 
+submodules issue:
     (check ssh permission - try cloning on github desktop)
     ➜ git pull --recurse-submodules
     ➜ https://github.com/codam-coding-college/MLX42.git
@@ -40,6 +40,6 @@ submodules issue:
 ---- BEFORE CLOSING PROJECT:
 
 () smooth management of your window: changing to another window, minimizing, etc.
-() error handling: the program must exit properly and return "Error\n" followed by an explicit error message of your choice.
+(x) error handling: the program must exit properly and return "Error\n" followed by an explicit error message of your choice.
 () set the floor and ceiling colors should never be the same.
 () ESC + red cross must close the window and quit the program >cleanly.

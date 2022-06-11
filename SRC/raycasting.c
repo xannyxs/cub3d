@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/07 19:27:12 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/06/10 17:31:36 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/06/11 13:22:52 by xander        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,35 @@ void	perform_DDA(t_vars *vars)
 		}
 		if (vars->map_data.world_map[vars->data.map_x][vars->data.map_y] == WALL)
 			vars->data.hit = true;
-	} 
+	}
+}
+
+void	calculate_height(t_data *data)
+{
+	if (data->side == 0)
+		data->perp_wall_dist = (data->side_dist_x - data->delta_dist_x);
+	else
+		data->perp_wall_dist = (data->side_dist_y - data->delta_dist_y);
+	data->line_height = (int)(HEIGHT / data->perp_wall_dist);
+	data->draw_start = -data->line_height / 2 + HEIGHT / 2;
+	if (data->draw_start < 0)
+		data->draw_start = 0;
+	data->draw_end = data->line_height / 2 + HEIGHT / 2;
+	if (data->draw_end >= HEIGHT)
+		data->draw_end = HEIGHT - 1;
+}
+
+void	draw_cast(t_vars *vars, unsigned int x)
+{
+	int		y_wall;
+
+	y_wall = vars->data.draw_start;
+	while (y_wall <= vars->data.draw_end)
+	{
+		mlx_put_pixel(vars->textures.screen, x, y_wall, 0xFFFFFF);
+		y_wall++;
+		vars->data.y_tex += vars->data.y_tex_step;
+	}
 }
 
 void	raycasting_hook(void *param)
@@ -86,19 +114,10 @@ void	raycasting_hook(void *param)
 	while (x < WIDTH)
 	{
 		set_ray_pos(&vars->data, x);
+		set_ray_delta(&vars->data);
+		perform_DDA(vars);
+		calculate_height(&vars->data);
+		draw_cast(vars, x);
 		x++;
 	}
-	set_ray_delta(&vars->data);
-	perform_DDA(vars);
-	if (vars->data.side == 0)
-		vars->data.perp_wall_dist = (vars->data.side_dist_x - vars->data.delta_dist_x);
-	else
-		vars->data.perp_wall_dist = (vars->data.side_dist_y - vars->data.delta_dist_y);
-	vars->data.line_height = (int)(HEIGHT / vars->data.perp_wall_dist);
-	vars->data.draw_start = -vars->data.line_height / 2 + HEIGHT / 2;
-	if (vars->data.draw_start < 0)
-		vars->data.draw_start = 0;
-	vars->data.draw_end = vars->data.line_height / 2 + HEIGHT / 2;
-	if (vars->data.draw_end >= HEIGHT)
-		vars->data.draw_end = HEIGHT - 1;
 }
