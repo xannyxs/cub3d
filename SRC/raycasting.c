@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/07 19:27:12 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/06/14 18:54:22 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/06/14 19:18:48 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	set_ray_pos(t_data *data, unsigned int x)
 	data->camera_x = 2 * x / (double) WIDTH - 1;
 	data->raydir_x = data->dir_x + data->plane_x * data->camera_x;
 	data->raydir_y = data->dir_y + data->plane_y * data->camera_x;
-	data->map_x = (int) data->pos_x;
-	data->map_y = (int) data->pos_y;
+	data->map_x = (int) data->pos.x;
+	data->map_y = (int) data->pos.y;
 }
 
 /*
@@ -43,22 +43,22 @@ void	set_ray_delta(t_data *data)
 	if (data->raydir_x < 0)
 	{
 		data->step_x = -1;
-		data->side_dist_x = (data->pos_x - data->map_x) * data->delta_dist_x;
+		data->side_dist_x = (data->pos.x - data->map_x) * data->delta_dist_x;
 	}
 	else
 	{
 		data->step_x = 1;
-		data->side_dist_x = (data->map_x + 1.0 - data->pos_x) * data->delta_dist_x;
+		data->side_dist_x = (data->map_x + 1.0 - data->pos.x) * data->delta_dist_x;
 	}
 	if (data->raydir_y < 0)
 	{
 		data->step_y = -1;
-		data->side_dist_y = (data->pos_y - data->map_y) * data->delta_dist_y;
+		data->side_dist_y = (data->pos.y - data->map_y) * data->delta_dist_y;
 	}
 	else
 	{
 		data->step_y = 1;
-		data->side_dist_y = (data->map_y + 1.0 - data->pos_y) * data->delta_dist_y;
+		data->side_dist_y = (data->map_y + 1.0 - data->pos.y) * data->delta_dist_y;
 	}
 }
 
