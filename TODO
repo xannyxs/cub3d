@@ -41,5 +41,5 @@ submodules issue:
 
 () smooth management of your window: changing to another window, minimizing, etc.
 (x) error handling: the program must exit properly and return "Error\n" followed by an explicit error message of your choice.
-() set the floor and ceiling colors should never be the same.
-() ESC + red cross must close the window and quit the program >cleanly.
+() set the floor and ceiling colors should never be the same. (They can be the same, if the user asks for it)
+(x) ESC + red cross must close the window and quit the program >cleanly.
