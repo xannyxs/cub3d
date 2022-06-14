@@ -6,7 +6,7 @@
 #    By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/01 14:31:21 by xvoorvaa      #+#    #+#                  #
-#    Updated: 2022/06/13 20:57:12 by swofferh      ########   odam.nl          #
+#    Updated: 2022/06/14 18:52:01 by xvoorvaa      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ LIBFT_H			=	$(LIBFT_DIR)/INC
 LIBFT_A			=	$(LIBFT_DIR)/libft.a
 SOURCES			=	$(shell find $(SRC_DIR) -type f -name "*.c")
 
-HEADERS		:= $(MLX_H) INC/cub3d.h INC/error.h $(LIBFT_H)
+HEADERS		:= $(MLX_H) INC/cub3d.h INC/error.h INC/raycast.h $(LIBFT_H)
 OBJS		:= $(SOURCES:.c=.o)
 OBJECTS		:= $(patsubst $(SRC_DIR)/%,$(OBJ_DIR)/%,$(OBJS))
 GLFW_LIB 	:= $(shell brew --prefix glfw)
@@ -79,5 +79,8 @@ fclean:	clean
 	$(RESET_MESSAGE)
 
 re:	fclean all
+
+run: all 
+	./$(NAME) MAPS/basic.cub
 
 .PHONY:	all clean fclean re

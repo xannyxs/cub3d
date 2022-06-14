@@ -1,5 +1,6 @@
 OBJ/
 cub3d
+.vscode/*.log
 
 # Prerequisites
 *.d

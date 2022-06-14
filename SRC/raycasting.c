@@ -6,19 +6,20 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/07 19:27:12 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/06/11 13:22:52 by xander        ########   odam.nl         */
+/*   Updated: 2022/06/14 18:54:22 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "raycast.h"
 #include "cub3d.h"
 
-#include <stdio.h>
+#include <math.h> /* Fabs */
 
 #define WALL '1'
 
 void	set_ray_pos(t_data *data, unsigned int x)
 {
-	data->camera_x = 2 * x / WIDTH - 1;
+	data->camera_x = 2 * x / (double) WIDTH - 1;
 	data->raydir_x = data->dir_x + data->plane_x * data->camera_x;
 	data->raydir_y = data->dir_y + data->plane_y * data->camera_x;
 	data->map_x = (int) data->pos_x;
@@ -31,8 +32,14 @@ void	set_ray_pos(t_data *data, unsigned int x)
 */
 void	set_ray_delta(t_data *data)
 {
-	data->delta_dist_x = 1 / data->raydir_x;
-	data->delta_dist_y = 1 / data->raydir_y;
+	if (data->raydir_x == 0)
+		data->delta_dist_x = 1e30;
+	else
+		data->delta_dist_x = fabs(1 / data->raydir_x);
+	if (data->raydir_y == 0)
+		data->delta_dist_y = 1e30;
+	else
+		data->delta_dist_y = fabs(1 / data->raydir_y);
 	if (data->raydir_x < 0)
 	{
 		data->step_x = -1;
@@ -57,7 +64,7 @@ void	set_ray_delta(t_data *data)
 
 void	perform_DDA(t_vars *vars)
 {
-	while (vars->data.hit == false)
+	while (true)
 	{
 		if (vars->data.side_dist_x < vars->data.side_dist_y)
 		{
@@ -71,19 +78,19 @@ void	perform_DDA(t_vars *vars)
 			vars->data.map_y += vars->data.step_y;
 			vars->data.side = 1;
 		}
-		if (vars->map_data.world_map[vars->data.map_x][vars->data.map_y] == WALL)
-			vars->data.hit = true;
+		if (vars->map_data.world_map[vars->data.map_y][vars->data.map_x] == WALL)
+			break;
 	}
 }
 
 void	calculate_height(t_data *data)
 {
 	if (data->side == 0)
-		data->perp_wall_dist = (data->side_dist_x - data->delta_dist_x);
+		data->perp_wall_dist = data->side_dist_x - data->delta_dist_x;
 	else
-		data->perp_wall_dist = (data->side_dist_y - data->delta_dist_y);
+		data->perp_wall_dist = data->side_dist_y - data->delta_dist_y;
 	data->line_height = (int)(HEIGHT / data->perp_wall_dist);
-	data->draw_start = -data->line_height / 2 + HEIGHT / 2;
+	data->draw_start = HEIGHT / 2 - data->line_height / 2;
 	if (data->draw_start < 0)
 		data->draw_start = 0;
 	data->draw_end = data->line_height / 2 + HEIGHT / 2;
@@ -91,6 +98,9 @@ void	calculate_height(t_data *data)
 		data->draw_end = HEIGHT - 1;
 }
 
+/*
+	Colour input: R, G, B, Transparent
+*/
 void	draw_cast(t_vars *vars, unsigned int x)
 {
 	int		y_wall;

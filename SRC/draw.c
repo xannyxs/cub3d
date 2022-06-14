@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/09 16:13:36 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/06/09 18:07:27 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/06/14 17:31:34 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	draw_hook(void *param)
 	{
 		while (x < 30)
 		{
-			mlx_put_pixel(vars->textures.screen, x, y, 0xFFFFFF);
+			// mlx_put_pixel(vars->textures.screen, x, y, 0xFFFFFF);
 			x++;
 		}
 		x = 0;

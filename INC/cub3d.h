@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 21:22:16 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/06/10 16:44:48 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/06/14 19:05:11 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define CUB3D_H
 
 # include "MLX42/MLX42.h"
+# include "raycast.h"
+
 # include <stdbool.h>
 # include <stddef.h>
 
@@ -22,7 +24,7 @@
 
 # define WIDTH 1280
 # define HEIGHT 1024
-# define MOVE_SPEED 1
+# define MOVE_SPEED 0.5
 
 /*
 	Needed to get the file lines.
@@ -52,48 +54,6 @@ typedef struct	s_map
 	unsigned int		width;
 	unsigned int		height;
 }	t_map;
-
-/*
-	All raytracing data.
-*/
-typedef struct s_data
-{
-	bool			hit;
-	int				map_x;
-	int				map_y;
-	int				step_x;
-	int				step_y;
-	int				side;
-	int				line_height;
-	int				draw_start;
-	int				draw_end;
-	int				forward;
-	int				backwards;
-	int				left;
-	int				right;
-	int				rot_left;
-	int				rot_right;
-	double			pos_x;
-	double			pos_y;
-	double			dir_x;
-	double			dir_y;
-	double			plane_x;
-	double			plane_y;
-	double			camera_x;
-	double			raydir_x;
-	double			raydir_y;
-	double			side_dist_x;
-	double			side_dist_y;
-	double			delta_dist_x;
-	double			delta_dist_y;
-	double			perp_wall_dist;
-	double			step_size;
-	double			const_rad;
-	double			wall_x;
-	double			x_tex;
-	double			y_tex;
-	double			y_tex_step;
-}	t_data;
 
 /*
 	All data, like map data, raycasting data, MLX & textures.

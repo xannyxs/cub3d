@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 21:21:04 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/06/10 17:31:20 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/06/14 17:30:41 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,17 @@ static void	set_values(t_vars *vars)
 	vars->data.dir_y = 0;
 	vars->data.plane_x = 0;
 	vars->data.plane_y = 0.66;
-	vars->data.hit = false;
 }
 
 /*
 	The MLX_image_to_window only needs to be called once,
-	because of mlx_loop_hook. It will be called automaticlly.
+	because of mlx_loop_hook(). It will be called automatically.
 */
 static void	init_sys(t_vars *vars)
 {
 	set_values(vars);
 	vars->textures.screen = mlx_new_image(vars->mlx, WIDTH, HEIGHT);
-	mlx_image_to_window(vars->mlx, vars->textures.screen, 150, 150);
+	mlx_image_to_window(vars->mlx, vars->textures.screen, 0, 0);
 }
 
 int32_t	main(int argc, char *argv[])

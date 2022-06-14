@@ -23,6 +23,7 @@
 () check subject error printing (lowcaps?)
 () xpm or pnd discuss.
 () main fun names clearer
+() Code a better way to merge check_player() & find_player()
 
 
 --- HOW TO RUN:
