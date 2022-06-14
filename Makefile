@@ -6,7 +6,11 @@
 #    By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/01 14:31:21 by xvoorvaa      #+#    #+#                  #
+<<<<<<< HEAD
 #    Updated: 2022/06/14 18:52:01 by xvoorvaa      ########   odam.nl          #
+=======
+#    Updated: 2022/06/14 19:03:43 by swofferh      ########   odam.nl          #
+>>>>>>> 128890fc7058fc6622cc419e1330225a4f96e82d
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,7 +61,7 @@ $(OBJ_DIR):
 
 # ---------- LIBFT
 $(LIBFT_A): $(LIBFT_H)
-	$(MESSAGE_LIBFT)
+	$(START_LIBFT)
 	@$(MAKE_C) $(LIBFT_DIR)
 
 # ---------- MLX42
@@ -80,7 +84,7 @@ fclean:	clean
 
 re:	fclean all
 
-run: all 
+run: all
 	./$(NAME) MAPS/basic.cub
 
 .PHONY:	all clean fclean re

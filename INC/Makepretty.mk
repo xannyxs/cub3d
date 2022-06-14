@@ -23,6 +23,7 @@ NEW_DIR = mkdir -p
 
 START_MLX42		= @echo "$(N)$(MESSY_MESSAGE)$(GREEN)$(---)$(N)  Starting MLX42$(N)$(---)$(RESET)"
 START_CUB3D		= @echo "$(N)$(PINK)$(---)-----$(N)    Starting CUB3D$(N)$(---)-----$(N)$(RESET)"$(MESSAGE_CUB3D)
+START_LIBFT		= @echo "$(N)$(BLUE)$(---)--$(N)    Starting LIBFT$(N)$(---)--$(RESET)"
 PROJECT_MESSAGE = @echo "$(YELLOW)You can now run ./$(NAME)$(N)$(NC)"
 
 MESSAGE_CUB3D	= "$(PINK)Compiling$(RESET) >>>> CUB3D <<<<"
