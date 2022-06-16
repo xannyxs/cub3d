@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 21:22:16 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/06/14 19:05:11 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/06/16 17:08:49 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@
 
 # define WIDTH 1280
 # define HEIGHT 1024
-# define MOVE_SPEED 0.5
 
 /*
 	Needed to get the file lines.

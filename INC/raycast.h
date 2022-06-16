@@ -6,19 +6,24 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/14 13:50:40 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/06/14 19:09:19 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/06/16 16:41:09 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RAYCAST_H
 # define RAYCAST_H
 
-typedef struct	t_pos
+typedef struct	s_pos
 {
 	double	x;
 	double	y;
 }	t_pos;
 
+typedef struct	s_step
+{
+	int	x;
+	int	y;
+}	t_step;
 
 /*
 	All raytracing data.
@@ -27,8 +32,6 @@ typedef struct s_data
 {
 	int				map_x;
 	int				map_y;
-	int				step_x;
-	int				step_y;
 	int				side;
 	int				line_height;
 	int				draw_start;
@@ -39,7 +42,8 @@ typedef struct s_data
 	int				right;
 	int				rot_left;
 	int				rot_right;
-	t_pos			pos;
+	struct s_pos	pos;
+	struct s_step	step;
 	double			dir_x;
 	double			dir_y;
 	double			plane_x;
