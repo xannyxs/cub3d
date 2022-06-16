@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 21:22:16 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/06/16 17:08:49 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/06/16 20:57:21 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ int				get_next_line(int fd, char **line);
 
 int				loop_through_line(char *map_line, char object);
 
-bool			check_for_holes(t_map map_data);
+bool			check_for_holes(char *world_map[], unsigned int height);
 
 void			find_player(t_vars *vars);
 
@@ -122,7 +122,7 @@ size_t			ft_lstlen(t_node *head);
 
 int				check_player(t_map map_data);
 
-int				check_wall(t_map map_data);
+int				check_wall(char *world_map[], unsigned int height);
 
 int				check_unknown(t_map map_data);
 
@@ -131,5 +131,25 @@ int				check_unknown(t_map map_data);
 */
 
 void			movement_hook(void *param);
+
+/*
+	DRAW
+*/
+
+void	draw_cast_blue(t_vars *vars, unsigned int x);
+
+void	draw_cast_green(t_vars *vars, unsigned int x);
+
+void	draw_cast_purple(t_vars *vars, unsigned int x);
+
+void	draw_cast_red(t_vars *vars, unsigned int x);
+
+void	reset_window(mlx_image_t *screen);
+
+/*
+	RAYCASTING
+*/
+
+void	set_delta_dist(t_data *data);
 
 #endif

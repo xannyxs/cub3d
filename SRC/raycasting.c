@@ -6,85 +6,75 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/07 19:27:12 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/06/16 18:25:27 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/06/16 20:48:59 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycast.h"
 #include "cub3d.h"
 
-#include <math.h> /* Fabs */
-#include <stdio.h>
-
 #define WALL '1'
 
-void	set_ray_pos(t_data *data, unsigned int x)
+static void	set_ray_pos(t_data *data, unsigned int x)
 {
 	data->camera_x = 2 * x / (double) WIDTH - 1;
 	data->raydir_x = data->dir_x + data->plane_x * data->camera_x;
 	data->raydir_y = data->dir_y + data->plane_y * data->camera_x;
-	data->map_x = (int)data->pos.x;
-	data->map_y = (int)data->pos.y;
+	data->map_x = (int) data->pos_x;
+	data->map_y = (int) data->pos_y;
 }
 
 /*
 	Checks how far the player is from a wall.
 	See video: https://www.youtube.com/watch?v=NbSee-XM7WA
 */
-void	set_ray_delta(t_data *data)
+static void	set_ray_delta(t_data *data)
 {
-	if (data->raydir_x == 0)
-		data->delta_dist_x = 1e30;
-	else
-		data->delta_dist_x = fabs(1 / data->raydir_x);
-	if (data->raydir_y == 0)
-		data->delta_dist_y = 1e30;
-	else
-		data->delta_dist_y = fabs(1 / data->raydir_y);
+	set_delta_dist(data);
 	if (data->raydir_x < 0)
 	{
-		data->step.x = -1;
-		data->side_dist_x = (data->pos.x - data->map_x) * data->delta_dist_x;
+		data->step_x = -1;
+		data->side_dist_x = (data->pos_x - data->map_x) * data->delta_dist_x;
 	}
 	else
 	{
-		data->step.x = 1;
-		data->side_dist_x = (data->map_x + 1.0 - data->pos.x) * data->delta_dist_x;
+		data->step_x = 1;
+		data->side_dist_x = (data->map_x + 1.0 - data->pos_x) * data->delta_dist_x;
 	}
 	if (data->raydir_y < 0)
 	{
-		data->step.y = -1;
-		data->side_dist_y = (data->pos.y - data->map_y) * data->delta_dist_y;
+		data->step_y = -1;
+		data->side_dist_y = (data->pos_y - data->map_y) * data->delta_dist_y;
 	}
 	else
 	{
-		data->step.y = 1;
-		data->side_dist_y = (data->map_y + 1.0 - data->pos.y) * data->delta_dist_y;
+		data->step_y = 1;
+		data->side_dist_y = (data->map_y + 1.0 - data->pos_y) * data->delta_dist_y;
 	}
 }
 
-void	perform_DDA(t_vars *vars)
+static void	perform_dda(t_data *data, char *world_map[])
 {
 	while (true)
 	{
-		if (vars->data.side_dist_x < vars->data.side_dist_y)
+		if (data->side_dist_x < data->side_dist_y)
 		{
-			vars->data.side_dist_x += vars->data.delta_dist_x;
-			vars->data.map_x += vars->data.step.x;
-			vars->data.side = 0;
+			data->side_dist_x += data->delta_dist_x;
+			data->map_x += data->step_x;
+			data->side = 0;
 		}
 		else
 		{
-			vars->data.side_dist_y += vars->data.delta_dist_y;
-			vars->data.map_y += vars->data.step.y;
-			vars->data.side = 1;
+			data->side_dist_y += data->delta_dist_y;
+			data->map_y += data->step_y;
+			data->side = 1;
 		}
-		if (vars->map_data.world_map[vars->data.map_y][vars->data.map_x] == WALL)
-			break;
+		if (world_map[data->map_y][data->map_x] == WALL)
+			break ;
 	}
 }
 
-void	calculate_height(t_data *data)
+static void	calculate_height(t_data *data)
 {
 	if (data->side == 0)
 		data->perp_wall_dist = data->side_dist_x - data->delta_dist_x;
@@ -99,35 +89,6 @@ void	calculate_height(t_data *data)
 		data->draw_end = HEIGHT - 1;
 }
 
-/*
-	Colour input: R, G, B, Transparent
-*/
-void	draw_cast_green(t_vars *vars, unsigned int x)
-{
-	int		y_wall;
-
-	y_wall = vars->data.draw_start;
-	while (y_wall <= vars->data.draw_end)
-	{
-		mlx_put_pixel(vars->textures.screen, x, y_wall, 0x32a83cFF);
-		y_wall++;
-		vars->data.y_tex += vars->data.y_tex_step;
-	}
-}
-
-void	draw_cast(t_vars *vars, unsigned int x)
-{
-	int		y_wall;
-
-	y_wall = vars->data.draw_start;
-	while (y_wall <= vars->data.draw_end)
-	{
-		mlx_put_pixel(vars->textures.screen, x, y_wall, 0xFFFFFFF);
-		y_wall++;
-		vars->data.y_tex += vars->data.y_tex_step;
-	}
-}
-
 void	raycasting_hook(void *param)
 {
 	unsigned int	x;
@@ -135,16 +96,21 @@ void	raycasting_hook(void *param)
 
 	x = 0;
 	vars = param;
+	reset_window(vars->textures.screen);
 	while (x < WIDTH)
 	{
 		set_ray_pos(&vars->data, x);
 		set_ray_delta(&vars->data);
-		perform_DDA(vars);
+		perform_dda(&vars->data, vars->map_data.world_map);
 		calculate_height(&vars->data);
-		if (vars->data.side == 0)
-			draw_cast(vars, x);
-		else if (vars->data.side == 1)
+		if (vars->data.side == 0 && vars->data.step_x < 0)
+			draw_cast_blue(vars, x);
+		if (vars->data.side == 0 && vars->data.step_x > 0)
+			draw_cast_red(vars, x);
+		if (vars->data.side == 1 && vars->data.step_y > 0)
 			draw_cast_green(vars, x);
+		if (vars->data.side == 1 && vars->data.step_y < 0)
+			draw_cast_purple(vars, x);
 		x++;
 	}
 }
