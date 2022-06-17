@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/07 19:27:12 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/06/16 20:48:59 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/06/17 15:09:24 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,13 +104,13 @@ void	raycasting_hook(void *param)
 		perform_dda(&vars->data, vars->map_data.world_map);
 		calculate_height(&vars->data);
 		if (vars->data.side == 0 && vars->data.step_x < 0)
-			draw_cast_blue(vars, x);
+			draw_cast_east(vars, x);
 		if (vars->data.side == 0 && vars->data.step_x > 0)
-			draw_cast_red(vars, x);
+			draw_cast_west(vars, x);
 		if (vars->data.side == 1 && vars->data.step_y > 0)
-			draw_cast_green(vars, x);
+			draw_cast_south(vars, x);
 		if (vars->data.side == 1 && vars->data.step_y < 0)
-			draw_cast_purple(vars, x);
+			draw_cast_north(vars, x);
 		x++;
 	}
 }

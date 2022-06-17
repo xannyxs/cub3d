@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/14 13:50:40 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/06/16 20:09:58 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/06/17 15:25:10 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,6 @@ typedef struct s_data
 	double			delta_dist_x;
 	double			delta_dist_y;
 	double			perp_wall_dist;
-	double			x_tex;
-	double			y_tex;
-	double			y_tex_step;
 }	t_data;
 
 #endif

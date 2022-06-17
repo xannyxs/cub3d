@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/10 14:24:22 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/06/16 20:48:09 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/06/17 14:19:21 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,20 @@ static void	key_player_movement(mlx_t *mlx, char *world_map[], t_data *data)
 			data->pos_x += data->dir_x * MOVE_SPEED;
 		if (world_map[(int)(data->pos_y + data->dir_y * MOVE_SPEED)][(int)(data->pos_x)] == '0')
 			data->pos_y += data->dir_y * MOVE_SPEED;
+	}
+	if (mlx_is_key_down(mlx, MLX_KEY_A))
+	{
+		if (world_map[(int)(data->pos_y)][(int)(data->pos_x + data->dir_y * MOVE_SPEED)] == '0')
+			data->pos_x += data->dir_y * MOVE_SPEED;
+		if (world_map[(int)(data->pos_y + data->dir_x * MOVE_SPEED)][(int)(data->pos_x)] == '0')
+			data->pos_y += data->dir_x * MOVE_SPEED;
+	}
+	if (mlx_is_key_down(mlx, MLX_KEY_D))
+	{
+		if (world_map[(int)(data->pos_y)][(int)(data->pos_x - data->dir_y * MOVE_SPEED)] == '0')
+			data->pos_x -= data->dir_y * MOVE_SPEED;
+		if (world_map[(int)(data->pos_y - data->dir_x * MOVE_SPEED)][(int)(data->pos_x)] == '0')
+			data->pos_y -= data->dir_x * MOVE_SPEED;
 	}
 }
 
