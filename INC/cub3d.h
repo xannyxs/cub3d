@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 21:22:16 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/06/17 15:17:35 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/06/20 12:02:58 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,9 +146,9 @@ void		draw_cast_west(t_vars *vars, unsigned int x);
 
 void		reset_window(mlx_image_t *screen);
 
-void		draw_floor(t_data data, mlx_image_t *screen, uint32_t colour, int x);
+void		draw_floor(mlx_image_t *screen, int draw_end, uint32_t colour, int x);
 
-void		draw_ceiling(t_data data, mlx_image_t *screen, uint32_t colour, int x);
+void		draw_ceiling(mlx_image_t *screen, int draw_start, uint32_t colour, int x);
 
 uint32_t	create_rgbt(int r, int g, int b, int t);
 

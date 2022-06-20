@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/17 12:05:52 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/06/17 15:17:16 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/06/20 12:01:49 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,26 +19,26 @@ uint32_t	create_rgbt(int r, int g, int b, int t)
 	return (r << 24 | g << 16 | b << 8 | t);
 }
 
-void	draw_ceiling(t_data data, mlx_image_t *screen, uint32_t colour, int x)
+void	draw_ceiling(mlx_image_t *screen, int draw_start, uint32_t color, int x)
 {
 	int	y;
 
 	y = 0;
-	while (y < data.draw_start)
+	while (y < draw_start)
 	{
-		mlx_put_pixel(screen, x, y, colour);
+		mlx_put_pixel(screen, x, y, color);
 		y++;
 	}
 }
 
-void	draw_floor(t_data data, mlx_image_t *screen, uint32_t colour, int x)
+void	draw_floor(mlx_image_t *screen, int draw_end, uint32_t color, int x)
 {
 	int	y;
 
-	y = data.draw_end;
+	y = draw_end;
 	while (y < HEIGHT)
 	{
-		mlx_put_pixel(screen, x, y, colour);
+		mlx_put_pixel(screen, x, y, color);
 		y++;
 	}
 }
