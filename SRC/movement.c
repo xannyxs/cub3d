@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/10 14:24:22 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/06/20 13:02:53 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/06/20 15:05:14 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,19 +47,23 @@ static void	player_rotation(mlx_t *mlx, t_data *s)
 	}
 }
 
-static void	strafe_movement(mlx_t *mlx, char *map[], t_data *s)
+/*
+	For more information about strafing:
+	Check: https://en.wikipedia.org/wiki/Strafing_(video_games)
+*/
+static void	strafing_movement(mlx_t *mlx, char *map[], t_data *s)
 {
 	if (mlx_is_key_down(mlx, MLX_KEY_A))
 	{
-		if (map[(int)(s->pos_y)][(int)(s->pos_x + s->dir_y * WALK)] == '0')
-			s->pos_x += s->dir_y * WALK;
+		if (map[(int)(s->pos_y)][(int)(s->pos_x - s->dir_y * WALK)] == '0')
+			s->pos_x -= s->dir_y * WALK;
 		if (map[(int)(s->pos_y + s->dir_x * WALK)][(int)(s->pos_x)] == '0')
 			s->pos_y += s->dir_x * WALK;
 	}
 	if (mlx_is_key_down(mlx, MLX_KEY_D))
 	{
-		if (map[(int)(s->pos_y)][(int)(s->pos_x - s->dir_y * WALK)] == '0')
-			s->pos_x -= s->dir_y * WALK;
+		if (map[(int)(s->pos_y)][(int)(s->pos_x + s->dir_y * WALK)] == '0')
+			s->pos_x += s->dir_y * WALK;
 		if (map[(int)(s->pos_y - s->dir_x * WALK)][(int)(s->pos_x)] == '0')
 			s->pos_y -= s->dir_x * WALK;
 	}
@@ -97,7 +101,7 @@ static void	walk_movement(mlx_t *mlx, char *map[], t_data *s)
 static void	player_movement(mlx_t *mlx, char *map[], t_data *s)
 {
 	walk_movement(mlx, map, s);
-	strafe_movement(mlx, map, s);
+	strafing_movement(mlx, map, s);
 }
 
 void	movement_hook(void *param)

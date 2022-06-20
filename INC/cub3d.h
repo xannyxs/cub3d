@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 21:22:16 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/06/20 12:02:58 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/06/20 17:52:30 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,17 @@ typedef struct	s_node
 	struct s_node	*next;
 }	t_node;
 
-// Testing...
+/*
+	Textures of walls will be saved here.
+	The whole screen as well.
+*/
 typedef struct	s_textures
 {
+	xpm_t		*north_wall;
+	xpm_t		*west_wall;
+	xpm_t		*east_wall;
+	xpm_t		*south_wall;
 	mlx_image_t	*screen;
-	mlx_image_t	*north_wall;
-	mlx_image_t	*west_wall;
-	mlx_image_t	*east_wall;
-	mlx_image_t	*south_wall;
 }	t_textures;
 
 /*
@@ -157,5 +160,11 @@ uint32_t	create_rgbt(int r, int g, int b, int t);
 */
 
 void	set_delta_dist(t_data *data);
+
+/*
+	MY_MLX
+*/
+
+uint32_t	my_mlx_colour_put(mlx_texture_t *img, unsigned int x, unsigned int y);
 
 #endif

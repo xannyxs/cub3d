@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 21:21:04 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/06/16 19:30:18 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/06/20 17:36:37 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,6 @@
 #include "MLX42/MLX42.h"
 #include "error.h" /* Error messages */
 #include "libft.h" /* ft_free_array */
-
-#include <stdlib.h> /* Malloc */
-
-#include <stdio.h>
 
 static void	set_values(t_vars *vars)
 {
@@ -37,6 +33,7 @@ static void	init_sys(t_vars *vars)
 	set_values(vars);
 	vars->textures.screen = mlx_new_image(vars->mlx, WIDTH, HEIGHT);
 	mlx_image_to_window(vars->mlx, vars->textures.screen, 0, 0);
+	vars->textures.north_wall = mlx_load_xpm42("IMG/XPM42/bluestone.xpm42");
 }
 
 int32_t	main(int argc, char *argv[])
