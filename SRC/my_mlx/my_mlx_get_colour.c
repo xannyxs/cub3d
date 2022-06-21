@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   my_mlx_colour.c                                    :+:    :+:            */
+/*   my_mlx_get_colour.c                                :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/20 17:40:58 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/06/20 17:53:55 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/06/21 16:00:51 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-unsigned int	my_mlx_colour_put(mlx_texture_t *img, unsigned int x, unsigned int y)
+UINT	my_mlx_get_colour(mlx_texture_t *img, UINT x, UINT y)
 {
-	unsigned int	*colour;
+	UINT	*colour;
 
-	colour = (unsigned int *) img->pixels + (x + y * img->width) * sizeof(unsigned int);
+	colour = (UINT *) (img->pixels + ((x + y * img->width) * sizeof(UINT)));
 	return (*colour);
 }

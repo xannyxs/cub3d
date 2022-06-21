@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/09 16:13:36 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/06/20 17:47:12 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/06/21 16:48:04 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,58 +22,20 @@ void	reset_window(mlx_image_t *screen)
 /*
 	Colour input: R, G, B, Transparent
 */
-void	draw_cast_south(t_vars *vars, unsigned int x)
+void	draw_wall(t_data *data, mlx_image_t *screen, mlx_texture_t *texture, UINT x)
 {
 	int	y_wall;
 
-	y_wall = vars->data.draw_start;
-	draw_ceiling(vars->textures.screen, vars->data.draw_start, 0x243883FF, x);
-	while (y_wall <= vars->data.draw_end)
+	y_wall = data->draw_start;
+	draw_ceiling(screen, data->draw_start, 0x243883FF, x);
+	while (y_wall <= data->draw_end)
 	{
-		mlx_put_pixel(vars->textures.screen, x, y_wall, my_mlx_colour_put(&vars->textures.north_wall->texture, x, y_wall));
+		data->tex_y = (int) data->tex_pos;
+		if (data->tex_y >= (int) texture->height)
+			data->tex_y = data->tex_height - 1;
+		data->tex_pos += data->step;
+		my_mlx_put_pixel(screen, x, y_wall, my_mlx_get_colour(texture, data->tex_x, data->tex_y));
 		y_wall++;
 	}
-	draw_floor(vars->textures.screen, vars->data.draw_end, 0x178292FF, x);
-}
-
-void	draw_cast_east(t_vars *vars, unsigned int x)
-{
-	int	y_wall;
-
-	y_wall = vars->data.draw_start;
-	draw_ceiling(vars->textures.screen, vars->data.draw_start, 0x243883FF, x);
-	while (y_wall <= vars->data.draw_end)
-	{
-		mlx_put_pixel(vars->textures.screen, x, y_wall, create_rgbt(155, 0, 255, 255));
-		y_wall++;
-	}
-	draw_floor(vars->textures.screen, vars->data.draw_end, 0x178292FF, x);
-}
-
-void	draw_cast_north(t_vars *vars, unsigned int x)
-{
-	int	y_wall;
-
-	y_wall = vars->data.draw_start;
-	draw_ceiling(vars->textures.screen, vars->data.draw_start, 0x243883FF, x);
-	while (y_wall <= vars->data.draw_end)
-	{
-		mlx_put_pixel(vars->textures.screen, x, y_wall, create_rgbt(65, 32, 96, 255)); 
-		y_wall++;
-	}
-	draw_floor(vars->textures.screen, vars->data.draw_end, 0x178292FF, x);
-}
-
-void	draw_cast_west(t_vars *vars, unsigned int x)
-{
-	int	y_wall;
-
-	y_wall = vars->data.draw_start;
-	draw_ceiling(vars->textures.screen, vars->data.draw_start, 0x243883FF, x);
-	while (y_wall <= vars->data.draw_end)
-	{
-		mlx_put_pixel(vars->textures.screen, x, y_wall, create_rgbt(110, 0, 96, 255));
-		y_wall++;
-	}
-	draw_floor(vars->textures.screen, vars->data.draw_end, 0x178292FF, x);
+	draw_floor(screen, data->draw_end, 0x178292FF, x);
 }

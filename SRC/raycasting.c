@@ -6,12 +6,14 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/07 19:27:12 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/06/17 15:09:24 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/06/21 16:29:35 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycast.h"
 #include "cub3d.h"
+
+#include <math.h>
 
 #define WALL '1'
 
@@ -89,6 +91,25 @@ static void	calculate_height(t_data *data)
 		data->draw_end = HEIGHT - 1;
 }
 
+static void	calculate_texture(t_data *data, t_textures textures, char *world_map[])
+{
+	data->tex_height = textures.north_wall->height;
+	data->tex_width = textures.north_wall->width;
+	data->tex_num = world_map[data->map_y][data->map_x] - 1;
+	if (data->side == 0)
+		data->wall_x = data->pos_y + data->perp_wall_dist * data->raydir_y;
+	else
+		data->wall_x = data->pos_x + data->perp_wall_dist * data->raydir_x;
+	data->wall_x -= floor((data->wall_x));
+	data->tex_x = (int) (data->wall_x * (double) data->tex_width);
+	if (data->side == 0 && data->raydir_x > 0)
+		data->tex_x = data->tex_width - data->tex_x - 1;
+	if (data->side == 1 && data->raydir_y < 0)
+		data->tex_x = data->tex_width - data->tex_x - 1;
+	data->step = 1.0 * data->tex_height / data->line_height;
+	data->tex_pos = (data->draw_start - HEIGHT / 2 + data->line_height / 2) * data->step;
+}
+
 void	raycasting_hook(void *param)
 {
 	unsigned int	x;
@@ -103,14 +124,15 @@ void	raycasting_hook(void *param)
 		set_ray_delta(&vars->data);
 		perform_dda(&vars->data, vars->map_data.world_map);
 		calculate_height(&vars->data);
+		calculate_texture(&vars->data, vars->textures, vars->map_data.world_map);
 		if (vars->data.side == 0 && vars->data.step_x < 0)
-			draw_cast_east(vars, x);
+			draw_wall(&vars->data, vars->textures.screen, vars->textures.east_wall, x);
 		if (vars->data.side == 0 && vars->data.step_x > 0)
-			draw_cast_west(vars, x);
+			draw_wall(&vars->data, vars->textures.screen, vars->textures.west_wall, x);
 		if (vars->data.side == 1 && vars->data.step_y > 0)
-			draw_cast_south(vars, x);
+			draw_wall(&vars->data, vars->textures.screen, vars->textures.south_wall, x);
 		if (vars->data.side == 1 && vars->data.step_y < 0)
-			draw_cast_north(vars, x);
+			draw_wall(&vars->data, vars->textures.screen, vars->textures.north_wall, x);
 		x++;
 	}
 }

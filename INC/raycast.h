@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/14 13:50:40 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/06/17 15:25:10 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/06/21 16:36:04 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,11 @@ typedef struct s_data
 	int				draw_end;
 	int				step_x;
 	int				step_y;
+	int				tex_x;
+	int				tex_y;
+	int				tex_num;
+	int				tex_width;
+	int				tex_height;
 	double			pos_x;
 	double			pos_y;
 	double			dir_x;
@@ -40,6 +45,9 @@ typedef struct s_data
 	double			delta_dist_x;
 	double			delta_dist_y;
 	double			perp_wall_dist;
+	double			tex_pos;
+	double			wall_x;
+	double			step;
 }	t_data;
 
 #endif
