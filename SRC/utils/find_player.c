@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/10 16:39:19 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/06/16 20:50:17 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/06/27 17:24:37 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@
 */
 void	find_player(t_vars *vars)
 {
-	unsigned int	x;
-	unsigned int	y;
+	UINT	x;
+	UINT	y;
 
-	x = 0;
 	y = 0;
 	while (vars->map_data.world_map[y] != NULL)
 	{
+		x = 0;
 		while (vars->map_data.world_map[y][x] != '\0')
 		{
 			if (vars->map_data.world_map[y][x] == 'N' ||
@@ -34,12 +34,12 @@ void	find_player(t_vars *vars)
 			{
 				vars->data.pos_x = x + 0.5;
 				vars->data.pos_y = y + 0.5;
+				vars->data.player_char = vars->map_data.world_map[y][x];
 				vars->map_data.world_map[y][x] = '0';
 				return ;
 			}
 			x++;
 		}
-		x = 0;
 		y++;
 	}
 }
