@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/06 12:09:47 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/06/09 15:10:47 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/06/16 20:56:44 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,20 +60,20 @@ static int	check_surrounding(char **world_map, int x, int y)
 
 	This is kind of a mass, because of norm...
 */
-bool	check_for_holes(t_map map_data)
+bool	check_for_holes(char *world_map[], unsigned int height)
 {
 	unsigned int	x;
 	unsigned int	y;
 
 	x = 0;
 	y = 0;
-	while (y < map_data.height)
+	while (y < height)
 	{
-		while (x <= ft_strlen(map_data.world_map[y]))
+		while (x <= ft_strlen(world_map[y]))
 		{
-			if (map_data.world_map[y][x] == EMPTY)
+			if (world_map[y][x] == EMPTY)
 			{
-				if (check_surrounding(map_data.world_map, x, y) == ERROR)
+				if (check_surrounding(world_map, x, y) == ERROR)
 					return (true);
 			}
 			x++;
