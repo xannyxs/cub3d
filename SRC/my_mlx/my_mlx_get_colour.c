@@ -1,32 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   draw.c                                             :+:    :+:            */
+/*   my_mlx_get_colour.c                                :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/06/09 16:13:36 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/06/14 17:31:34 by xvoorvaa      ########   odam.nl         */
+/*   Created: 2022/06/20 17:40:58 by xvoorvaa      #+#    #+#                 */
+/*   Updated: 2022/06/21 16:00:51 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	draw_hook(void *param)
+UINT	my_mlx_get_colour(mlx_texture_t *img, UINT x, UINT y)
 {
-	int	x = 0;
-	int	y = 0;
-	t_vars	*vars;
+	UINT	*colour;
 
-	vars = param;
-	while (y < 30)
-	{
-		while (x < 30)
-		{
-			// mlx_put_pixel(vars->textures.screen, x, y, 0xFFFFFF);
-			x++;
-		}
-		x = 0;
-		y++;
-	}
+	colour = (UINT *) (img->pixels + ((x + y * img->width) * sizeof(UINT)));
+	return (*colour);
 }

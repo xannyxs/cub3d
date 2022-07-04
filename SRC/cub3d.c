@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 21:21:04 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/06/14 17:30:41 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/06/21 16:49:28 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,6 @@
 #include "MLX42/MLX42.h"
 #include "error.h" /* Error messages */
 #include "libft.h" /* ft_free_array */
-
-#include <stdlib.h> /* Malloc */
-
-#include <stdio.h>
 
 static void	set_values(t_vars *vars)
 {
@@ -31,12 +27,18 @@ static void	set_values(t_vars *vars)
 /*
 	The MLX_image_to_window only needs to be called once,
 	because of mlx_loop_hook(). It will be called automatically.
+
+	Delete mlx_load_png after Swenne is done
 */
 static void	init_sys(t_vars *vars)
 {
 	set_values(vars);
 	vars->textures.screen = mlx_new_image(vars->mlx, WIDTH, HEIGHT);
 	mlx_image_to_window(vars->mlx, vars->textures.screen, 0, 0);
+	vars->textures.north_wall = mlx_load_png("IMG/PNG/Wolfenstein/bluestone.png");
+	vars->textures.east_wall = mlx_load_png("IMG/PNG/Wolfenstein/greystone.png");
+	vars->textures.south_wall = mlx_load_png("IMG/PNG/Wolfenstein/purplestone.png");
+	vars->textures.west_wall = mlx_load_png("IMG/PNG/Wolfenstein/eagle.png");
 }
 
 int32_t	main(int argc, char *argv[])
@@ -55,7 +57,6 @@ int32_t	main(int argc, char *argv[])
 		fatal_perror("mlx");
 	init_sys(&vars);
 	mlx_loop_hook(vars.mlx, &raycasting_hook, &vars);
-	mlx_loop_hook(vars.mlx, &draw_hook, &vars);
 	mlx_loop_hook(vars.mlx, &movement_hook, &vars);
 	mlx_loop(vars.mlx);
 	mlx_terminate(vars.mlx);

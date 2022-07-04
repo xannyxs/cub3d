@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/15 16:28:08 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/06/09 15:08:22 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/04 16:11:49 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	check_map(t_map *map_data)
 		non_fatal_error(UNKNOWN_CHAR);
 		return (ERROR);
 	}
-	if (check_wall(*map_data))
+	if (check_wall(map_data->world_map, map_data->height))
 	{
 		non_fatal_error(MISSING_WALL);
 		return (ERROR);
