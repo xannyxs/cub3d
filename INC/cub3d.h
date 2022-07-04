@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 21:22:16 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/06/14 19:05:11 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/04 10:30:38 by sofferha      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,24 @@ typedef struct	s_textures
 }	t_textures;
 
 /*
+	All the path vars from file.
+*/
+typedef struct s_path
+{
+	char		*north;
+	char		*south;
+	char		*west;
+	char		*east;
+	char		*floor;
+	char		*ceilling;
+} t_path;
+
+/*
 	All the map data in one struct.
 */
 typedef struct	s_map
 {
+	char				**file_array;
 	char				**world_map;
 	unsigned int		width;
 	unsigned int		height;
@@ -60,8 +74,9 @@ typedef struct	s_map
 */
 typedef struct	s_vars
 {
-	mlx_t		*mlx;
-	t_map		map_data;
+	mlx_t			*mlx;
+	t_map			map_data;
+	t_path		path_data;
 	t_textures	textures;
 	t_data		data;
 }	t_vars;
