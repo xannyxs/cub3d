@@ -1,0 +1,6 @@
+[submodule "MLX42"]
+	path = MLX42
+	url = https://github.com/codam-coding-college/MLX42
+[submodule "Libsu"]
+	path = Libsu
+	url = git@github.com:SwenneHacks/Libsu.git
