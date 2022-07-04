@@ -1,7 +1,7 @@
-.vscode/*.log
+.vscode/
 OBJ/
 cub3d
-.vscode/*.log
+.dist/
 
 # Prerequisites
 *.d
