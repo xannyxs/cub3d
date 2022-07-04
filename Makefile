@@ -6,7 +6,7 @@
 #    By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/01 14:31:21 by xvoorvaa      #+#    #+#                  #
-#    Updated: 2022/07/03 22:17:26 by sofferha      ########   odam.nl          #
+#    Updated: 2022/07/04 16:19:35 by sofferha      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,6 +81,6 @@ fclean:	clean
 re:	fclean all
 
 run: all
-	./$(NAME) MAPS/subject.cub
+	./$(NAME) MAP/subject.cub
 
 .PHONY:	all clean fclean re
