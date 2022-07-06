@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/07 17:36:20 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/06/16 20:49:12 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/06 17:21:21 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	check_unknown(t_map map_data)
 	y = 1;
 	while (y < map_data.height)
 	{
+		ft_printf("height: %i\n", map_data.height);
 		while (map_data.world_map[y][x])
 		{
 			if (map_data.world_map[y][x] != EMPTY && \

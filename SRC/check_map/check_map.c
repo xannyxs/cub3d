@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/15 16:28:08 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/04 16:11:49 by swofferh      ########   odam.nl         */
+/*   Updated: 2022/07/06 17:24:16 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,12 @@ static void	get_map_size(t_map *map_data)
 	int	x;
 	int	y;
 
-	y = 0;
 	map_data->width = 0;
+	y = map_data->map_start;
 	while (map_data->world_map[y] != NULL)
 	{
 		x = 0;
+		ft_printf("%s\n", map_data->world_map[y]);
 		while (map_data->world_map[y][x] != '\0')
 			x++;
 		if ((int)map_data->width < x - 1)
@@ -52,7 +53,7 @@ int	check_map(t_map *map_data)
 		non_fatal_error(UNKNOWN_CHAR);
 		return (ERROR);
 	}
-	if (check_wall(map_data->world_map, map_data->height))
+	if (check_wall(map_data))
 	{
 		non_fatal_error(MISSING_WALL);
 		return (ERROR);

@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 21:22:16 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/04 16:14:42 by swofferh      ########   odam.nl         */
+/*   Updated: 2022/07/06 17:15:34 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CUB3D_H
 
 # include "MLX42/MLX42.h"
+# include "libft.h"
 # include "raycast.h"
 
 # include <stdbool.h>
@@ -32,8 +33,8 @@
 */
 typedef struct s_node
 {
-	char			*content;
 	struct s_node	*next;
+	char			*content;
 }	t_node;
 
 /*
@@ -56,21 +57,29 @@ typedef struct s_path
 {
 	char		*north;
 	char		*south;
-	char		*west;
 	char		*east;
+	char		*west;
+}	t_path;
+
+/*
+	RGB colors for floor/ceilling.
+*/
+typedef struct s_colors
+{
 	char		*floor;
 	char		*ceilling;
-} t_path;
+	int			*RGB[3];
+}	t_colors;
 
 /*
 	All the map data in one struct.
 */
 typedef struct s_map
 {
-	char				**file_array;
-	char				**world_map;
-	unsigned int		width;
-	unsigned int		height;
+	char			**world_map;
+	unsigned int	map_start;
+	unsigned int	width;
+	unsigned int	height;
 }	t_map;
 
 /*
@@ -78,10 +87,11 @@ typedef struct s_map
 */
 typedef struct s_vars
 {
-	mlx_t			*mlx;
-	t_map			map_data;
+	mlx_t		*mlx;
+	t_map		map_data;
 	t_path		path_data;
 	t_textures	textures;
+	t_colors	colors;
 	t_data		data;
 }	t_vars;
 
@@ -141,7 +151,7 @@ size_t	ft_lstlen(t_node *head);
 
 int		check_player(t_map map_data);
 
-int		check_wall(char *world_map[], UINT height);
+int		check_wall(t_map *map_data);
 
 int		check_unknown(t_map map_data);
 

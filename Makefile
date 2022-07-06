@@ -6,7 +6,7 @@
 #    By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/01 14:31:21 by xvoorvaa      #+#    #+#                  #
-#    Updated: 2022/07/04 16:36:01 by swofferh      ########   odam.nl          #
+#    Updated: 2022/07/06 14:45:12 by swofferh      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,23 +19,21 @@ else
 endif
 
 NAME			=	cub3d
-CC				=	gcc
 CFLAGS			=	-Wall -Wextra -Werror
 OBJ_DIR			=	OBJ
 SRC_DIR			=	SRC
 INC_DIR			=	INC
-MLX_DIR			=	./MLX42
+MLX_DIR			=	./LIB/MLX42
 MLX_H			=	$(MLX_DIR)/include/
 MLX_A			=	$(MLX_DIR)/libmlx42.a
-LIBFT_DIR		=	./Libsu
+LIBFT_DIR		=	./LIB/LIBFT
 LIBFT_H			=	$(LIBFT_DIR)/inc
 LIBFT_A			=	$(LIBFT_DIR)/libft.a
-SOURCES			=	$(shell find $(SRC_DIR) -type f -name "*.c")
-
-HEADERS		:= $(MLX_H) INC/cub3d.h INC/error.h INC/raycast.h $(LIBFT_H)
-OBJS		:= $(SOURCES:.c=.o)
-OBJECTS		:= $(patsubst $(SRC_DIR)/%,$(OBJ_DIR)/%,$(OBJS))
-GLFW_LIB 	:= $(shell brew --prefix glfw)
+SOURCES			=  $(shell find $(SRC_DIR) -type f -name "*.c")
+HEADERS			:= $(MLX_H) INC/cub3d.h INC/error.h INC/raycast.h $(LIBFT_H)
+OBJS			:= $(SOURCES:.c=.o)
+OBJECTS			:= $(patsubst $(SRC_DIR)/%,$(OBJ_DIR)/%,$(OBJS))
+GLFW_LIB 		:= $(shell brew --prefix glfw)
 
 all: $(NAME)
 
@@ -82,5 +80,8 @@ re:	fclean all
 
 run: all
 	./$(NAME) MAP/subject.cub
+
+cub: all
+	./$(NAME) MAP/42.cub
 
 .PHONY:	all clean fclean re

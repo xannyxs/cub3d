@@ -6,23 +6,12 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/14 17:14:15 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/04 11:14:00 by sofferha      ########   odam.nl         */
-/*                                                                            */
-/* ************************************************************************** */
-
-/*                                                                            */
-/*                                                        ::::::::            */
-/*   file_validation.c                                  :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2022/04/14 17:14:15 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/03 21:58:29 by sofferha      ########   odam.nl         */
+/*   Updated: 2022/07/06 17:17:29 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "error.h" /* Error msg */
-#include "cub3d.h" /* t_vars */
+#include <cub3d.h> /* t_vars */
 #include "libft.h" /* ft_strcmp ft_strndup.c*/
 
 #include <stddef.h> /* free */
@@ -64,25 +53,23 @@ static bool	is_cub_extension(char *argv)
 	return (false);
 }
 
-// static void	new_world_map(char **array, int i)
+// static void	new_world_map(char **array, t_map *map_data)
 // {
-// 	int j;
-// 	char **map;
-	
-// 	j = 0;
-// 	map = ft_split(array[i], '\n');
-// 	//printf("[%i]%s\n", i, array[i]);
-// 	while (map[j])
+// 	int	i;
+
+// 	i = 0;
+// 	(void)map_data;
+// 	map_data->world_map = malloc(get_size_of_array() + 1);
+// 	while (array[i])
 // 	{
-// 		printf("[%i]%s\n", j, map[j]);
-// 		//map_data->world_map[j] = map[j];
-// 		j++;
+// 		map_data->world_map[i] = ft_strdup(array[i]);
+// 		printf("[%i]%s\n", i, array[i]);
+// 		i++;
 // 	}
-// 	// for (int x = 0; map[x]; x++)
-// 	//   	printf("[%i]%s\n", x, map[x]);
+// 	map_data->world_map[j] = NULL;
 // }
 
-static int	get_path_data(t_path *path_data, t_map *map_data)
+static int	get_path_data(t_path *path_data, t_colors *colors, t_map *map_data)
 {
 	int i;
 	int line;
@@ -90,8 +77,7 @@ static int	get_path_data(t_path *path_data, t_map *map_data)
 	
 	i = 0;
 	line = 0;
-	
-	array = map_data->file_array;
+	array = map_data->world_map;
 	while (array[line] && ft_isspace(array[line][i]) != 1)
 	{
 		if (array[line][i] == NORTH)
@@ -103,12 +89,17 @@ static int	get_path_data(t_path *path_data, t_map *map_data)
 		else if (array[line][i] == EAST)
 			path_data->east = ft_strndup(array[line], 3);
 		else if (array[line][i] == FLOOR)
-			path_data->floor = ft_strndup(array[line], 2);
+			colors->floor = ft_strndup(array[line], 2);
 		else if (array[line][i] == CEILLING)
-			path_data->ceilling = ft_strndup(array[line], 2);
-		printf("[%i]%s\n", line, array[line]);
-		// if (array[line][i] == WALL)
-		// 	new_world_map(array + i, line);
+			colors->ceilling = ft_strndup(array[line], 2);
+		//make function to cast RGB str to array of ints
+		//ft_printf("[%i]%s\n", line, array[line]);
+		if (array[line][i] == WALL)
+		{
+			//new_world_map(array + line, map_data);
+			map_data->map_start = line;
+			break ;
+		}
 		line++;
 	}
 	return(SUCCES);
@@ -116,7 +107,8 @@ static int	get_path_data(t_path *path_data, t_map *map_data)
 
 int	check_path(t_vars *vars)
 {
-	if(get_path_data(&vars->path_data, &vars->map_data))
+	//ft_print_array(vars->map_data.world_map);
+	if(get_path_data(&vars->path_data, &vars->colors, &vars->map_data))
 		return(ERROR);
 	return (SUCCES);
 }

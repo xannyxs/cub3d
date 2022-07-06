@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/07 17:33:39 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/06/16 20:57:11 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/06 16:32:19 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,28 +24,30 @@
 	At the end I check if there are any holes in the map,
 	and if they are viable.
 */
-int	check_wall(char *world_map[], unsigned int height)
+int	check_wall(t_map *map_data)
 {
 	unsigned int	y;
-
+	char 			**map;
+	
+	map = map_data->world_map;
 	y = 1;
-	if (loop_through_line(world_map[0], WALL) && \
-		loop_through_line(world_map[0], ' '))
+	if (loop_through_line(map[map_data->map_start], WALL) && \
+		loop_through_line(map[map_data->map_start], ' '))
 		return (ERROR);
-	while (y < height)
+	while (y < map_data->height)
 	{
-		if (world_map[y][0] != WALL && world_map[y][0] != ' ')
+		if (map[y][0] != WALL && map[y][0] != ' ')
 			return (ERROR);
-		else if (world_map[y][ft_strlen(world_map[y])] != WALL && \
-			world_map[y][ft_strlen(world_map[y])] != ' ' && \
-			world_map[y][ft_strlen(world_map[y])] != 0)
+		else if (map[y][ft_strlen(map[y])] != WALL && \
+			map[y][ft_strlen(map[y])] != ' ' && \
+			map[y][ft_strlen(map[y])] != 0)
 			return (ERROR);
 		y++;
 	}
-	if (loop_through_line(world_map[height], WALL) && \
-		loop_through_line(world_map[height], ' '))
+	if (loop_through_line(map[map_data->height], WALL) && \
+		loop_through_line(map[map_data->height], ' '))
 		return (ERROR);
-	if (check_for_holes(world_map, height))
+	if (check_for_holes(map, map_data->height))
 		return (ERROR);
 	return (SUCCES);
 }

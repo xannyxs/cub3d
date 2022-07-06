@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/06 12:09:47 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/06/16 20:56:44 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/06 14:54:39 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ static int	check_surrounding(char **world_map, int x, int y)
 /*
 	Check if there are any spaces in the map.
 	If so, check if it is surrounded by other spaces or walls.
-
 	This is kind of a mass, because of norm...
 */
 bool	check_for_holes(char *world_map[], unsigned int height)
