@@ -2,13 +2,16 @@
 ---- SWENNE
 
 
-() fix check_wall
+(x) fix check_wall
 () upgrade clean check_player
 () study allowed functions and mlx repo
-() parsing pathing of walls, add xpm struct
+(x) parsing pathing of walls, add xpm struct
 () mlx collors F/C parsing on s_map (RED,GREEN,BLUE) intensity
 () memo save colors as char (max ascii 256) > not ints
 
+---- DISCUSS
+
+() bonus health bar without sprints?
 
 
 --- HOW TO RUN:
@@ -34,3 +37,11 @@ submodules issue:
 
 (fixed) 'make run' prints 'height' of 21 once and quits 
     now prints 13 just like the other maps
+
+
+
+Mlx NOTES:
+
+functions to interact with the window:
+     - needed to make minimap: window on top of window
+     - function needed 
