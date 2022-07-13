@@ -6,12 +6,13 @@
 #    By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/01 14:31:21 by xvoorvaa      #+#    #+#                  #
-#    Updated: 2022/07/11 17:53:19 by swofferh      ########   odam.nl          #
+#    Updated: 2022/07/13 14:23:57 by swofferh      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 include INC/Makepretty.mk
 
+# define it with DEBUG=1
 ifdef DEBUG
 	CFLAGS += -g3 -fsanitize=address
 else
@@ -38,35 +39,36 @@ GLFW_LIB 		:= $(shell brew --prefix glfw)
 all: $(NAME)
 
 $(NAME): $(START) $(MLX_A) $(LIBFT_A) $(OBJECTS)
-	@$(CC) $(CFLAGS) $(OBJECTS) -o $(NAME) $(MLX_A) -lglfw \
-		-L$(GLFW_LIB)/lib $(LIBFT_A)
-	$(RUN_MESSAGE)
-	$(PROJECT_MESSAGE)
+	@$(CC) $(CFLAGS) \
+	$(MLX_A) -lglfw \
+	-L $(GLFW_LIB)/lib $(LIBFT_A) \
+	$(OBJECTS) -o $(NAME)
+	@printf $(RUN_MESSAGE)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADERS) | $(OBJ_DIR)
 	@$(NEW_DIR) $(dir $@)
 	@$(CC) $(CFLAGS) -c $< -o $@ -I$(INC_DIR) -I$(MLX_H) -I$(LIBFT_H)
-	$(COMPILE_MESSAGE)
+	@printf $(COMPILE_MESSAGE)
 	
 # ---------- CUB3D
 $(OBJ_DIR):
-	$(START_CUB3D)
+	@printf $(START_CUB3D)
 	@$(NEW_DIR) $@
 
 # ---------- LIBFT
 $(LIBFT_A): $(LIBFT_H)
-	$(START_LIBFT)
+	@printf $(START_LIBFT)
 	@$(MAKE_C) $(LIBFT_DIR)
 
 # ---------- MLX42
 $(MLX_A): $(MLX_H)
-	$(START_MLX42)
+	@printf $(START_MLX42)
 	@$(MAKE_C) $(MLX_DIR)
 
 clean:
 	@$(RM) $(OBJ_DIR)
-	$(REM_MESSAGE)
-	$(RESET_MESSAGE)
+	@printf $(REM_MESSAGE)
+	@printf $(RESET_MESSAGE)
 
 fclean:	clean
 	@$(RM) $(NAME)
@@ -74,14 +76,14 @@ fclean:	clean
 	@$(RM) $(MLX_A)
 	@$(MAKE_CLEAN) $(LIBFT_DIR)
 	@$(MAKE_CLEAN) $(MLX_DIR)
-	$(RESET_MESSAGE)
+	@printf $(RESET_MESSAGE)
 
 re:	fclean all
 
 run: all
-	./$(NAME) MAP/subject.cub
+	./$(NAME) MAP/parsing.cub
 
 cub: all
-	./$(NAME) MAP/42.cub
+	./$(NAME) MAP/subject.cub
 
 .PHONY:	all clean fclean re

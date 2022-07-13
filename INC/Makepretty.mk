@@ -22,23 +22,23 @@ MAKE_C 			= make -C
 MAKE_CLEAN 		= make fclean -C
 NEW_DIR 		= mkdir -p
 
-START_MLX42		= @echo "$(N)$(MESSY_MESSAGE)$(GREEN)$(---)$(N)  Starting MLX42$(N)$(---)$(RESET)"
-START_CUB3D		= @echo "$(N)$(PINK)$(---)-----$(N)    Starting CUB3D$(N)$(---)-----$(N)$(RESET)"$(MESSAGE_CUB3D)
-START_LIBFT		= @echo "$(N)$(BLUE)$(---)--$(N)    Starting LIBFT$(N)$(---)--$(RESET)"
-PROJECT_MESSAGE = @echo "$(YELLOW)You can now run ./$(NAME)$(N)$(NC)"
+START_MLX42		= "$(N)$(MESSY_MESSAGE)$(GREEN)$(---)$(N)  Starting MLX42$(N)$(---)$(RESET)"
+START_LIBFT		= "$(N)$(BLUE)$(---)--$(N)    Starting LIBFT$(N)$(---)--$(RESET)"
+START_CUB3D		= "$(N)$(PINK)$(---)-----$(N)    Starting CUB3D$(N)$(---)-----$(N)$(RESET)$(FLAGS)"
+PROJECT_MESSAGE = "$(YELLOW)You can now run ./$(NAME)$(N)$(NC)"
 
-MESSAGE_CUB3D	= "$(PINK)Compiling$(RESET) >>>> CUB3D <<<<"
-COMPILE_MESSAGE	= @echo "$(PINK)Compiling$(RESET) $<"
-REM_MESSAGE		= @echo "$(RED)$(N)Cleaning $(NC)CUB3D"
-RUN_MESSAGE		= @echo "$(PINK)$(--)$(N)Compiling Done!$(N)$(--)$(N)"
+FLAGS			= $(PINK)Compiling$(RESET) with $(CFLAGS)
+COMPILE_MESSAGE	= "$(PINK)Compiling$(RESET) $<"
+REM_MESSAGE		= "$(RED)$(N)Cleaning $(NC)CUB3D"
+RUN_MESSAGE		= "$(PINK)$(--)$(N)Compiling Done!$(N)$(--)$(N)"$(PROJECT_MESSAGE)
 
-EMPTY_MESSAGE	= @echo ""
+EMPTY_MESSAGE	= ""
+DONE_MESSAGE 	= "$(YELLOW)	done.$(N)"
 MESSY_MESSAGE	= . $(YELLOW)LET'S $(BLUE)MAKE $(PINK)CUB3D$(RESET) .$(N)$(N)
-DONE_MESSAGE 	= @echo "$(YELLOW)	done.$(N)"
 
-RESET_MESSAGE	= @echo "	 $(RESET)Done.\n"
-RESET_MESSAGE_2	= @echo "	$(PINK)RE$(GREEN)COM$(YELLOW)PI$(BLUE)LIN$(LOVE)G"
-RESET_MESSAGE_1	= @echo "	$(RESET)   $(NAME)$(N)"
+RESET_MESSAGE	= "	 $(RESET)Done.\n"
+RESET_MESSAGE_2	= "	$(PINK)RE$(GREEN)COM$(YELLOW)PI$(BLUE)LIN$(LOVE)G"
+RESET_MESSAGE_1	= "	$(RESET)   $(NAME)$(N)"
 
-ADD_GIT_IGNORE	= @echo $@ "$(N)"obj "$(N)".gitignore >> .gitignore
+ADD_GIT_IGNORE	= $@ "$(N)"obj "$(N)".gitignore >> .gitignore
 BYE_GIT_IGNORE	= @$(RM) .gitignore
