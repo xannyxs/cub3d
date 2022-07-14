@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/07 17:36:20 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/11 19:08:50 by swofferh      ########   odam.nl         */
+/*   Updated: 2022/07/14 11:28:08 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,13 @@
 
 int	check_unknown(t_map map_data)
 {
-	unsigned int	x;
-	unsigned int	y;
+	UINT	x;
+	UINT	y;
 
-	x = 0;
-	y = 1;
-	while (y < map_data.height)
+	y = map_data.height;
+	while (map_data.world_map[y])
 	{
-		ft_printf("height: %i\n", map_data.height);
+		x = 0;
 		while (map_data.world_map[y][x])
 		{
 			if (map_data.world_map[y][x] != EMPTY && \
@@ -34,10 +33,12 @@ int	check_unknown(t_map map_data)
 				map_data.world_map[y][x] != 'S' && \
 				map_data.world_map[y][x] != 'W' && \
 				map_data.world_map[y][x] != ' ')
-				return (ERROR);
+				{
+					ft_printf("char: %i, %i, %d\n", y, x, map_data.world_map[y][x]);
+					return (ERROR);
+				}
 			x++;
 		}
-		x = 0;
 		y++;
 	}
 	return (SUCCES);
