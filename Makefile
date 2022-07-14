@@ -6,18 +6,11 @@
 #    By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/01 14:31:21 by xvoorvaa      #+#    #+#                  #
-#    Updated: 2022/07/13 14:23:57 by swofferh      ########   odam.nl          #
+#    Updated: 2022/07/14 11:37:13 by swofferh      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 include INC/Makepretty.mk
-
-# define it with DEBUG=1
-ifdef DEBUG
-	CFLAGS += -g3 -fsanitize=address
-else
-	CFLAGS += -Ofast
-endif
 
 NAME			=	cub3d
 CFLAGS			=	-Wall -Wextra -Werror
@@ -36,6 +29,13 @@ OBJS			:= $(SOURCES:.c=.o)
 OBJECTS			:= $(patsubst $(SRC_DIR)/%,$(OBJ_DIR)/%,$(OBJS))
 GLFW_LIB 		:= $(shell brew --prefix glfw)
 
+# define it with DEBUG=1
+ifdef DEBUG
+	CFLAGS += -g3 -fsanitize=address -Ofast
+else
+	CFLAGS += -Ofast
+endif
+
 all: $(NAME)
 
 $(NAME): $(START) $(MLX_A) $(LIBFT_A) $(OBJECTS)
@@ -43,32 +43,32 @@ $(NAME): $(START) $(MLX_A) $(LIBFT_A) $(OBJECTS)
 	$(MLX_A) -lglfw \
 	-L $(GLFW_LIB)/lib $(LIBFT_A) \
 	$(OBJECTS) -o $(NAME)
-	@printf $(RUN_MESSAGE)
+	@echo $(RUN_MESSAGE)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADERS) | $(OBJ_DIR)
 	@$(NEW_DIR) $(dir $@)
 	@$(CC) $(CFLAGS) -c $< -o $@ -I$(INC_DIR) -I$(MLX_H) -I$(LIBFT_H)
-	@printf $(COMPILE_MESSAGE)
+	@echo $(COMPILE_MESSAGE)
 	
 # ---------- CUB3D
 $(OBJ_DIR):
-	@printf $(START_CUB3D)
+	@echo $(START_CUB3D)
 	@$(NEW_DIR) $@
 
 # ---------- LIBFT
 $(LIBFT_A): $(LIBFT_H)
-	@printf $(START_LIBFT)
+	@echo $(START_LIBFT)
 	@$(MAKE_C) $(LIBFT_DIR)
 
 # ---------- MLX42
 $(MLX_A): $(MLX_H)
-	@printf $(START_MLX42)
+	@echo $(START_MLX42)
 	@$(MAKE_C) $(MLX_DIR)
 
 clean:
 	@$(RM) $(OBJ_DIR)
-	@printf $(REM_MESSAGE)
-	@printf $(RESET_MESSAGE)
+	@echo $(REM_MESSAGE)
+	@echo $(RESET_MESSAGE)
 
 fclean:	clean
 	@$(RM) $(NAME)
@@ -76,12 +76,12 @@ fclean:	clean
 	@$(RM) $(MLX_A)
 	@$(MAKE_CLEAN) $(LIBFT_DIR)
 	@$(MAKE_CLEAN) $(MLX_DIR)
-	@printf $(RESET_MESSAGE)
+	@echo $(RESET_MESSAGE)
 
 re:	fclean all
 
 run: all
-	./$(NAME) MAP/parsing.cub
+	./$(NAME) MAP/test.cub
 
 cub: all
 	./$(NAME) MAP/subject.cub
