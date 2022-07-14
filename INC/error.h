@@ -6,7 +6,11 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/14 17:58:30 by xvoorvaa      #+#    #+#                 */
+<<<<<<< HEAD
 /*   Updated: 2022/07/03 22:07:32 by sofferha      ########   odam.nl         */
+=======
+/*   Updated: 2022/06/27 14:57:33 by xvoorvaa      ########   odam.nl         */
+>>>>>>> master
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +31,7 @@
 # define MISSING_PLAYER "-- Missing player --"
 # define TOO_MANY_PLAYERS "-- Too many players in the map --"
 # define UNKNOWN_CHAR "-- Unknown character in map --"
+# define NONVALID_MONITOR "-- Your monitor size is too small --"
 
 /*
 	ERROR

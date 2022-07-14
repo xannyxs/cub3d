@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/07 19:27:12 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/06/21 16:29:35 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/06/27 16:40:55 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 
 #define WALL '1'
 
-static void	set_ray_pos(t_data *data, unsigned int x)
+static void	set_ray_pos(t_data *data, UINT x)
 {
-	data->camera_x = 2 * x / (double) WIDTH - 1;
+	data->camera_x = 2 * x / (double) data->screen_width - 1;
 	data->raydir_x = data->dir_x + data->plane_x * data->camera_x;
 	data->raydir_y = data->dir_y + data->plane_y * data->camera_x;
 	data->map_x = (int) data->pos_x;
@@ -82,13 +82,13 @@ static void	calculate_height(t_data *data)
 		data->perp_wall_dist = data->side_dist_x - data->delta_dist_x;
 	else
 		data->perp_wall_dist = data->side_dist_y - data->delta_dist_y;
-	data->line_height = (int)(HEIGHT / data->perp_wall_dist);
-	data->draw_start = HEIGHT / 2 - data->line_height / 2;
+	data->line_height = (int)(data->screen_height / data->perp_wall_dist);
+	data->draw_start = data->screen_height / 2 - data->line_height / 2;
 	if (data->draw_start < 0)
 		data->draw_start = 0;
-	data->draw_end = data->line_height / 2 + HEIGHT / 2;
-	if (data->draw_end >= HEIGHT)
-		data->draw_end = HEIGHT - 1;
+	data->draw_end = data->line_height / 2 + data->screen_height / 2;
+	if (data->draw_end >= (int) data->screen_height)
+		data->draw_end = data->screen_height - 1;
 }
 
 static void	calculate_texture(t_data *data, t_textures textures, char *world_map[])
@@ -107,7 +107,7 @@ static void	calculate_texture(t_data *data, t_textures textures, char *world_map
 	if (data->side == 1 && data->raydir_y < 0)
 		data->tex_x = data->tex_width - data->tex_x - 1;
 	data->step = 1.0 * data->tex_height / data->line_height;
-	data->tex_pos = (data->draw_start - HEIGHT / 2 + data->line_height / 2) * data->step;
+	data->tex_pos = (data->draw_start - data->screen_height / 2 + data->line_height / 2) * data->step;
 }
 
 void	raycasting_hook(void *param)
@@ -118,7 +118,8 @@ void	raycasting_hook(void *param)
 	x = 0;
 	vars = param;
 	reset_window(vars->textures.screen);
-	while (x < WIDTH)
+	my_mlx_resize_window(vars->mlx, &vars->data, vars->textures.screen);
+	while (x < vars->data.screen_width)
 	{
 		set_ray_pos(&vars->data, x);
 		set_ray_delta(&vars->data);
