@@ -1,3 +1,6 @@
 [submodule "MLX42"]
 	path = LIB/MLX42
 	url = https://github.com/codam-coding-college/MLX42
+[submodule "LIBFT"]
+	path = LIB/LIBFT
+	url = https://github.com/SwenneHacks/Libsu.git
