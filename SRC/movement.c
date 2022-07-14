@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/10 14:24:22 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/06/20 15:05:14 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/06/27 17:29:05 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,33 +18,31 @@
 #define TURN 0.05
 #define WALK 0.06 /* Cannot be lower than 0.06 */
 
+#include <stdio.h>
+
+void	rotate(t_data *s, double turn)
+{
+	double	old_dir_x;
+	double	old_plane_x;
+
+	old_dir_x = s->dir_x;
+	old_plane_x = s->plane_x;
+	s->dir_x = s->dir_x * cos(turn) - s->dir_y * sin(turn);
+	s->dir_y = old_dir_x * sin(turn) + s->dir_y * cos(turn);
+	s->plane_x = s->plane_x * cos(turn) - s->plane_y * sin(turn);
+	s->plane_y = old_plane_x * sin(turn) + s->plane_y * cos(turn);
+}
+
 /*
 	Rotating the player.
 	TURN is the rotation speed of the player.
 */
 static void	player_rotation(mlx_t *mlx, t_data *s)
 {
-	double	old_dir_x;
-	double	old_plane_x;
-
 	if (mlx_is_key_down(mlx, MLX_KEY_LEFT))
-	{
-		old_dir_x = s->dir_x;
-		old_plane_x = s->plane_x;
-		s->dir_x = s->dir_x * cos(TURN) - s->dir_y * sin(TURN);
-		s->dir_y = old_dir_x * sin(TURN) + s->dir_y * cos(TURN);
-		s->plane_x = s->plane_x * cos(TURN) - s->plane_y * sin(TURN);
-		s->plane_y = old_plane_x * sin(TURN) + s->plane_y * cos(TURN);
-	}
+		rotate(s, TURN);
 	if (mlx_is_key_down(mlx, MLX_KEY_RIGHT))
-	{
-		old_dir_x = s->dir_x;
-		old_plane_x = s->plane_x;
-		s->dir_x = s->dir_x * cos(-TURN) - s->dir_y * sin(-TURN);
-		s->dir_y = old_dir_x * sin(-TURN) + s->dir_y * cos(-TURN);
-		s->plane_x = s->plane_x * cos(-TURN) - s->plane_y * sin(-TURN);
-		s->plane_y = old_plane_x * sin(-TURN) + s->plane_y * cos(-TURN);
-	}
+		rotate(s, -TURN);
 }
 
 /*

@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 21:22:16 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/06/21 17:13:47 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/06/27 17:35:21 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,8 @@ bool	check_for_holes(char *world_map[], UINT height);
 
 void	find_player(t_vars *vars);
 
+bool	is_monitor_valid(mlx_t *mlx);
+
 /*
 	WRAPPED
 */
@@ -136,6 +138,8 @@ int		check_unknown(t_map map_data);
 
 void	movement_hook(void *param);
 
+void	rotate(t_data *s, double turn);
+
 /*
 	DRAW
 */
@@ -163,5 +167,7 @@ void	set_delta_dist(t_data *data);
 UINT	my_mlx_get_colour(mlx_texture_t *img, UINT x, UINT y);
 
 UINT	my_mlx_put_pixel(mlx_image_t *img, UINT x, UINT y, UINT colour);
+
+void	my_mlx_resize_window(mlx_t *mlx, t_data *data, mlx_image_t *screen);
 
 #endif

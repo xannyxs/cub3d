@@ -6,18 +6,23 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/14 13:50:40 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/06/21 16:36:04 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/06/27 17:24:12 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RAYCAST_H
 # define RAYCAST_H
 
+# define UINT unsigned int
+
 /*
 	All raytracing data.
 */
 typedef struct s_data
 {
+	UINT			screen_width;
+	UINT			screen_height;
+	char			player_char;
 	int				map_x;
 	int				map_y;
 	int				side;
