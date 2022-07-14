@@ -1,3 +1,4 @@
+*.DS_Store
 .vscode/
 OBJ/
 cub3d
@@ -57,3 +58,4 @@ Mkfile.old
 dkms.conf
 .gitmodules
 .vscode/settings.json
+IMG/PNG/SUPER/.DS_Store
