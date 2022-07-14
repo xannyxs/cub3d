@@ -6,11 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 21:21:04 by xvoorvaa      #+#    #+#                 */
-<<<<<<< HEAD:SRC/starting/cub3d.c
-/*   Updated: 2022/07/06 16:19:39 by swofferh      ########   odam.nl         */
-=======
-/*   Updated: 2022/06/27 17:34:41 by xvoorvaa      ########   odam.nl         */
->>>>>>> master:SRC/cub3d.c
+/*   Updated: 2022/07/14 12:21:03 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
