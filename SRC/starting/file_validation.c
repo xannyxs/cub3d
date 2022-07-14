@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/14 17:14:15 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/06 17:17:29 by swofferh      ########   odam.nl         */
+/*   Updated: 2022/07/14 17:00:26 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,14 @@ static bool	is_cub_extension(char *argv)
 // 	map_data->world_map[j] = NULL;
 // }
 
+static void	init_path_struct(t_path *path_data)
+{
+	path_data->north = ft_strdup("IMG/PNG/Wolfenstein/bluestone.png");
+	path_data->east = ft_strdup("IMG/PNG/Wolfenstein/greystone.png");
+	path_data->south = ft_strdup("IMG/PNG/Wolfenstein/purplestone.png");
+	path_data->west = ft_strdup("IMG/PNG/Wolfenstein/eagle.png");
+}
+
 static int	get_path_data(t_path *path_data, t_colors *colors, t_map *map_data)
 {
 	int i;
@@ -94,6 +102,8 @@ static int	get_path_data(t_path *path_data, t_colors *colors, t_map *map_data)
 			colors->ceilling = ft_strndup(array[line], 2);
 		//make function to cast RGB str to array of ints
 		//ft_printf("[%i]%s\n", line, array[line]);
+		else
+			init_path_struct(path_data);
 		if (array[line][i] == WALL)
 		{
 			//new_world_map(array + line, map_data);
