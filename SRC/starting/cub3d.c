@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 21:21:04 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/14 12:21:03 by swofferh      ########   odam.nl         */
+/*   Updated: 2022/07/15 12:52:27 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,11 @@ static void	init_sys(t_vars *vars)
 	set_values(vars);
 	vars->textures.screen = mlx_new_image(vars->mlx, WIDTH, HEIGHT);
 	if (!vars->textures.screen)
-		fatal_perror("malloc");
+		fatal_perror("mlx");
 	if (mlx_image_to_window(vars->mlx, vars->textures.screen, 0, 0) == -1)
 		fatal_perror("mlx");
-	mlx_set_window_limit(vars->mlx, WIDTH - 750, HEIGHT - 750, \
-		WIDTH + 250, HEIGHT + 250);
+	mlx_set_window_limit(vars->mlx, WIDTH - 500, HEIGHT - 500, WIDTH, HEIGHT);
+
 	// Get rid of these last four lines when @Swenne is done with loading .pngs
 	vars->textures.north_wall = mlx_load_png("IMG/PNG/Wolfenstein/bluestone.png");
 	vars->textures.east_wall = mlx_load_png("IMG/PNG/Wolfenstein/greystone.png");

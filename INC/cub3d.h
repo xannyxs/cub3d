@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 21:22:16 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/14 12:20:45 by swofferh      ########   odam.nl         */
+/*   Updated: 2022/07/15 12:51:40 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 # define SUCCES 0
 # define ERROR 1
 
-# define WIDTH 1280
-# define HEIGHT 1024
+# define WIDTH 1000
+# define HEIGHT 800
 
 # define UINT unsigned int
 
