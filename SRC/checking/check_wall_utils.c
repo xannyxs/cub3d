@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/06 12:09:47 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/06 14:54:39 by swofferh      ########   odam.nl         */
+/*   Updated: 2022/07/15 15:49:12 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 #define WALL '1'
 #define EMPTY ' '
+
+int G_MAX_X = 0;
 
 static bool	is_empty_or_wall(char c)
 {
@@ -61,15 +63,33 @@ static int	check_surrounding(char **world_map, int x, int y)
 */
 bool	check_for_holes(char *world_map[], unsigned int height)
 {
-	unsigned int	x;
-	unsigned int	y;
+	UINT	x;
+	UINT	y;
 
-	x = 0;
 	y = 0;
-	while (y < height)
+	(void) height;
+	while (world_map[y])
 	{
+		x = 0;
 		while (x <= ft_strlen(world_map[y]))
 		{
+			if (world_map[y][x] == WALL && world_map[y][x + 1] == '\0')
+			{
+				if (ft_strlen(world_map[y]) > ft_strlen(world_map[y + 1]))
+				{
+					printf("%s\n", world_map[y]);
+					printf("%s\n", world_map[y + 1]);
+					printf("%c\n", world_map[y + 1][ft_strlen(world_map[y + 1]) - 1]);
+					if (world_map[y + 1][ft_strlen(world_map[y + 1]) - 1] == WALL)
+						break ;
+					else
+						return (ERROR);
+				}
+				else if (world_map[y + 1][x] == WALL)
+					break ;
+				else
+					return (ERROR);
+			}
 			if (world_map[y][x] == EMPTY)
 			{
 				if (check_surrounding(world_map, x, y) == ERROR)
@@ -77,7 +97,6 @@ bool	check_for_holes(char *world_map[], unsigned int height)
 			}
 			x++;
 		}
-		x = 0;
 		y++;
 	}
 	return (false);
