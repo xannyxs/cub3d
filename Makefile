@@ -6,7 +6,7 @@
 #    By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/01 14:31:21 by xvoorvaa      #+#    #+#                  #
-#    Updated: 2022/07/14 11:37:13 by swofferh      ########   odam.nl          #
+#    Updated: 2022/07/15 17:30:44 by xvoorvaa      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ INC_DIR			=	INC
 MLX_DIR			=	./LIB/MLX42
 MLX_H			=	$(MLX_DIR)/include/
 MLX_A			=	$(MLX_DIR)/libmlx42.a
-LIBFT_DIR		=	./LIB/LIBFT
+LIBFT_DIR		=	./LIB/LIBSU
 LIBFT_H			=	$(LIBFT_DIR)/inc
 LIBFT_A			=	$(LIBFT_DIR)/libft.a
 SOURCES			=  $(shell find $(SRC_DIR) -type f -name "*.c")
