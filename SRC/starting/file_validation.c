@@ -6,16 +6,13 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/14 17:14:15 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/06 17:17:29 by swofferh      ########   odam.nl         */
+/*   Updated: 2022/07/15 13:21:54 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "cub3d.h" /* t_vars */
 #include "error.h" /* Error msg */
-#include <cub3d.h> /* t_vars */
 #include "libft.h" /* ft_strcmp ft_strndup.c*/
-
-#include <stddef.h> /* free */
-#include <stdio.h> 
 
 #define WALL '1'
 
@@ -53,27 +50,11 @@ static bool	is_cub_extension(char *argv)
 	return (false);
 }
 
-// static void	new_world_map(char **array, t_map *map_data)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	(void)map_data;
-// 	map_data->world_map = malloc(get_size_of_array() + 1);
-// 	while (array[i])
-// 	{
-// 		map_data->world_map[i] = ft_strdup(array[i]);
-// 		printf("[%i]%s\n", i, array[i]);
-// 		i++;
-// 	}
-// 	map_data->world_map[j] = NULL;
-// }
-
 static int	get_path_data(t_path *path_data, t_colors *colors, t_map *map_data)
 {
-	int i;
-	int line;
-	char **array;
+	int		i;
+	int		line;
+	char	**array;
 	
 	i = 0;
 	line = 0;
@@ -92,24 +73,20 @@ static int	get_path_data(t_path *path_data, t_colors *colors, t_map *map_data)
 			colors->floor = ft_strndup(array[line], 2);
 		else if (array[line][i] == CEILLING)
 			colors->ceilling = ft_strndup(array[line], 2);
-		//make function to cast RGB str to array of ints
-		//ft_printf("[%i]%s\n", line, array[line]);
 		if (array[line][i] == WALL)
 		{
-			//new_world_map(array + line, map_data);
 			map_data->map_start = line;
 			break ;
 		}
 		line++;
 	}
-	return(SUCCES);
+	return (SUCCES);
 }
 
-int	check_path(t_vars *vars)
+static int	check_path(t_vars *vars)
 {
-	//ft_print_array(vars->map_data.world_map);
-	if(get_path_data(&vars->path_data, &vars->colors, &vars->map_data))
-		return(ERROR);
+	if (get_path_data(&vars->path_data, &vars->colors, &vars->map_data))
+		return (ERROR);
 	return (SUCCES);
 }
 

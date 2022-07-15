@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 21:22:16 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/15 12:51:40 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/15 13:08:55 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,8 +134,6 @@ bool	is_monitor_valid(mlx_t *mlx);
 */
 
 int		ft_open(char *cub_file);
-
-void	*ft_malloc(size_t size);
 
 /*
 	LINKED LIST
