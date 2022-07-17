@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/06 12:09:47 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/17 13:11:01 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/17 13:32:58 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,23 +70,6 @@ bool	check_for_holes(char *world_map[])
 		x = 0;
 		while (x <= ft_strlen(world_map[y]))
 		{
-			if (world_map[y][x] == WALL && world_map[y][x + 1] == '\0')
-			{
-				if (ft_strlen(world_map[y]) > ft_strlen(world_map[y + 1]))
-				{
-					printf("%s\n", world_map[y]);
-					printf("%s\n", world_map[y + 1]);
-					printf("%c\n", world_map[y + 1][ft_strlen(world_map[y + 1]) - 1]);
-					if (world_map[y + 1][ft_strlen(world_map[y + 1]) - 1] == WALL)
-						break ;
-					else
-						return (ERROR);
-				}
-				else if (world_map[y + 1][x] == WALL)
-					break ;
-				else
-					return (ERROR);
-			}
 			if (world_map[y][x] == EMPTY)
 			{
 				if (check_surrounding(world_map, x, y) == ERROR)

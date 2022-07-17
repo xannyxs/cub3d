@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/07 17:33:39 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/17 13:05:44 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/17 14:27:43 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,9 @@ int	check_wall(t_map *map_data)
 	if (loop_through_line(map[map_data->height], WALL) && \
 		loop_through_line(map[map_data->height], ' '))
 		return (ERROR);
-	// if (check_for_holes(map, map_data->height))
-	// 	return (ERROR);
+	if (check_for_holes(map_data->world_map))
+		return (ERROR);
+	if (!is_wall_enclosed(map_data->world_map))
+		return (ERROR);
 	return (SUCCES);
 }

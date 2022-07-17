@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 21:22:16 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/17 13:11:23 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/17 13:37:49 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,6 +154,8 @@ int		check_player(t_map map_data);
 int		check_wall(t_map *map_data);
 
 int		check_unknown(t_map map_data);
+
+bool	is_wall_enclosed(char *world_map[]);
 
 /*
 	MOVEMENT
