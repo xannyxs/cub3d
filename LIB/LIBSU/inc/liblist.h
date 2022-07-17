@@ -41,4 +41,6 @@ t_list				*lst_new_back(t_list **node, void *content);
 t_list				*lst_map(t_list *node, void *(*f)(void *), void (*del)\
 (void *));
 
+void				*ft_malloc(size_t size);
+
 #endif

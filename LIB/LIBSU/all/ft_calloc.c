@@ -21,7 +21,7 @@ void	*ft_calloc(size_t count, size_t size)
 {
 	void	*objects;
 
-	objects = (void *)malloc(count * size);
+	objects = (void *)ft_malloc(count * size);
 	if (objects == NULL)
 		return (NULL);
 	ft_bzero(objects, count * size);

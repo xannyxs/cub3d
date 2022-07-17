@@ -31,7 +31,7 @@ static char		*copy_buffer(char *old, char *new, int n)
 
 	if (old == NULL)
 	{
-		next = (char *)malloc(sizeof(char) * (n + 1));
+		next = (char *)ft_malloc(sizeof(char) * (n + 1));
 		if (next == NULL)
 			return (NULL);
 		ft_strncpy(next, new, n);
@@ -39,7 +39,7 @@ static char		*copy_buffer(char *old, char *new, int n)
 	else
 	{
 		len = ft_strclen(old, '\0');
-		next = (char *)malloc(sizeof(char) * (len + n + 1));
+		next = (char *)ft_malloc(sizeof(char) * (len + n + 1));
 		if (next == NULL)
 			return (NULL);
 		ft_strncpy(next, old, len);

@@ -29,7 +29,7 @@ char		*ft_strndup(char *s, int start)
 	s_len = ft_strlen(s);
 	if (start > s_len)
 		return (NULL);
-	sub = (char *)malloc(s_len - start + 1);
+	sub = (char *)ft_malloc(s_len - start + 1);
 	if (!sub)
 		return (NULL);
 	while (s[start])

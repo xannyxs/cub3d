@@ -57,3 +57,5 @@ Mkfile.old
 dkms.conf
 .gitmodules
 .vscode/settings.json
+.idea/misc.xml
+.idea/vcs.xml

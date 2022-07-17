@@ -38,7 +38,7 @@ static char		**copy_words(char const *s, char c, char **words)
 		k = 0;
 		while (s[i] == c)
 			i++;
-		words[j] = (char*)malloc(sizeof(char) * ft_wordlen(s, i, c) + 1);
+		words[j] = (char*)ft_malloc(sizeof(char) * ft_wordlen(s, i, c) + 1);
 		if (!(words[j]))
 			return (free_words(j, words));
 		while (s[i] != c && s[i] != '\0')
@@ -67,7 +67,7 @@ char			**ft_split(char const *s, char c)
 
 	if (!(s))
 		return (NULL);
-	words = (char**)malloc(sizeof(char*) * (ft_words(s, c) + 1));
+	words = (char**)ft_malloc(sizeof(char*) * (ft_words(s, c) + 1));
 	if (!(words))
 		return (NULL);
 	copy_words(s, c, words);

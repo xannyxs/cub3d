@@ -22,7 +22,7 @@ static char		*ft_memlen(int len)
 {
 	char	*res;
 
-	res = (char *)malloc(len);
+	res = (char *)ft_malloc(len);
 	if (res == NULL)
 		return (NULL);
 	res[len - 1] = '\0';

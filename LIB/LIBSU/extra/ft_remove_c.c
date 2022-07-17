@@ -16,7 +16,7 @@ char		*ft_remove_c(char *line, char c)
 	x = 0;
 	len = 0;
 	len = ft_less_c_len(line, c);
-	str = (char *)malloc(sizeof(char) * len);
+	str = (char *)ft_malloc(sizeof(char) * len);
 	while (line[i])
 	{
 		if (line[i] != c)

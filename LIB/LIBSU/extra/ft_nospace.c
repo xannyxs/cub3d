@@ -16,7 +16,7 @@ char		*ft_nospace(char *line)
 	x = 0;
 	len = 0;
 	len = ft_less_c_len(line, ' ');
-	str = (char *)malloc(sizeof(char) * len);
+	str = (char *)ft_malloc(sizeof(char) * len);
 	while (line[i])
 	{
 		if (line[i] != ' ')

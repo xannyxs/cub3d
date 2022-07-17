@@ -24,7 +24,7 @@ char	*ft_strjoin_free(char *str1, char *str2)
 	j = 0;
 	if (!str1 || !str2)
 		return (NULL);
-	strjoin = malloc(sizeof(char) * (ft_strlen(str1) + ft_strlen(str2) + 1));
+	strjoin = ft_malloc(sizeof(char) * (ft_strlen(str1) + ft_strlen(str2) + 1));
 	if (!strjoin)
 		return (NULL);
 	while (str1[i] != '\0')

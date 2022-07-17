@@ -27,7 +27,7 @@ char	*ft_strdup(const char *s1)
 	len = 0;
 	while (s1[len])
 		len++;
-	dup = (char *)malloc(sizeof(char) * (ft_strlen(s1) + 1));
+	dup = (char *)ft_malloc(sizeof(char) * (ft_strlen(s1) + 1));
 	if (!dup)
 		ENOMEM;
 	if (dup == NULL)
