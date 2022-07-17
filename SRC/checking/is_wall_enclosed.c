@@ -6,16 +6,18 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/07/17 13:35:38 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/17 17:00:26 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/17 18:14:56 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "error.h"
 
-#include <stdio.h>
-
 #define WALL '1'
+
+/*
+	NEEDS A CLEANUP!
+*/
 
 static int	trace_next_wall_under(char *world_map[], UINT x, UINT y)
 {

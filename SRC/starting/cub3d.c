@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 21:21:04 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/15 12:52:27 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/17 19:00:07 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,10 @@ static void	init_sys(t_vars *vars)
 	mlx_set_window_limit(vars->mlx, WIDTH - 500, HEIGHT - 500, WIDTH, HEIGHT);
 
 	// Get rid of these last four lines when @Swenne is done with loading .pngs
-	vars->textures.north_wall = mlx_load_png("IMG/PNG/Wolfenstein/bluestone.png");
-	vars->textures.east_wall = mlx_load_png("IMG/PNG/Wolfenstein/greystone.png");
-	vars->textures.south_wall = mlx_load_png("IMG/PNG/Wolfenstein/purplestone.png");
-	vars->textures.west_wall = mlx_load_png("IMG/PNG/Wolfenstein/eagle.png");
+	vars->textures.north_wall = mlx_load_png("IMG/Wolfenstein/bluestone.png");
+	vars->textures.east_wall = mlx_load_png("IMG/Wolfenstein/greystone.png");
+	vars->textures.south_wall = mlx_load_png("IMG/Wolfenstein/purplestone.png");
+	vars->textures.west_wall = mlx_load_png("IMG/Wolfenstein/eagle.png");
 }
 
 int32_t	main(int argc, char *argv[])
