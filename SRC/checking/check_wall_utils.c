@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/06 12:09:47 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/15 15:49:12 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/17 13:11:01 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 
 #define WALL '1'
 #define EMPTY ' '
-
-int G_MAX_X = 0;
 
 static bool	is_empty_or_wall(char c)
 {
@@ -61,13 +59,12 @@ static int	check_surrounding(char **world_map, int x, int y)
 	If so, check if it is surrounded by other spaces or walls.
 	This is kind of a mass, because of norm...
 */
-bool	check_for_holes(char *world_map[], unsigned int height)
+bool	check_for_holes(char *world_map[])
 {
 	UINT	x;
 	UINT	y;
 
 	y = 0;
-	(void) height;
 	while (world_map[y])
 	{
 		x = 0;

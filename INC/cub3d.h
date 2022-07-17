@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 21:22:16 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/15 13:08:55 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/17 13:11:23 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ int		get_next_line(int fd, char **line);
 
 int		loop_through_line(char *map_line, char object);
 
-bool	check_for_holes(char *world_map[], UINT height);
+bool	check_for_holes(char *world_map[]);
 
 void	find_player(t_vars *vars);
 

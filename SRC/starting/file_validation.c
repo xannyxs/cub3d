@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/14 17:14:15 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/15 13:21:54 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/17 13:14:40 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,11 @@ static bool	is_cub_extension(char *argv)
 	return (false);
 }
 
-static int	get_path_data(t_path *path_data, t_colors *colors, t_map *map_data)
+
+/*
+	ft_strndup is protected by ft_malloc
+*/
+static void	get_path_data(t_path *path_data, t_colors *colors, t_map *map_data)
 {
 	int		i;
 	int		line;
@@ -80,14 +84,6 @@ static int	get_path_data(t_path *path_data, t_colors *colors, t_map *map_data)
 		}
 		line++;
 	}
-	return (SUCCES);
-}
-
-static int	check_path(t_vars *vars)
-{
-	if (get_path_data(&vars->path_data, &vars->colors, &vars->map_data))
-		return (ERROR);
-	return (SUCCES);
 }
 
 /*
@@ -100,8 +96,7 @@ bool	is_cub_file_valid(char *cub_file, t_vars *vars)
 		return (false);
 	if (read_file(cub_file, vars))
 		return (false);
-	if (check_path(vars))
-		return(false);
+	get_path_data(&vars->path_data, &vars->colors, &vars->map_data);
 	if (check_map(&vars->map_data))
 		return (false);
 	return (true);

@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/14 18:25:30 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/15 13:20:29 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/17 13:26:19 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,21 @@ static int	get_lines(char *cub_file, t_node **file_content)
 	return (SUCCES);
 }
 
+static bool	no_empty_line(char *world_map[])
+{
+	UINT	y;
+
+	y = 0;
+	while (world_map[y])
+		y++;
+	if (ft_strlen(world_map[y - 1]) == 0)
+	{
+		non_fatal_error(LAST_LINE_EMPTY);
+		return (false);
+	}
+	return (true);
+}
+
 /*
 	Reads file of user by using "get_next_line"
 	and puts it in a linked list.
@@ -73,5 +88,7 @@ int	read_file(char *cub_file, t_vars *vars)
 	if (get_lines(cub_file, &file_content))
 		return (ERROR);
 	alloc_list_to_array(&vars->map_data, &file_content);
+	if (no_empty_line(vars->map_data.world_map) == false)
+		return (ERROR);
 	return (SUCCES);
 }
