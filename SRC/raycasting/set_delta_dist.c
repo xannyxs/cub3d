@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   raycasting_utils.c                                 :+:    :+:            */
+/*   set_delta_dist.c                                   :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/16 20:41:03 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/06/16 20:50:32 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/18 17:37:51 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "raycast.h"
 
 #include <math.h> /* Fabs */
 

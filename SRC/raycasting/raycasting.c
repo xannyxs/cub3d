@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/07 19:27:12 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/06/27 16:40:55 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/18 17:44:14 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,10 +91,10 @@ static void	calculate_height(t_data *data)
 		data->draw_end = data->screen_height - 1;
 }
 
-static void	calculate_texture(t_data *data, t_textures textures, char *world_map[])
+static void	calculate_texture(t_data *data, mlx_texture_t *wall, char *world_map[])
 {
-	data->tex_height = textures.north_wall->height;
-	data->tex_width = textures.north_wall->width;
+	data->tex_height = wall->height;
+	data->tex_width = wall->width;
 	data->tex_num = world_map[data->map_y][data->map_x] - 1;
 	if (data->side == 0)
 		data->wall_x = data->pos_y + data->perp_wall_dist * data->raydir_y;
@@ -125,15 +125,26 @@ void	raycasting_hook(void *param)
 		set_ray_delta(&vars->data);
 		perform_dda(&vars->data, vars->map_data.world_map);
 		calculate_height(&vars->data);
-		calculate_texture(&vars->data, vars->textures, vars->map_data.world_map);
 		if (vars->data.side == 0 && vars->data.step_x < 0)
+		{
+			calculate_texture(&vars->data, vars->textures.east_wall, vars->map_data.world_map);
 			draw_wall(&vars->data, vars->textures.screen, vars->textures.east_wall, x);
+		}
 		if (vars->data.side == 0 && vars->data.step_x > 0)
+		{
+			calculate_texture(&vars->data, vars->textures.west_wall, vars->map_data.world_map);
 			draw_wall(&vars->data, vars->textures.screen, vars->textures.west_wall, x);
+		}
 		if (vars->data.side == 1 && vars->data.step_y > 0)
+		{
+			calculate_texture(&vars->data, vars->textures.south_wall, vars->map_data.world_map);
 			draw_wall(&vars->data, vars->textures.screen, vars->textures.south_wall, x);
+		}
 		if (vars->data.side == 1 && vars->data.step_y < 0)
+		{
+			calculate_texture(&vars->data, vars->textures.north_wall, vars->map_data.world_map);
 			draw_wall(&vars->data, vars->textures.screen, vars->textures.north_wall, x);
+		}
 		x++;
 	}
 }
