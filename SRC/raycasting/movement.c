@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/10 14:24:22 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/06/27 17:29:05 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/15 12:59:08 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@
 
 #define TURN 0.05
 #define WALK 0.06 /* Cannot be lower than 0.06 */
-
-#include <stdio.h>
+#define WALL '0'
 
 void	rotate(t_data *s, double turn)
 {
@@ -53,16 +52,16 @@ static void	strafing_movement(mlx_t *mlx, char *map[], t_data *s)
 {
 	if (mlx_is_key_down(mlx, MLX_KEY_A))
 	{
-		if (map[(int)(s->pos_y)][(int)(s->pos_x - s->dir_y * WALK)] == '0')
+		if (map[(int)(s->pos_y)][(int)(s->pos_x - s->dir_y * WALK)] == WALL)
 			s->pos_x -= s->dir_y * WALK;
-		if (map[(int)(s->pos_y + s->dir_x * WALK)][(int)(s->pos_x)] == '0')
+		if (map[(int)(s->pos_y + s->dir_x * WALK)][(int)(s->pos_x)] == WALL)
 			s->pos_y += s->dir_x * WALK;
 	}
 	if (mlx_is_key_down(mlx, MLX_KEY_D))
 	{
-		if (map[(int)(s->pos_y)][(int)(s->pos_x + s->dir_y * WALK)] == '0')
+		if (map[(int)(s->pos_y)][(int)(s->pos_x + s->dir_y * WALK)] == WALL)
 			s->pos_x += s->dir_y * WALK;
-		if (map[(int)(s->pos_y - s->dir_x * WALK)][(int)(s->pos_x)] == '0')
+		if (map[(int)(s->pos_y - s->dir_x * WALK)][(int)(s->pos_x)] == WALL)
 			s->pos_y -= s->dir_x * WALK;
 	}
 }
@@ -71,16 +70,16 @@ static void	walk_movement(mlx_t *mlx, char *map[], t_data *s)
 {
 	if (mlx_is_key_down(mlx, MLX_KEY_S))
 	{
-		if (map[(int)(s->pos_y)][(int)(s->pos_x - s->dir_x * WALK)] == '0')
+		if (map[(int)(s->pos_y)][(int)(s->pos_x - s->dir_x * WALK)] == WALL)
 			s->pos_x -= s->dir_x * WALK;
-		if (map[(int)(s->pos_y - s->dir_y * WALK)][(int)(s->pos_x)] == '0')
+		if (map[(int)(s->pos_y - s->dir_y * WALK)][(int)(s->pos_x)] == WALL)
 			s->pos_y -= s->dir_y * WALK;
 	}
 	if (mlx_is_key_down(mlx, MLX_KEY_W))
 	{
-		if (map[(int)(s->pos_y)][(int)(s->pos_x + s->dir_x * WALK)] == '0')
+		if (map[(int)(s->pos_y)][(int)(s->pos_x + s->dir_x * WALK)] == WALL)
 			s->pos_x += s->dir_x * WALK;
-		if (map[(int)(s->pos_y + s->dir_y * WALK)][(int)(s->pos_x)] == '0')
+		if (map[(int)(s->pos_y + s->dir_y * WALK)][(int)(s->pos_x)] == WALL)
 			s->pos_y += s->dir_y * WALK;
 	}
 }
@@ -109,6 +108,6 @@ void	movement_hook(void *param)
 	vars = param;
 	if (mlx_is_key_down(vars->mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(vars->mlx);
-		player_movement(vars->mlx, vars->map_data.world_map, &vars->data);
-		player_rotation(vars->mlx, &vars->data);
+	player_movement(vars->mlx, vars->map_data.world_map, &vars->data);
+	player_rotation(vars->mlx, &vars->data);
 }

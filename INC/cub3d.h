@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 21:22:16 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/14 12:20:45 by swofferh      ########   odam.nl         */
+/*   Updated: 2022/07/17 13:37:49 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 # define SUCCES 0
 # define ERROR 1
 
-# define WIDTH 1280
-# define HEIGHT 1024
+# define WIDTH 1000
+# define HEIGHT 800
 
 # define UINT unsigned int
 
@@ -123,7 +123,7 @@ int		get_next_line(int fd, char **line);
 
 int		loop_through_line(char *map_line, char object);
 
-bool	check_for_holes(char *world_map[], UINT height);
+bool	check_for_holes(char *world_map[]);
 
 void	find_player(t_vars *vars);
 
@@ -134,8 +134,6 @@ bool	is_monitor_valid(mlx_t *mlx);
 */
 
 int		ft_open(char *cub_file);
-
-void	*ft_malloc(size_t size);
 
 /*
 	LINKED LIST
@@ -156,6 +154,8 @@ int		check_player(t_map map_data);
 int		check_wall(t_map *map_data);
 
 int		check_unknown(t_map map_data);
+
+bool	is_wall_enclosed(char *world_map[]);
 
 /*
 	MOVEMENT

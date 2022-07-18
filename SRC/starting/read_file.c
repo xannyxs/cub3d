@@ -6,48 +6,17 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/14 18:25:30 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/06 16:19:28 by swofferh      ########   odam.nl         */
+/*   Updated: 2022/07/17 13:26:19 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-#include "error.h"
+#include "error.h" /* GNL ERROR */
+#include "libft.h"
 
 #include <fcntl.h> /* open */
 #include <unistd.h> /* close */
 #include <stdlib.h> /* malloc */
-
-//static int	check_size_of_file( t_node **file_content);
-
-// static void	alloc_list_to_array(t_map *map_data, t_node **file_content)
-// {
-// 	int		i;
-// 	int		j;
-// 	t_node	*temp;
-
-// 	i = 0;
-// 	j = 0;
-// 	temp = *file_content;
-// 	map_data->file_array = ft_malloc(check_size_of_file(*file_content) * sizeof(char *));
-// 	map_data->world_map = ft_malloc(ft_lstlen(*file_content) * sizeof(char *) - check_size_of_file(*file_content));
-// 	while (temp->next != NULL)
-// 	{
-// 		if (temp->content[0] != '1')
-// 		{
-// 			map_data->file_array[i] = temp->content;
-// 			i++;
-// 		}
-// 		else
-// 		{
-// 			map_data->world_array[j] = temp->content; 
-// 			j++;
-// 		}
-// 		temp = temp->next;
-// 	}
-// 	map_data->file_array[i] = NULL;
-// 	map_data->world_map[j] = NULL;
-// 	ft_free_list(file_content);
-// }
 
 static void	alloc_list_to_array(t_map *map_data, t_node **file_content)
 {
@@ -91,6 +60,21 @@ static int	get_lines(char *cub_file, t_node **file_content)
 	return (SUCCES);
 }
 
+static bool	no_empty_line(char *world_map[])
+{
+	UINT	y;
+
+	y = 0;
+	while (world_map[y])
+		y++;
+	if (ft_strlen(world_map[y - 1]) == 0)
+	{
+		non_fatal_error(LAST_LINE_EMPTY);
+		return (false);
+	}
+	return (true);
+}
+
 /*
 	Reads file of user by using "get_next_line"
 	and puts it in a linked list.
@@ -104,5 +88,7 @@ int	read_file(char *cub_file, t_vars *vars)
 	if (get_lines(cub_file, &file_content))
 		return (ERROR);
 	alloc_list_to_array(&vars->map_data, &file_content);
+	if (no_empty_line(vars->map_data.world_map) == false)
+		return (ERROR);
 	return (SUCCES);
 }

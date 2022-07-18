@@ -6,16 +6,13 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/14 17:14:15 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/14 17:00:26 by swofferh      ########   odam.nl         */
+/*   Updated: 2022/07/18 17:16:05 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "cub3d.h" /* t_vars */
 #include "error.h" /* Error msg */
-#include <cub3d.h> /* t_vars */
 #include "libft.h" /* ft_strcmp ft_strndup.c*/
-
-#include <stddef.h> /* free */
-#include <stdio.h> 
 
 #define WALL '1'
 
@@ -53,22 +50,6 @@ static bool	is_cub_extension(char *argv)
 	return (false);
 }
 
-// static void	new_world_map(char **array, t_map *map_data)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	(void)map_data;
-// 	map_data->world_map = malloc(get_size_of_array() + 1);
-// 	while (array[i])
-// 	{
-// 		map_data->world_map[i] = ft_strdup(array[i]);
-// 		printf("[%i]%s\n", i, array[i]);
-// 		i++;
-// 	}
-// 	map_data->world_map[j] = NULL;
-// }
-
 static void	init_path_struct(t_path *path_data)
 {
 	path_data->north = ft_strdup("IMG/PNG/Wolfenstein/bluestone.png");
@@ -77,11 +58,14 @@ static void	init_path_struct(t_path *path_data)
 	path_data->west = ft_strdup("IMG/PNG/Wolfenstein/eagle.png");
 }
 
-static int	get_path_data(t_path *path_data, t_colors *colors, t_map *map_data)
+/*
+	ft_strndup is protected by ft_malloc
+*/
+static void	get_path_data(t_path *path_data, t_colors *colors, t_map *map_data)
 {
-	int i;
-	int line;
-	char **array;
+	int		i;
+	int		line;
+	char	**array;
 	
 	i = 0;
 	line = 0;
@@ -106,21 +90,11 @@ static int	get_path_data(t_path *path_data, t_colors *colors, t_map *map_data)
 			init_path_struct(path_data);
 		if (array[line][i] == WALL)
 		{
-			//new_world_map(array + line, map_data);
 			map_data->map_start = line;
 			break ;
 		}
 		line++;
 	}
-	return(SUCCES);
-}
-
-int	check_path(t_vars *vars)
-{
-	//ft_print_array(vars->map_data.world_map);
-	if(get_path_data(&vars->path_data, &vars->colors, &vars->map_data))
-		return(ERROR);
-	return (SUCCES);
 }
 
 /*
@@ -133,8 +107,7 @@ bool	is_cub_file_valid(char *cub_file, t_vars *vars)
 		return (false);
 	if (read_file(cub_file, vars))
 		return (false);
-	if (check_path(vars))
-		return(false);
+	get_path_data(&vars->path_data, &vars->colors, &vars->map_data);
 	if (check_map(&vars->map_data))
 		return (false);
 	return (true);

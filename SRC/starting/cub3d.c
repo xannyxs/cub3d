@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 21:21:04 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/14 17:04:05 by swofferh      ########   odam.nl         */
+/*   Updated: 2022/07/18 17:16:23 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,19 +43,16 @@ static void	init_sys(t_vars *vars)
 	set_values(vars);
 	vars->textures.screen = mlx_new_image(vars->mlx, WIDTH, HEIGHT);
 	if (!vars->textures.screen)
-		fatal_perror("malloc");
+		fatal_perror("mlx");
 	if (mlx_image_to_window(vars->mlx, vars->textures.screen, 0, 0) == -1)
 		fatal_perror("mlx");
-	mlx_set_window_limit(vars->mlx, WIDTH - 750, HEIGHT - 750, \
-		WIDTH + 250, HEIGHT + 250);
-	vars->textures.north_wall = mlx_load_png(vars->path_data.north);
-	vars->textures.east_wall = mlx_load_png(vars->path_data.east);
-	vars->textures.south_wall = mlx_load_png(vars->path_data.east);
-	vars->textures.west_wall = mlx_load_png(vars->path_data.west);
-	// vars->textures.south_wall = mlx_load_png("IMG/PNG/SUPER/seafood.png");
-	// vars->textures.west_wall = mlx_load_png("IMG/PNG/SUPER/leon-milk.png");
-	// vars->textures.north_wall = mlx_load_png("IMG/PNG/SUPER/ramen.png");
-	// vars->textures.east_wall = mlx_load_png("IMG/PNG/SUPER/grains.png");
+	mlx_set_window_limit(vars->mlx, WIDTH - 500, HEIGHT - 500, WIDTH, HEIGHT);
+
+	// Get rid of these last four lines when @Swenne is done with loading .pngs
+	vars->textures.north_wall = mlx_load_png("IMG/Wolfenstein/bluestone.png");
+	vars->textures.east_wall = mlx_load_png("IMG/Wolfenstein/greystone.png");
+	vars->textures.south_wall = mlx_load_png("IMG/Wolfenstein/purplestone.png");
+	vars->textures.west_wall = mlx_load_png("IMG/Wolfenstein/eagle.png");
 }
 
 int32_t	main(int argc, char *argv[])

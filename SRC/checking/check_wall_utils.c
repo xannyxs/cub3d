@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/06 12:09:47 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/06 14:54:39 by swofferh      ########   odam.nl         */
+/*   Updated: 2022/07/17 13:32:58 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,15 +59,15 @@ static int	check_surrounding(char **world_map, int x, int y)
 	If so, check if it is surrounded by other spaces or walls.
 	This is kind of a mass, because of norm...
 */
-bool	check_for_holes(char *world_map[], unsigned int height)
+bool	check_for_holes(char *world_map[])
 {
-	unsigned int	x;
-	unsigned int	y;
+	UINT	x;
+	UINT	y;
 
-	x = 0;
 	y = 0;
-	while (y < height)
+	while (world_map[y])
 	{
+		x = 0;
 		while (x <= ft_strlen(world_map[y]))
 		{
 			if (world_map[y][x] == EMPTY)
@@ -77,7 +77,6 @@ bool	check_for_holes(char *world_map[], unsigned int height)
 			}
 			x++;
 		}
-		x = 0;
 		y++;
 	}
 	return (false);

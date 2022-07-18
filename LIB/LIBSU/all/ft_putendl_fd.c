@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_malloc.c                                        :+:    :+:            */
+/*   ft_putendl_fd.c                                    :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
+/*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/04/16 21:29:56 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/04/16 21:47:04 by xvoorvaa      ########   odam.nl         */
+/*   Created: 2019/11/08 14:33:29 by swofferh      #+#    #+#                 */
+/*   Updated: 2022/07/02 18:15:04 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "error.h"
+#include "libft.h"
 
-#include <stdlib.h>
-
-void	*ft_malloc(size_t size)
+/*
+FT_PUTENDL_FD: 
+Outputs the string c to given
+File descriptor, followed by a newline.
+*/
+void	ft_putendl_fd(char *s, int fd)
 {
-	void	*ptr;
-
-	ptr = malloc(size);
-	if (!ptr)
-		fatal_perror("malloc");
-	return (ptr);
+	if (s == NULL)
+		return ;
+	ft_putstr_fd(s, fd);
+	ft_putchar_fd('\n', fd);
 }

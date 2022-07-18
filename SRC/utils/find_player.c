@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/10 16:39:19 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/14 16:23:47 by swofferh      ########   odam.nl         */
+/*   Updated: 2022/07/18 17:14:06 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	find_player(t_vars *vars)
 			if (vars->map_data.world_map[y][x] == 'N' ||
 				vars->map_data.world_map[y][x] == 'W' ||
 				vars->map_data.world_map[y][x] == 'S' ||
-				vars->map_data.world_map[y][x] == 'O')
+				vars->map_data.world_map[y][x] == 'E')
 			{
 				vars->data.pos_x = x + 0.5;
 				vars->data.pos_y = y + 0.5;
