@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 21:21:04 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/18 17:38:35 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/18 18:11:04 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,22 @@ static void	set_values(t_vars *vars)
 		rotate(&vars->data, M_PI);
 }
 
+static void load_png_path(t_path *path_data, t_textures *textures)
+{
+	textures->north_wall = mlx_load_png(path_data->north);
+	if (!textures->north_wall)
+		fatal_perror("mlx");
+	textures->east_wall = mlx_load_png(path_data->east);
+	if (!textures->east_wall)
+		fatal_perror("mlx");
+	textures->south_wall = mlx_load_png(path_data->south);
+	if (!textures->south_wall)
+		fatal_perror("mlx");
+	textures->west_wall = mlx_load_png(path_data->west);
+	if (!textures->west_wall)
+		fatal_perror("mlx");
+}
+
 /*
 	The MLX_image_to_window only needs to be called once,
 	because of mlx_loop_hook(). It will be called automatically.
@@ -47,12 +63,7 @@ static void	init_sys(t_vars *vars)
 	if (mlx_image_to_window(vars->mlx, vars->textures.screen, 0, 0) == -1)
 		fatal_perror("mlx");
 	mlx_set_window_limit(vars->mlx, WIDTH - 500, HEIGHT - 500, WIDTH, HEIGHT);
-
-	// Get rid of these last four lines when @Swenne is done with loading .pngs
-	vars->textures.north_wall = mlx_load_png("IMG/SUPER/leon-milk.png");
-	vars->textures.east_wall = mlx_load_png("IMG/Wolfenstein/greystone.png");
-	vars->textures.south_wall = mlx_load_png("IMG/Wolfenstein/purplestone.png");
-	vars->textures.west_wall = mlx_load_png("IMG/Wolfenstein/eagle.png");
+	load_png_path(&vars->path_data, &vars->textures);
 }
 
 int32_t	main(int argc, char *argv[])

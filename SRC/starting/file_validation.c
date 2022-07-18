@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/14 17:14:15 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/18 17:16:05 by swofferh      ########   odam.nl         */
+/*   Updated: 2022/07/18 18:08:27 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,10 @@ static bool	is_cub_extension(char *argv)
 
 static void	init_path_struct(t_path *path_data)
 {
-	path_data->north = ft_strdup("IMG/PNG/Wolfenstein/bluestone.png");
-	path_data->east = ft_strdup("IMG/PNG/Wolfenstein/greystone.png");
-	path_data->south = ft_strdup("IMG/PNG/Wolfenstein/purplestone.png");
-	path_data->west = ft_strdup("IMG/PNG/Wolfenstein/eagle.png");
+	path_data->north = ft_strdup("IMG/SUPER/leon-milk.png");
+	path_data->east = ft_strdup("IMG/SUPER/leon-milk.png");
+	path_data->south = ft_strdup("IMG/SUPER/leon-milk.png");
+	path_data->west = ft_strdup("IMG/SUPER/leon-milk.png");
 }
 
 /*

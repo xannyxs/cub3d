@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/14 17:58:30 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/17 13:25:53 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/18 18:03:30 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # define ARGC_ERROR "-- I only need a .cub file --"
 # define EMPTY_FILE "-- File is empty --"
 # define LAST_LINE_EMPTY "-- Empty line after the world map"
+
+# define PATH_ERROR "-- Something went wrong processing png path. --"
 
 # define GNL_ERROR "-- Something went wrong while reading .cub file --"
 # define NO_PATH "-- Couldn't get any path and colors from file --"
