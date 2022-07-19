@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/14 17:14:15 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/19 20:37:53 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/19 22:44:13 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,30 @@ static void	init_path_struct(t_path *path_data)
 	path_data->west = ft_strdup("IMG/Wolfenstein/wood.png");
 }
 
+static void	process_colors(t_colors *colors)
+{
+	int 	i;
+	char 	**floor_split;
+	char	**ceilling_split;
+
+	i = 0;
+	//printf("%s\n", colors->floor);
+	floor_split = ft_split(colors->floor, ',');
+	ceilling_split = ft_split(colors->ceilling, ',');
+	while(floor_split[i])
+	{
+		colors->f_rgb[i] = ft_atoi(floor_split[i]);
+		i++;
+	}
+	i = 0;
+	while(ceilling_split[i])
+	{
+		//printf("[%i]%i - %s\n", i, colors->c_rgb[i], ceilling_split[i]);
+		colors->c_rgb[i] = ft_atoi(ceilling_split[i]);
+		i++;
+	}
+}
+
 /*
 	ft_strndup is protected by ft_malloc
 */
@@ -93,6 +117,8 @@ static void	get_path_data(t_path *path_data, t_colors *colors, t_map *map_data)
 		}
 		line++;
 	}
+	// printf("%s\n", colors->ceilling);
+	// printf("%s\n", colors->floor);
 }
 
 /*
@@ -106,6 +132,7 @@ bool	is_cub_file_valid(char *cub_file, t_vars *vars)
 	if (read_file(cub_file, vars))
 		return (false);
 	get_path_data(&vars->path_data, &vars->colors, &vars->map_data);
+	process_colors(&vars->colors);
 	if (check_map(&vars->map_data))
 		return (false);
 	return (true);
