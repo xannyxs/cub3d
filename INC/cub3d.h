@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 21:22:16 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/19 20:30:07 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/19 22:08:36 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,6 +185,8 @@ void	draw_ceiling(mlx_image_t *screen, int draw_start, \
 */
 
 void	set_delta_dist(t_data *data);
+
+void	side_of_wall(t_data *data, t_textures textures, t_map map_data, UINT x);
 
 /*
 	MY_MLX
