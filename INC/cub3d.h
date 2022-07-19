@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 21:22:16 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/19 19:59:39 by swofferh      ########   odam.nl         */
+/*   Updated: 2022/07/19 20:30:07 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,10 @@ typedef struct s_colors
 */
 typedef struct s_map
 {
-	char			**world_map;
-	unsigned int	map_start;
-	unsigned int	width;
-	unsigned int	height;
+	char	**world_map;
+	UINT	map_start;
+	UINT	width;
+	UINT	height;
 }	t_map;
 
 /*
@@ -124,7 +124,7 @@ int		get_next_line(int fd, char **line);
 
 int		walls_and_spaces_line(char *map_line);
 
-bool	check_for_holes(char *world_map[]);
+bool	check_for_holes(UINT map_data, char *world_map[]);
 
 void	find_player(t_vars *vars);
 
@@ -156,7 +156,7 @@ int		check_wall(t_map *map_data);
 
 int		check_unknown(t_map map_data);
 
-bool	is_wall_enclosed(char *world_map[]);
+bool	is_wall_enclosed(UINT map_start, char *world_map[]);
 
 /*
 	MOVEMENT

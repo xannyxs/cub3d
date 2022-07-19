@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/07 17:29:46 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/06/16 20:50:25 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/19 20:36:37 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,14 @@ static bool	does_player_already_exist(bool player_exists)
 
 int	check_player(t_map map_data)
 {
-	unsigned int	x;
-	unsigned int	y;
-	bool			player_exists;
+	UINT	x;
+	UINT	y;
+	bool	player_exists;
 
 	x = 0;
-	y = 1;
+	y = map_data.map_start;
 	player_exists = false;
-	while (y < map_data.height)
+	while (map_data.world_map[y])
 	{
 		while (map_data.world_map[y][x])
 		{

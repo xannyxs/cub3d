@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/07/17 13:35:38 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/17 18:14:56 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/19 20:33:01 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,12 @@ static int	trace_next_wall_under(char *world_map[], UINT x, UINT y)
 	return (temp_x);
 }
 
-static bool	enclosed_up_and_right(char *world_map[])
+static bool	enclosed_up_and_right(UINT map_start, char *world_map[])
 {
 	UINT x;
 	UINT y;
 
-	y = 0;
+	y = map_start;
 	x = 0;
 	while (world_map[y][x] && world_map[y + 1] != NULL)
 	{
@@ -62,9 +62,9 @@ static bool	enclosed_up_and_right(char *world_map[])
 	return (true);
 }
 
-bool	is_wall_enclosed(char *world_map[])
+bool	is_wall_enclosed(UINT map_start, char *world_map[])
 {
-	if (enclosed_up_and_right(world_map) == false)
+	if (enclosed_up_and_right(map_start, world_map) == false)
 		return (false);
 	return (true);
 }

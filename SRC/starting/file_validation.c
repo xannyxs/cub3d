@@ -6,13 +6,23 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/14 17:14:15 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/19 20:00:08 by swofferh      ########   odam.nl         */
+/*   Updated: 2022/07/19 20:37:53 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h" /* t_vars */
 #include "error.h" /* Error msg */
 #include "libft.h" /* ft_strcmp ft_strndup.c*/
+
+#define WALL '1'
+
+#define NORTH 'N'
+#define SOUTH 'S'
+#define WEST 'W'
+#define EAST 'E'
+
+#define CEILLING 'C'
+#define FLOOR 'F'
 
 /*
 	Function that checks if the map file has a ".cub"
@@ -40,6 +50,14 @@ static bool	is_cub_extension(char *argv)
 	return (false);
 }
 
+static void	init_path_struct(t_path *path_data)
+{
+	path_data->north = ft_strdup("IMG/Wolfenstein/bluestone.png");
+	path_data->east = ft_strdup("IMG/Wolfenstein/greystone.png");
+	path_data->south = ft_strdup("IMG/Wolfenstein/eagle.png");
+	path_data->west = ft_strdup("IMG/Wolfenstein/wood.png");
+}
+
 /*
 	ft_strndup is protected by ft_malloc
 */
@@ -48,27 +66,27 @@ static void	get_path_data(t_path *path_data, t_colors *colors, t_map *map_data)
 	int		i;
 	int		line;
 	char	**array;
-	
+
 	i = 0;
 	line = 0;
 	array = map_data->world_map;
 	while (array[line] && ft_isspace(array[line][i]) != 1)
 	{
-		if (array[line][i] == 'N')
+		if (array[line][i] == NORTH)
 			path_data->north = ft_strndup(array[line], 3);
-		else if (array[line][i] == 'S')
+		else if (array[line][i] == SOUTH)
 			path_data->south = ft_strndup(array[line], 3);
-		else if (array[line][i] == 'W')
+		else if (array[line][i] == WEST)
 			path_data->west = ft_strndup(array[line], 3);
-		else if (array[line][i] == 'E')
+		else if (array[line][i] == EAST)
 			path_data->east = ft_strndup(array[line], 3);
-		else if (array[line][i] == 'F')
+		else if (array[line][i] == FLOOR)
 			colors->floor = ft_strndup(array[line], 2);
-		else if (array[line][i] == 'C')
+		else if (array[line][i] == CEILLING)
 			colors->ceilling = ft_strndup(array[line], 2);
 		else
-			non_fatal_error("File needs paths and colours");
-		if (array[line][i] == '1')
+			init_path_struct(path_data);
+		if (array[line][i] == WALL)
 		{
 			map_data->map_start = line;
 			break ;
