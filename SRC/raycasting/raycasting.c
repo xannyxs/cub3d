@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/07 19:27:12 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/18 17:44:14 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/19 20:06:09 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,28 +30,28 @@ static void	set_ray_pos(t_data *data, UINT x)
 	Checks how far the player is from a wall.
 	See video: https://www.youtube.com/watch?v=NbSee-XM7WA
 */
-static void	set_ray_delta(t_data *data)
+static void	set_ray_delta(t_data *d)
 {
-	set_delta_dist(data);
-	if (data->raydir_x < 0)
+	set_delta_dist(d);
+	if (d->raydir_x < 0)
 	{
-		data->step_x = -1;
-		data->side_dist_x = (data->pos_x - data->map_x) * data->delta_dist_x;
+		d->step_x = -1;
+		d->side_dist_x = (d->pos_x - d->map_x) * d->delta_dist_x;
 	}
 	else
 	{
-		data->step_x = 1;
-		data->side_dist_x = (data->map_x + 1.0 - data->pos_x) * data->delta_dist_x;
+		d->step_x = 1;
+		d->side_dist_x = (d->map_x + 1.0 - d->pos_x) * d->delta_dist_x;
 	}
-	if (data->raydir_y < 0)
+	if (d->raydir_y < 0)
 	{
-		data->step_y = -1;
-		data->side_dist_y = (data->pos_y - data->map_y) * data->delta_dist_y;
+		d->step_y = -1;
+		d->side_dist_y = (d->pos_y - d->map_y) * d->delta_dist_y;
 	}
 	else
 	{
-		data->step_y = 1;
-		data->side_dist_y = (data->map_y + 1.0 - data->pos_y) * data->delta_dist_y;
+		d->step_y = 1;
+		d->side_dist_y = (d->map_y + 1.0 - d->pos_y) * d->delta_dist_y;
 	}
 }
 
@@ -91,29 +91,55 @@ static void	calculate_height(t_data *data)
 		data->draw_end = data->screen_height - 1;
 }
 
-static void	calculate_texture(t_data *data, mlx_texture_t *wall, char *world_map[])
+static void	calc_texture(t_data *d, mlx_texture_t *wall, char *world_map[])
 {
-	data->tex_height = wall->height;
-	data->tex_width = wall->width;
-	data->tex_num = world_map[data->map_y][data->map_x] - 1;
-	if (data->side == 0)
-		data->wall_x = data->pos_y + data->perp_wall_dist * data->raydir_y;
+	d->tex_height = wall->height;
+	d->tex_width = wall->width;
+	d->tex_num = world_map[d->map_y][d->map_x] - 1;
+	if (d->side == 0)
+		d->wall_x = d->pos_y + d->perp_wall_dist * d->raydir_y;
 	else
-		data->wall_x = data->pos_x + data->perp_wall_dist * data->raydir_x;
-	data->wall_x -= floor((data->wall_x));
-	data->tex_x = (int) (data->wall_x * (double) data->tex_width);
-	if (data->side == 0 && data->raydir_x > 0)
-		data->tex_x = data->tex_width - data->tex_x - 1;
-	if (data->side == 1 && data->raydir_y < 0)
-		data->tex_x = data->tex_width - data->tex_x - 1;
-	data->step = 1.0 * data->tex_height / data->line_height;
-	data->tex_pos = (data->draw_start - data->screen_height / 2 + data->line_height / 2) * data->step;
+		d->wall_x = d->pos_x + d->perp_wall_dist * d->raydir_x;
+	d->wall_x -= floor((d->wall_x));
+	d->tex_x = (int)(d->wall_x * (double) d->tex_width);
+	if (d->side == 0 && d->raydir_x > 0)
+		d->tex_x = d->tex_width - d->tex_x - 1;
+	if (d->side == 1 && d->raydir_y < 0)
+		d->tex_x = d->tex_width - d->tex_x - 1;
+	d->step = 1.0 * d->tex_height / d->line_height;
+	d->tex_pos = (d->draw_start - d->screen_height / 2 + d->line_height / 2) \
+		* d->step;
+}
+
+void	side_of_wall(t_data *data, t_textures textures, t_map map_data, UINT x)
+{
+	if (data->side == 0 && data->step_x < 0)
+	{
+		calc_texture(data, textures.east_wall, map_data.world_map);
+		draw_wall(data, textures.screen, textures.east_wall, x);
+	}
+	if (data->side == 0 && data->step_x > 0)
+	{
+		calc_texture(data, textures.west_wall, map_data.world_map);
+		draw_wall(data, textures.screen, textures.west_wall, x);
+	}
+	if (data->side == 1 && data->step_y > 0)
+	{
+		calc_texture(data, textures.south_wall, map_data.world_map);
+		draw_wall(data, textures.screen, textures.south_wall, x);
+	}
+	if (data->side == 1 && data->step_y < 0)
+
+	{
+		calc_texture(data, textures.north_wall, map_data.world_map);
+		draw_wall(data, textures.screen, textures.north_wall, x);
+	}
 }
 
 void	raycasting_hook(void *param)
 {
-	unsigned int	x;
-	t_vars			*vars;
+	UINT	x;
+	t_vars	*vars;
 
 	x = 0;
 	vars = param;
@@ -125,26 +151,7 @@ void	raycasting_hook(void *param)
 		set_ray_delta(&vars->data);
 		perform_dda(&vars->data, vars->map_data.world_map);
 		calculate_height(&vars->data);
-		if (vars->data.side == 0 && vars->data.step_x < 0)
-		{
-			calculate_texture(&vars->data, vars->textures.east_wall, vars->map_data.world_map);
-			draw_wall(&vars->data, vars->textures.screen, vars->textures.east_wall, x);
-		}
-		if (vars->data.side == 0 && vars->data.step_x > 0)
-		{
-			calculate_texture(&vars->data, vars->textures.west_wall, vars->map_data.world_map);
-			draw_wall(&vars->data, vars->textures.screen, vars->textures.west_wall, x);
-		}
-		if (vars->data.side == 1 && vars->data.step_y > 0)
-		{
-			calculate_texture(&vars->data, vars->textures.south_wall, vars->map_data.world_map);
-			draw_wall(&vars->data, vars->textures.screen, vars->textures.south_wall, x);
-		}
-		if (vars->data.side == 1 && vars->data.step_y < 0)
-		{
-			calculate_texture(&vars->data, vars->textures.north_wall, vars->map_data.world_map);
-			draw_wall(&vars->data, vars->textures.screen, vars->textures.north_wall, x);
-		}
+		side_of_wall(&vars->data, vars->textures, vars->map_data, x);
 		x++;
 	}
 }
