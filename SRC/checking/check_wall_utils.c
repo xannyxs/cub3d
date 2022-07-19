@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/06 12:09:47 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/17 13:32:58 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/19 16:27:00 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,11 @@ static int	surround_loop(char *world_line, int x, int len_line)
 
 static int	check_surrounding(char **world_map, int x, int y)
 {
-	if (surround_loop(world_map[y - 1], x, ft_strlen(world_map[y - 1])))
+	if (y - 1 >= 0 && surround_loop(world_map[y - 1], x, ft_strlen(world_map[y - 1])))
 		return (ERROR);
 	if (surround_loop(world_map[y], x, ft_strlen(world_map[y])))
 		return (ERROR);
-	if (surround_loop(world_map[y + 1], x, ft_strlen(world_map[y + 1])))
+	if (world_map[y + 1] && surround_loop(world_map[y + 1], x, ft_strlen(world_map[y + 1])))
 		return (ERROR);
 	return (SUCCES);
 }
@@ -82,14 +82,14 @@ bool	check_for_holes(char *world_map[])
 	return (false);
 }
 
-int	loop_through_line(char *map_line, char object)
+int	walls_and_spaces_line(char *map_line)
 {
-	unsigned int	x;
+	UINT	x;
 
 	x = 0;
 	while (map_line[x])
 	{
-		if (map_line[x] != object)
+		if (map_line[x] != WALL && map_line[x] != ' ')
 			return (ERROR);
 		x++;
 	}
