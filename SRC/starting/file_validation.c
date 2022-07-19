@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/14 17:14:15 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/19 20:40:38 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/19 23:29:56 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,34 @@ static void	init_path_struct(t_path *path_data)
 	path_data->west = ft_strdup("IMG/Wolfenstein/wood.png");
 }
 
+static void	process_colors(t_colors *colors)
+{
+	int 	i;
+	char 	**floor_split;
+	char	**ceilling_split;
+
+	i = 0;
+	//printf("%s\n", colors->floor);
+	floor_split = ft_split(colors->floor, ',');
+	ceilling_split = ft_split(colors->ceilling, ',');
+	while(floor_split[i])
+	{
+		colors->f_rgb[i] = ft_atoi(floor_split[i]);
+		i++;
+	}
+	i = 0;
+	while(ceilling_split[i])
+	{
+		//printf("[%i]%i - %s\n", i, colors->c_rgb[i], ceilling_split[i]);
+		colors->c_rgb[i] = ft_atoi(ceilling_split[i]);
+		i++;
+	}
+}
+
 /*
 	ft_strndup is protected by ft_malloc
 */
-static void	get_path_data(t_path *path_data, t_colors *colors, t_map *map_data)
+static int	get_path_data(t_path *path_data, t_colors *colors, t_map *map_data)
 {
 	int		i;
 	int		line;
@@ -85,7 +109,10 @@ static void	get_path_data(t_path *path_data, t_colors *colors, t_map *map_data)
 		else if (array[line][i] == CEILLING)
 			colors->ceilling = ft_strndup(array[line], 2);
 		else
-			init_path_struct(path_data);
+		{
+			non_fatal_error(NO_PATH);
+			return (ERROR);
+		}
 		if (array[line][i] == WALL)
 		{
 			map_data->map_start = line;
@@ -93,6 +120,7 @@ static void	get_path_data(t_path *path_data, t_colors *colors, t_map *map_data)
 		}
 		line++;
 	}
+	return (SUCCES);
 }
 
 /*
@@ -105,7 +133,9 @@ bool	is_cub_file_valid(char *cub_file, t_vars *vars)
 		return (false);
 	if (read_file(cub_file, vars))
 		return (false);
-	get_path_data(&vars->path_data, &vars->colors, &vars->map_data);
+	if (get_path_data(&vars->path_data, &vars->colors, &vars->map_data))
+		return (false);
+	process_colors(&vars->colors);
 	if (check_map(&vars->map_data))
 		return (false);
 	return (true);

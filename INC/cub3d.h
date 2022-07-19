@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 21:22:16 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/19 22:08:36 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/19 23:30:11 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ typedef struct s_colors
 {
 	char		*floor;
 	char		*ceilling;
-	int			*f_rgb[3];
-	int			*c_rgb[3];
+	int			f_rgb[3];
+	int			c_rgb[3];
 }	t_colors;
 
 /*
@@ -174,6 +174,8 @@ void	draw_wall(t_data *data, mlx_image_t *screen, \
 	mlx_texture_t *texture, UINT x);
 
 void	reset_window(mlx_image_t *screen);
+
+uint32_t	create_rgbt(int r, int g, int b, int t);
 
 void	draw_floor(mlx_image_t *screen, int draw_end, uint32_t colour, int x);
 
