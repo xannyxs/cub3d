@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 21:22:16 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/17 13:37:49 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/19 19:53:03 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,8 @@ typedef struct s_colors
 {
 	char		*floor;
 	char		*ceilling;
-	int			*RGB[3];
+	int			*f_rgb[3];
+	int			*c_rgb[3];
 }	t_colors;
 
 /*
