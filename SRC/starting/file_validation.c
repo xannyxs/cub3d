@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/14 17:14:15 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/19 22:44:13 by swofferh      ########   odam.nl         */
+/*   Updated: 2022/07/19 23:28:31 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ static void	process_colors(t_colors *colors)
 /*
 	ft_strndup is protected by ft_malloc
 */
-static void	get_path_data(t_path *path_data, t_colors *colors, t_map *map_data)
+static int	get_path_data(t_path *path_data, t_colors *colors, t_map *map_data)
 {
 	int		i;
 	int		line;
@@ -109,7 +109,10 @@ static void	get_path_data(t_path *path_data, t_colors *colors, t_map *map_data)
 		else if (array[line][i] == CEILLING)
 			colors->ceilling = ft_strndup(array[line], 2);
 		else
-			init_path_struct(path_data);
+		{
+			non_fatal_error(NO_PATH);
+			return (ERROR);
+		}
 		if (array[line][i] == WALL)
 		{
 			map_data->map_start = line;
@@ -117,8 +120,7 @@ static void	get_path_data(t_path *path_data, t_colors *colors, t_map *map_data)
 		}
 		line++;
 	}
-	// printf("%s\n", colors->ceilling);
-	// printf("%s\n", colors->floor);
+	return (SUCCES);
 }
 
 /*
@@ -131,7 +133,8 @@ bool	is_cub_file_valid(char *cub_file, t_vars *vars)
 		return (false);
 	if (read_file(cub_file, vars))
 		return (false);
-	get_path_data(&vars->path_data, &vars->colors, &vars->map_data);
+	if (get_path_data(&vars->path_data, &vars->colors, &vars->map_data))
+		return (false);
 	process_colors(&vars->colors);
 	if (check_map(&vars->map_data))
 		return (false);
