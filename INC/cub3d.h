@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 21:22:16 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/17 13:37:49 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/19 15:57:58 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ int		check_map(t_map *map_data);
 
 int		get_next_line(int fd, char **line);
 
-int		loop_through_line(char *map_line, char object);
+int		walls_and_spaces_line(char *map_line);
 
 bool	check_for_holes(char *world_map[]);
 
