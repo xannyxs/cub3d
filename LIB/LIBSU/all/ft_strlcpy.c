@@ -6,7 +6,7 @@
 /*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/04 20:37:02 by swofferh      #+#    #+#                 */
-/*   Updated: 2022/07/02 18:14:23 by swofferh      ########   odam.nl         */
+/*   Updated: 2022/07/19 23:41:54 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ FT_STRLCPY:
 copies all chars in a string to a limit number of chars (len)
 returns the new size of the src string after copying it with dst limit.
 */
-size_t		ft_strlcpy(char *dst, const char *src, size_t dstsize)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	char *str;
+	char	*str;
 
 	str = ft_memccpy(dst, src, '\0', dstsize);
 	if (!str && dstsize != 0)

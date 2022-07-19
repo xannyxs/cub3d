@@ -6,7 +6,7 @@
 /*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/13 20:55:08 by swofferh      #+#    #+#                 */
-/*   Updated: 2022/07/02 18:06:54 by swofferh      ########   odam.nl         */
+/*   Updated: 2022/07/19 23:35:44 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ Allocates with malloc and returns a string
 representing the integer received as an argument. 
 Negative numbers must be handled, NULL if fail.
 */
-static char		*ft_memlen(int len)
+static char	*ft_memlen(int len)
 {
 	char	*res;
 
@@ -29,7 +29,7 @@ static char		*ft_memlen(int len)
 	return (res);
 }
 
-static char		*ft_longnull(int n)
+static char	*ft_longnull(int n)
 {
 	if (n == 0)
 		return (ft_strdup("0"));
@@ -37,9 +37,9 @@ static char		*ft_longnull(int n)
 		return (ft_strdup("-2147483648"));
 }
 
-static char		ft_solver(int sign, int len, int n, char *res)
+static char	ft_solver(int sign, int len, int n, char *res)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (i + 1 < len - sign)
@@ -51,7 +51,7 @@ static char		ft_solver(int sign, int len, int n, char *res)
 	return (*res);
 }
 
-char			*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	int		len;
 	int		sign;
