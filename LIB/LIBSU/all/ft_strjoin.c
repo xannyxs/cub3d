@@ -6,7 +6,7 @@
 /*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/13 20:47:54 by swofferh      #+#    #+#                 */
-/*   Updated: 2022/07/02 18:14:31 by swofferh      ########   odam.nl         */
+/*   Updated: 2022/07/19 23:41:31 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,34 +17,29 @@ FT_STRJOIN:
 Joins one string to the end of another.
 returns new string, the result after appending.
 */
-char			*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*new;
-	int		len1;
-	int		len2;
-	size_t	a;
-	size_t	b;
+	int		i;
+	int		n;
+	char	*str;
 
-	a = 0;
-	b = 0;
+	i = 0;
+	n = 0;
 	if (!s1 || !s2)
 		return (NULL);
-	len1 = ft_strlen(s1);
-	len2 = ft_strlen(s2);
-	new = (char *)ft_malloc((len1 + len2) + 1);
-	if (new == NULL)
+	str = (char *)malloc(sizeof(char) * ft_strlen(s1) + ft_strlen(s2) + 1);
+	if (!str)
 		return (NULL);
-	while (s1[a])
+	while (s1[i])
 	{
-		new[a] = s1[a];
-		a++;
+		str[i] = s1[i];
+		i++;
 	}
-	while (s2[b])
+	while (s2[n])
 	{
-		new[a] = s2[b];
-		a++;
-		b++;
+		str[i + n] = s2[n];
+		n++;
 	}
-	new[a] = '\0';
-	return (new);
+	str[i + n] = 0;
+	return (str);
 }

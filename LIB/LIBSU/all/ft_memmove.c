@@ -6,7 +6,7 @@
 /*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/04 17:13:30 by swofferh      #+#    #+#                 */
-/*   Updated: 2022/07/02 18:06:24 by swofferh      ########   odam.nl         */
+/*   Updated: 2022/07/19 23:37:24 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,12 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	if (dst < src)
 		ft_memcpy(dst, src, len);
 	else if (dst > src)
+	{
 		while (len)
 		{
 			len--;
 			((char *)dst)[len] = ((char *)src)[len];
 		}
+	}
 	return (dst);
 }

@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/06 12:09:47 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/19 20:28:22 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/19 22:36:15 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,13 @@ static int	surround_loop(char *world_line, int x, int len_line)
 
 static int	check_surrounding(char **world_map, int x, int y)
 {
-	if (y - 1 >= 0 && surround_loop(world_map[y - 1], x, ft_strlen(world_map[y - 1])))
+	if (y - 1 >= 0 && surround_loop(world_map[y - 1], x, \
+		ft_strlen(world_map[y - 1])))
 		return (ERROR);
 	if (surround_loop(world_map[y], x, ft_strlen(world_map[y])))
 		return (ERROR);
-	if (world_map[y + 1] && surround_loop(world_map[y + 1], x, ft_strlen(world_map[y + 1])))
+	if (world_map[y + 1] && surround_loop(world_map[y + 1], x, \
+		ft_strlen(world_map[y + 1])))
 		return (ERROR);
 	return (SUCCES);
 }

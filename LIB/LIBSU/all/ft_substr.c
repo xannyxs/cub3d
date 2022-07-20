@@ -6,7 +6,7 @@
 /*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/13 20:40:42 by swofferh      #+#    #+#                 */
-/*   Updated: 2022/07/02 18:10:03 by swofferh      ########   odam.nl         */
+/*   Updated: 2022/07/19 23:42:49 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ Allocates with malloc and returns
 a substring from the string given in argument.
 The substring begins at index ’start’ and is of maximum size ’len’.
 */
-char		*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char			*sub;
 	size_t			index;

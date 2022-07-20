@@ -6,7 +6,7 @@
 /*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/01 16:59:00 by swofferh      #+#    #+#                 */
-/*   Updated: 2022/07/02 18:06:22 by swofferh      ########   odam.nl         */
+/*   Updated: 2022/07/19 23:36:42 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ FT_MEMCPY:
 copy memory area
 copies n bytes from memory area src to memory area dest.
 */
-void		*ft_memcpy(void *dst, const void *src, size_t n)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	size_t		i;
-	char		*s1;
-	char		*s2;
+	size_t	i;
+	char	*s1;
+	char	*s2;
 
 	if (!dst && !src)
 		return (dst);

@@ -6,7 +6,7 @@
 /*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/08 22:26:52 by swofferh      #+#    #+#                 */
-/*   Updated: 2020/09/11 14:45:21 by sofferha      ########   odam.nl         */
+/*   Updated: 2022/07/20 13:45:51 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	preci_p(t_info *node, unsigned long nbr, int len, int ox)
 {
-	int width;
-	int preci;
+	int	width;
+	int	preci;
 
 	width = node->width;
 	preci = node->precision;

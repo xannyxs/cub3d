@@ -6,13 +6,13 @@
 /*   By: sofferha <sofferha@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/09/02 15:49:00 by sofferha      #+#    #+#                 */
-/*   Updated: 2022/07/02 17:48:08 by swofferh      ########   odam.nl         */
+/*   Updated: 2022/07/20 13:35:46 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "libft.h"
+#include "libft.h"
 
-int		ft_putlen(char c, int len)
+int	ft_putlen(char c, int len)
 {
 	if (len < 0)
 		return (0);

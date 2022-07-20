@@ -6,15 +6,15 @@
 /*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/08 22:27:06 by swofferh      #+#    #+#                 */
-/*   Updated: 2020/09/11 14:45:10 by sofferha      ########   odam.nl         */
+/*   Updated: 2022/07/20 13:42:40 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-int		ft_width(t_info *node, const char *str)
+int	ft_width(t_info *node, const char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if ((str[i] == '*') || ft_isdigit(str[i]) || str[i] == '-')
@@ -41,9 +41,9 @@ int		ft_width(t_info *node, const char *str)
 	return (i);
 }
 
-int		ft_precision(t_info *node, const char *str)
+int	ft_precision(t_info *node, const char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (str[i] == '.')
@@ -56,9 +56,9 @@ int		ft_precision(t_info *node, const char *str)
 	return (i);
 }
 
-int		ft_asterik(t_info *node, const char *str)
+int	ft_asterik(t_info *node, const char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if ((str[i] == '*') || ft_isdigit(str[i]) || (str[i] == '-'))

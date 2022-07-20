@@ -6,7 +6,7 @@
 /*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/08 22:26:52 by swofferh      #+#    #+#                 */
-/*   Updated: 2020/09/11 14:45:18 by sofferha      ########   odam.nl         */
+/*   Updated: 2022/07/20 13:50:27 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,21 @@ void	width_d(t_info *node, int nbr, int len)
 	}
 }
 
+void	check_extra_flags(t_info *node, int nbr, int len, int neg)
+{
+	if (node->flag == ZERO || node->flag == NOFLAG)
+	{
+		nbr = pt_putsign(node, nbr);
+		pt_putlen(node, '0', node->precision - len + neg);
+		pt_putnbr(node, nbr);
+	}
+}
+
 void	preci_d(t_info *node, int nbr, int len)
 {
-	int preci;
-	int sign;
-	int neg;
+	int	preci;
+	int	sign;
+	int	neg;
 
 	neg = 0;
 	sign = 0;
@@ -52,7 +62,6 @@ void	preci_d(t_info *node, int nbr, int len)
 		nbr = pt_putsign(node, nbr);
 		pt_putlen(node, '0', node->precision - len + neg);
 		pt_putnbr(node, nbr);
-		// len = len + node->precision - len + neg + sign;
 	}
 	if (preci < node->width)
 	{
@@ -60,12 +69,7 @@ void	preci_d(t_info *node, int nbr, int len)
 		if (preci <= len)
 			pt_putlen(node, ' ', neg);
 	}
-	if (node->flag == ZERO || node->flag == NOFLAG)
-	{
-		nbr = pt_putsign(node, nbr);
-		pt_putlen(node, '0', node->precision - len + neg);
-		pt_putnbr(node, nbr);
-	}
+	check_extra_flags(node, nbr, len, neg);
 }
 
 void	process_zero(t_info *node, int nbr)
@@ -100,13 +104,11 @@ void	ft_d_argument(t_info *node)
 {
 	int	nbr;
 	int	len;
-	int sign;
+	int	sign;
 
 	sign = 0;
 	nbr = va_arg(node->argument, int);
 	len = ft_lenbase(nbr, 10);
-	// if (nbr < 0)
-	// 	sign = TRUE;
 	if (nbr == 0)
 		process_zero(node, 0);
 	else if (!node->period)
@@ -118,5 +120,4 @@ void	ft_d_argument(t_info *node)
 	}
 	else
 		preci_d(node, nbr, len);
-	// printf("len  |%d|", len);
 }

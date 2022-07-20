@@ -6,7 +6,7 @@
 /*   By: sofferha <sofferha@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/18 17:20:22 by sofferha      #+#    #+#                 */
-/*   Updated: 2022/07/02 18:06:49 by swofferh      ########   odam.nl         */
+/*   Updated: 2022/07/20 13:28:33 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@ returns zero if character empty space.
 */
 int	ft_isspace(char c)
 {
-	return (c == '\n' || c == '\t' || c == ' ' ||
+	return (c == '\n' || c == '\t' || c == ' ' || \
 		c == '\v' || c == '\f' || c == '\r');
 }

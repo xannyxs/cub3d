@@ -6,7 +6,7 @@
 /*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/04 20:30:27 by swofferh      #+#    #+#                 */
-/*   Updated: 2022/07/02 18:14:27 by swofferh      ########   odam.nl         */
+/*   Updated: 2022/07/19 23:41:44 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static size_t	ft_strnlen(const char *s, size_t maxlen)
 	return (i);
 }
 
-size_t			ft_strlcat(char *dst, const char *src, size_t dstsize)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
 	size_t	dstlen;
 	size_t	srclen;

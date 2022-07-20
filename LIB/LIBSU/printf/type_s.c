@@ -6,7 +6,7 @@
 /*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/08 22:30:52 by swofferh      #+#    #+#                 */
-/*   Updated: 2020/09/11 14:45:24 by sofferha      ########   odam.nl         */
+/*   Updated: 2022/07/20 13:46:14 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	width_s(t_info *node, char *str, int len)
 	}
 }
 
-int		len_str(t_info *node, int len)
+int	len_str(t_info *node, int len)
 {
 	if (len <= node->precision)
 		return (len);
@@ -77,7 +77,7 @@ void	ft_s_argument(t_info *node)
 
 void	pt_putstr(t_info *node, char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])

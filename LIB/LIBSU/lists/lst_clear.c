@@ -6,7 +6,7 @@
 /*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/26 17:23:57 by swofferh      #+#    #+#                 */
-/*   Updated: 2021/02/23 12:08:05 by sofferha      ########   odam.nl         */
+/*   Updated: 2022/07/20 13:39:11 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 ** 	successor of that element, using the function del and free.
 ** 	Finally, the pointer to the list must be set to NULL.
 */
-void		lst_clear(t_list **node, void (*del)(void*))
+void	lst_clear(t_list **node, void (*del)(void*))
 {
 	t_list		*link;
 	t_list		*next_link;

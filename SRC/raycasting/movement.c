@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/10 14:24:22 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/15 12:59:08 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/19 22:39:16 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,12 +95,6 @@ static void	walk_movement(mlx_t *mlx, char *map[], t_data *s)
 		World_map = map;
 		t_data *s = *data;
 */
-static void	player_movement(mlx_t *mlx, char *map[], t_data *s)
-{
-	walk_movement(mlx, map, s);
-	strafing_movement(mlx, map, s);
-}
-
 void	movement_hook(void *param)
 {
 	t_vars	*vars;
@@ -108,6 +102,7 @@ void	movement_hook(void *param)
 	vars = param;
 	if (mlx_is_key_down(vars->mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(vars->mlx);
-	player_movement(vars->mlx, vars->map_data.world_map, &vars->data);
+	walk_movement(vars->mlx, vars->map_data.world_map, &vars->data);
+	strafing_movement(vars->mlx, vars->map_data.world_map, &vars->data);
 	player_rotation(vars->mlx, &vars->data);
 }

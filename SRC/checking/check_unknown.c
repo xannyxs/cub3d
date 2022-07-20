@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/07 17:36:20 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/19 20:23:39 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/19 22:35:45 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	check_unknown(t_map map_data)
 				map_data.world_map[y][x] != 'S' && \
 				map_data.world_map[y][x] != 'W' && \
 				map_data.world_map[y][x] != ' ')
-					return (ERROR);
+				return (ERROR);
 			x++;
 		}
 		y++;

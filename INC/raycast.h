@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/14 13:50:40 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/06/27 17:24:12 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/19 22:10:05 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@
 */
 typedef struct s_data
 {
+	char			player_char;
 	UINT			screen_width;
 	UINT			screen_height;
-	char			player_char;
 	int				map_x;
 	int				map_y;
 	int				side;

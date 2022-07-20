@@ -6,7 +6,7 @@
 /*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/04 20:37:02 by swofferh      #+#    #+#                 */
-/*   Updated: 2022/07/02 18:09:34 by swofferh      ########   odam.nl         */
+/*   Updated: 2022/07/19 23:42:32 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 FT_STR_N_CPY:
 Copies a string until a given 'stop' (number of times/len).
 */
-char		*ft_strncpy(char *dst, const char *src, int n)
+char	*ft_strncpy(char *dst, const char *src, int n)
 {
 	int		index;
 

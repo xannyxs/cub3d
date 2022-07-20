@@ -6,7 +6,7 @@
 /*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/04 19:03:50 by swofferh      #+#    #+#                 */
-/*   Updated: 2022/07/02 18:01:35 by swofferh      ########   odam.nl         */
+/*   Updated: 2022/07/19 23:36:22 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 	{
 		s1[i] = s2[i];
 		if (s1[i] == (unsigned char)c)
-			return ((void*)dst + i + 1);
+			return ((void *)dst + i + 1);
 		i++;
 	}
 	return (NULL);
