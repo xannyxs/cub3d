@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 21:22:16 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/19 22:31:31 by swofferh      ########   odam.nl         */
+/*   Updated: 2022/07/20 16:55:41 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,8 +170,8 @@ void	rotate(t_data *s, double turn);
 	DRAW
 */
 
-void	draw_wall(t_data *data, mlx_image_t *screen, \
-	mlx_texture_t *texture, UINT x);
+void	draw_wall(t_data *data, t_textures texture, \
+	mlx_texture_t *wall, UINT x);
 
 void	reset_window(mlx_image_t *screen);
 
