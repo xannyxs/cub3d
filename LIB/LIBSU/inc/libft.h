@@ -6,7 +6,7 @@
 /*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/28 17:10:52 by swofferh      #+#    #+#                 */
-/*   Updated: 2022/07/15 17:34:33 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/20 13:38:32 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include "libsu.h"
 
 int					get_next_line(int fd, char **line);
-int				    ft_printf(const char *str, ...);
+int					ft_printf(const char *str, ...);
 
 /*  Libft MEMORY functions */
 
@@ -40,9 +40,9 @@ int					ft_memcmp(const void *s1, const void *s2, size_t n);
 size_t				ft_strlen(const char *str);
 size_t				ft_strlcat(char *dst, const char *src, size_t dstsize);
 size_t				ft_strlcpy(char *dst, const char *src, size_t dstsize);
-int		    		ft_strncmp(const char *s1, const char *s2, size_t n);
+int					ft_strncmp(const char *s1, const char *s2, size_t n);
 int					ft_strcmp(const char *s1, const char *s2);
-char                *ft_strncpy(char *dst, const char *src, int n);
+char				*ft_strncpy(char *dst, const char *src, int n);
 char				*ft_strchr(const char *s, int c);
 char				*ft_strrchr(const char *s, int c);
 char				*ft_strdup(const char *s1);
@@ -62,11 +62,11 @@ int					ft_isalnum(int c);
 int					ft_isascii(int c);
 int					ft_isprint(int c);
 
-int                 ft_isnull(int n);
+int					ft_isnull(int n);
 int					ft_isupper(int n);
 int					ft_islower(int n);
-int				    ft_isnumsign(int c);
-int                 ft_isspace(char c);
+int					ft_isnumsign(int c);
+int					ft_isspace(char c);
 
 /*   Libft 'MAPI' functions */
 

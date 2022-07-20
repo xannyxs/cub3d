@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/07/17 13:35:38 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/19 20:33:01 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/19 22:36:35 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ static int	trace_next_wall_under(char *world_map[], UINT x, UINT y)
 
 static bool	enclosed_up_and_right(UINT map_start, char *world_map[])
 {
-	UINT x;
-	UINT y;
+	UINT	x;
+	UINT	y;
 
 	y = map_start;
 	x = 0;

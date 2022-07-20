@@ -6,7 +6,7 @@
 /*   By: sofferha <sofferha@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/18 17:20:22 by sofferha      #+#    #+#                 */
-/*   Updated: 2022/07/02 18:07:33 by swofferh      ########   odam.nl         */
+/*   Updated: 2022/07/20 13:27:36 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 FT_ISLOWER: 
 returns zero if character is lowcase.
 */
-int		ft_islower(int c)
+int	ft_islower(int c)
 {
 	return (c >= 97 && c <= 122);
 }

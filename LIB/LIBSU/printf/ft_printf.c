@@ -6,11 +6,12 @@
 /*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/08 22:26:36 by swofferh      #+#    #+#                 */
-/*   Updated: 2022/02/03 14:16:00 by swofferh      ########   odam.nl         */
+/*   Updated: 2022/07/20 13:40:44 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
+#include <unistd.h>
 
 void	init_struct(t_info *node)
 {
@@ -23,7 +24,7 @@ void	init_struct(t_info *node)
 }
 
 /* My own printf with precision and width and +- flags */
-int		ft_printf(const char *str, ...)
+int	ft_printf(const char *str, ...)
 {
 	t_info	node;
 	int		len;
@@ -53,6 +54,6 @@ int		ft_printf(const char *str, ...)
 
 void	pt_putchar(t_info *node, char c)
 {
-	write(1, &c, 1);
+	write(STDOUT_FILENO, &c, 1);
 	node->ret_value++;
 }

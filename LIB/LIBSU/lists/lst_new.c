@@ -6,7 +6,7 @@
 /*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/26 17:15:22 by swofferh      #+#    #+#                 */
-/*   Updated: 2021/02/23 12:07:51 by sofferha      ########   odam.nl         */
+/*   Updated: 2022/07/20 13:40:17 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@
 ** 	the value of the parameter content. The variable
 ** 	next is initialized to NULL.
 */
-t_list		*ft_lstnew(void *content)
+t_list	*ft_lstnew(void *content)
 {
 	t_list	*new;
 
-	new = (t_list*)ft_malloc(sizeof(t_list));
+	new = (t_list *)ft_malloc(sizeof(t_list));
 	if (!new)
 		return (NULL);
 	new->content = content;

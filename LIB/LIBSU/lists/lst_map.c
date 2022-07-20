@@ -6,7 +6,7 @@
 /*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/26 17:14:12 by swofferh      #+#    #+#                 */
-/*   Updated: 2021/02/23 12:07:58 by sofferha      ########   odam.nl         */
+/*   Updated: 2022/07/20 13:39:25 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 ** 	is here to delete the content of an element if needed. Returns the
 ** 	new list or NULL if allocation fails.
 */
-t_list		*lst_map(t_list *node, void *(*f)(void *), void (*del)(void *))
+t_list	*lst_map(t_list *node, void *(*f)(void *), void (*del)(void *))
 {
 	t_list		*new;
 	t_list		*head;

@@ -6,7 +6,7 @@
 /*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/28 17:31:45 by swofferh      #+#    #+#                 */
-/*   Updated: 2022/07/02 18:14:20 by swofferh      ########   odam.nl         */
+/*   Updated: 2022/07/19 23:42:02 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ the terminating NUL character.
 */
 size_t	ft_strlen(const char *str)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (str[i])

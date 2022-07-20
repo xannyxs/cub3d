@@ -6,14 +6,13 @@
 /*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/13 20:53:06 by swofferh      #+#    #+#                 */
-/*   Updated: 2022/07/02 18:08:05 by swofferh      ########   odam.nl         */
+/*   Updated: 2022/07/19 23:38:29 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-
-static void		*free_words(int j, char **words)
+static void	*free_words(int j, char **words)
 {
 	while (j != 0)
 	{
@@ -25,11 +24,11 @@ static void		*free_words(int j, char **words)
 	return (NULL);
 }
 
-static char		**copy_words(char const *s, char c, char **words)
+static char	**copy_words(char const *s, char c, char **words)
 {
-	int i;
-	int j;
-	int k;
+	int	i;
+	int	j;
+	int	k;
 
 	i = 0;
 	j = 0;
@@ -38,7 +37,7 @@ static char		**copy_words(char const *s, char c, char **words)
 		k = 0;
 		while (s[i] == c)
 			i++;
-		words[j] = (char*)ft_malloc(sizeof(char) * ft_wordlen(s, i, c) + 1);
+		words[j] = (char *)ft_malloc(sizeof(char) * ft_wordlen(s, i, c) + 1);
 		if (!(words[j]))
 			return (free_words(j, words));
 		while (s[i] != c && s[i] != '\0')
@@ -61,13 +60,13 @@ Allocates a string and returns an array of
 c as a delimiter. The array must be ended by a
 NULL pointer. Returns NULL if the allocation fails.
 */
-char			**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
-	char **words;
+	char	**words;
 
 	if (!(s))
 		return (NULL);
-	words = (char**)ft_malloc(sizeof(char*) * (ft_words(s, c) + 1));
+	words = (char **)ft_malloc(sizeof(char *) * (ft_words(s, c) + 1));
 	if (!(words))
 		return (NULL);
 	copy_words(s, c, words);

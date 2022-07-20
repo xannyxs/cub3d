@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 21:21:04 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/19 19:37:10 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/19 19:45:38 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	set_values(t_vars *vars)
 		rotate(&vars->data, M_PI);
 }
 
-static void load_png_path(t_path *path_data, t_textures *textures)
+static void	load_png_path(t_path *path_data, t_textures *textures)
 {
 	textures->north_wall = mlx_load_png(path_data->north);
 	if (!textures->north_wall)

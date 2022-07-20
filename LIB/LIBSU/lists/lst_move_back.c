@@ -6,7 +6,7 @@
 /*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/09 17:21:27 by swofferh      #+#    #+#                 */
-/*   Updated: 2021/02/23 12:07:56 by sofferha      ########   odam.nl         */
+/*   Updated: 2022/07/20 13:39:29 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*
 ** MOVE_BACK: moves content from the beggining to the end of the list.
 */
-t_list		*lst_move_back(t_list **node, void *content)
+t_list	*lst_move_back(t_list **node, void *content)
 {
 	t_list		*new;
 	t_list		*node_copy;

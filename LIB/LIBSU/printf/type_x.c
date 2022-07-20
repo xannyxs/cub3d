@@ -6,7 +6,7 @@
 /*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/08 22:26:52 by swofferh      #+#    #+#                 */
-/*   Updated: 2020/09/11 14:45:31 by sofferha      ########   odam.nl         */
+/*   Updated: 2022/07/20 13:46:31 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ void	width_x(t_info *node, unsigned int nbr, int len)
 
 void	preci_x(t_info *node, unsigned int nbr, int len, char c)
 {
-	int width;
-	int precision;
-	int prefix;
+	int	width;
+	int	precision;
+	int	prefix;
 
 	prefix = 0;
 	width = node->width;

@@ -6,25 +6,25 @@
 /*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/08 21:54:03 by swofferh      #+#    #+#                 */
-/*   Updated: 2022/07/02 17:48:08 by swofferh      ########   odam.nl         */
+/*   Updated: 2022/07/20 13:38:01 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 32
-# endif
+#ifndef BUFFER_SIZE
+# define BUFFER_SIZE 32
+#endif
 
-typedef enum		e_state
+typedef enum e_state
 {
 	ONE_LINE = 1,
 	END_FILE = 0,
 	ERROR = -1,
 	LOOP = 2
-}					t_state;
+}	t_state;
 
-static char		*copy_buffer(char *old, char *new, int n)
+static char	*copy_buffer(char *old, char *new, int n)
 {
 	char	*next;
 	int		len;
@@ -77,7 +77,7 @@ static t_state	read_line(int fd, char *buffer, char **out, int *size)
 	return (LOOP);
 }
 
-int				get_next_line(int fd, char **line)
+int	get_next_line(int fd, char **line)
 {
 	static char			buf[BUFFER_SIZE + 1];
 	static int			size;

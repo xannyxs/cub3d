@@ -6,7 +6,7 @@
 /*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/13 20:53:06 by swofferh      #+#    #+#                 */
-/*   Updated: 2022/07/02 18:10:43 by swofferh      ########   odam.nl         */
+/*   Updated: 2022/07/20 13:36:33 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 MY_WORDS:
 counts the amout of words (by skipping spaces)
 */
-int		ft_words(char const *str, char space)
+int	ft_words(char const *str, char space)
 {
-	int i;
-	int loop;
-	int count;
+	int	i;
+	int	loop;
+	int	count;
 
 	i = 0;
 	loop = 0;

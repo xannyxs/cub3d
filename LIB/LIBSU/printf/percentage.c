@@ -6,16 +6,16 @@
 /*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/08 22:27:06 by swofferh      #+#    #+#                 */
-/*   Updated: 2020/09/11 14:45:07 by sofferha      ########   odam.nl         */
+/*   Updated: 2022/07/20 13:41:45 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-int		ft_percentage(t_info *node, const char *str)
+int	ft_percentage(t_info *node, const char *str)
 {
-	int i;
-	int duo_percent;
+	int	i;
+	int	duo_percent;
 
 	i = 0;
 	while (str[i] == '%')
@@ -37,9 +37,9 @@ int		ft_percentage(t_info *node, const char *str)
 	return (i);
 }
 
-int		ft_signs(t_info *node, const char *str)
+int	ft_signs(t_info *node, const char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i] == ' ')
@@ -60,9 +60,9 @@ int		ft_signs(t_info *node, const char *str)
 	return (i);
 }
 
-int		ft_flags(t_info *node, const char *str)
+int	ft_flags(t_info *node, const char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (str[i] == '-')
@@ -85,7 +85,7 @@ int		ft_flags(t_info *node, const char *str)
 	return (i);
 }
 
-int		ft_argument(t_info *node, const char *str)
+int	ft_argument(t_info *node, const char *str)
 {
 	int		i;
 	int		j;
@@ -107,7 +107,7 @@ int		ft_argument(t_info *node, const char *str)
 	return (i);
 }
 
-int		ft_conversion(t_info *node, char conversion)
+int	ft_conversion(t_info *node, char conversion)
 {
 	if (conversion == 'c')
 		ft_c_argument(node);

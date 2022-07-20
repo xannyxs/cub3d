@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/07 17:33:39 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/19 20:32:41 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/19 22:36:08 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	check_wall(t_map *map_data)
 {
 	UINT	y;
 	char	**map;
-	
+
 	y = map_data->map_start;
 	map = map_data->world_map;
 	while (y < map_data->height)

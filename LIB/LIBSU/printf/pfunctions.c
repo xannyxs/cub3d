@@ -6,13 +6,13 @@
 /*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/08 22:27:17 by swofferh      #+#    #+#                 */
-/*   Updated: 2020/09/11 14:45:08 by sofferha      ########   odam.nl         */
+/*   Updated: 2022/07/20 13:42:01 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-int		pt_putsign(t_info *node, int nbr)
+int	pt_putsign(t_info *node, int nbr)
 {
 	if (nbr >= 0)
 	{
@@ -29,7 +29,7 @@ int		pt_putsign(t_info *node, int nbr)
 	return (nbr);
 }
 
-int		pt_putlen(t_info *node, char c, int len)
+int	pt_putlen(t_info *node, char c, int len)
 {
 	if (len < 0)
 		return (0);
