@@ -6,7 +6,7 @@
 /*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/08 22:27:52 by swofferh      #+#    #+#                 */
-/*   Updated: 2022/07/02 17:41:50 by swofferh      ########   odam.nl         */
+/*   Updated: 2022/07/20 13:43:13 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # include <limits.h>
 # include "libft.h"
 
-typedef	struct	s_info
+typedef struct s_info
 {
 	char		flag;
 	int			sign;
@@ -40,7 +40,7 @@ typedef	struct	s_info
 	char		conversion;
 	int			ret_value;
 	va_list		argument;
-}				t_info;
+}	t_info;
 /*
 **      Used functions libft:
 */

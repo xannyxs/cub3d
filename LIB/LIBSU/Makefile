@@ -6,7 +6,7 @@
 #    By: swofferh <swofferh@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/06/19 21:39:04 by swofferh      #+#    #+#                  #
-#    Updated: 2022/07/15 17:33:19 by xvoorvaa      ########   odam.nl          #
+#    Updated: 2022/07/20 13:34:04 by xvoorvaa      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ LIB 	= 	ft_atoi.c ft_itoa.c ft_putendl_fd.c ft_strjoin.c ft_strrchr.c\
 			ft_isascii.c ft_memmove.c ft_strclen.c ft_strncmp.c\
 			ft_isdigit.c ft_memset.c  ft_strcmp.c  ft_strncpy.c
 
-LSU		= 	ft_atol.c ft_islower.c ft_nospace.c ft_puthexa.c ft_maxof.c \
+LSU		= 	ft_atol.c ft_islower.c ft_nospace.c ft_puthexa.c \
 			ft_isspace.c ft_numlen.c ft_putlen.c ft_strndup.c \
 			ft_isupper.c  ft_putnbr.c ft_wordlen.c ft_putstr.c\
 			ft_lenbase.c ft_putchar.c ft_putocta.c ft_words.c\

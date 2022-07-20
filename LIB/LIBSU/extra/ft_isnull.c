@@ -6,7 +6,7 @@
 /*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/19 20:26:41 by swofferh      #+#    #+#                 */
-/*   Updated: 2022/07/06 17:37:05 by swofferh      ########   odam.nl         */
+/*   Updated: 2022/07/20 13:28:01 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 	This function returns 1 when it's true and 0 when it's false.
 */
 
-int		ft_isnull(int c)
+int	ft_isnull(int c)
 {
 	return ((c > 0 && c < 32) || (c == 128 && c == 127));
 }

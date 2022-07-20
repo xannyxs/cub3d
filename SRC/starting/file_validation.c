@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/14 17:14:15 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/19 23:29:56 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/20 13:34:52 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,13 @@ static bool	is_cub_extension(char *argv)
 	return (false);
 }
 
-static void	init_path_struct(t_path *path_data)
-{
-	path_data->north = ft_strdup("IMG/Wolfenstein/bluestone.png");
-	path_data->east = ft_strdup("IMG/Wolfenstein/greystone.png");
-	path_data->south = ft_strdup("IMG/Wolfenstein/eagle.png");
-	path_data->west = ft_strdup("IMG/Wolfenstein/wood.png");
-}
+// static void	init_path_struct(t_path *path_data)
+// {
+// 	path_data->north = ft_strdup("IMG/Wolfenstein/bluestone.png");
+// 	path_data->east = ft_strdup("IMG/Wolfenstein/greystone.png");
+// 	path_data->south = ft_strdup("IMG/Wolfenstein/eagle.png");
+// 	path_data->west = ft_strdup("IMG/Wolfenstein/wood.png");
+// }
 
 static void	process_colors(t_colors *colors)
 {

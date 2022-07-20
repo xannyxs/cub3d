@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   ft_remove_c.c                                      :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/07/20 13:35:57 by xvoorvaa      #+#    #+#                 */
+/*   Updated: 2022/07/20 13:36:00 by xvoorvaa      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 /*
@@ -5,7 +17,7 @@ FT_NOSPACE:
 removes all spaces...
 returns the new string without spaces
 */
-char		*ft_remove_c(char *line, char c)
+char	*ft_remove_c(char *line, char c)
 {
 	char	*str;
 	int		i;

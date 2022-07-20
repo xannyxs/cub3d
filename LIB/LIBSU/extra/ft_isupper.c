@@ -6,7 +6,7 @@
 /*   By: sofferha <sofferha@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/18 17:20:22 by sofferha      #+#    #+#                 */
-/*   Updated: 2022/07/02 18:06:52 by swofferh      ########   odam.nl         */
+/*   Updated: 2022/07/20 13:27:51 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 FT_ISUPPER:
 returns zero if character is uppercase.
 */
-int		ft_isupper(int c)
+int	ft_isupper(int c)
 {
 	return (c >= 65 && c <= 90);
 }
