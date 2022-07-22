@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/14 17:14:15 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/20 17:18:43 by swofferh      ########   odam.nl         */
+/*   Updated: 2022/07/22 15:28:16 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,10 @@ static bool	is_cub_extension(char *argv)
 	return (false);
 }
 
-static void	init_path_struct(t_path *path_data)
-{
-	path_data->north = ft_strdup("IMG/SUPER/leon-milk.png");
-	path_data->east = ft_strdup("IMG/Wolfenstein/greystone.png");
-	path_data->south = ft_strdup("IMG/Wolfenstein/eagle.png");
-	path_data->west = ft_strdup("IMG/Wolfenstein/wood.png");
-}
-
+/*
+	First it turns the RGB string from the parser into a array of ints[3]
+	then checks for errors (if negative numbers, if isalpha(), and max 255)
+*/
 static void	process_colors(t_textures *textures)
 {
 	int 	i;
@@ -70,13 +66,16 @@ static void	process_colors(t_textures *textures)
 	while(floor_split[i])
 	{
 		textures->f_rgb[i] = ft_atoi(floor_split[i]);
+		// if (textures->f_rgb[i] < 0 || ft_isdigit(textures->f_rgb[i]) == 0)
+		// 	non_fatal_error(WRONG_NUMBER);
 		i++;
 	}
 	i = 0;
 	while(ceilling_split[i])
 	{
-		printf("[%i]%i - %s\n", i, textures->c_rgb[i], ceilling_split[i]);
 		textures->c_rgb[i] = ft_atoi(ceilling_split[i]);
+		// if (textures->f_rgb[i] < 0 || ft_isdigit(textures->f_rgb[i] == 0))
+		// 	non_fatal_error(WRONG_NUMBER);
 		i++;
 	}
 }
@@ -92,9 +91,21 @@ static int	get_path_data(t_path *path_data, t_textures *textures, t_map *map_dat
 
 	i = 0;
 	line = 0;
+	(void)textures;
 	array = map_data->world_map;
-	while (array[line] && ft_isspace(array[line][i]) != 1)
+	while (array[line])
 	{
+		//printf("[%i]\n", line);
+		if((int)array[line][i] >= 0 && (int)array[line][i] <= 32)
+		{
+			line++;
+			if (array[line][i] == WALL)
+			{
+				map_data->map_start = line;
+				break ;
+			}
+		}
+		//printf("%s[%i]\n", array[line], array[line][i+1]);
 		if (array[line][i] == NORTH)
 			path_data->north = ft_strndup(array[line], 3);
 		else if (array[line][i] == SOUTH)
@@ -109,9 +120,9 @@ static int	get_path_data(t_path *path_data, t_textures *textures, t_map *map_dat
 			textures->ceilling = ft_strndup(array[line], 2);
 		else
 		{
-			init_path_struct(path_data);
-			// non_fatal_error(NO_PATH);
-			// return (ERROR);
+			//printf("error[%i][%i] int=%i char=%c%c\n", line, i, array[line][i], array[line][i], array[line][i+1]);
+			non_fatal_error(NO_PATH);
+			return (ERROR);
 		}
 		if (array[line][i] == WALL)
 		{

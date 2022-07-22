@@ -8,9 +8,12 @@
 () upgrade clean check_player
 () study allowed functions and mlx repo
 (x) parsing pathing of walls, add xpm struct
-() mlx collors F/C parsing on s_map (RED,GREEN,BLUE) intensity
-() memo save colors as char (max ascii 256) > not ints
-
+(x) mlx collors F/C parsing on s_map (RED,GREEN,BLUE) intensity
+    (X) memo save colors as char (max ascii 256) > not ints
+    () error handling for wrong colors
+        () >255 || <0 negative alpha
+        () when 
+    ()mae run
 ---- DISCUSS
 
 () bonus health bar without sprints?
