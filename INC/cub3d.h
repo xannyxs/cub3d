@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 21:22:16 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/20 16:59:16 by swofferh      ########   odam.nl         */
+/*   Updated: 2022/07/22 15:46:34 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ typedef struct s_vars
 	CUB3D
 */
 
-int32_t	main(int argc, char *argv[]);
+void	init_sys(t_vars *vars);
 
 void	raycasting_hook(void *param);
 
@@ -166,8 +166,6 @@ void	draw_wall(t_data *data, t_textures texture, \
 	mlx_texture_t *wall, UINT x);
 
 void	reset_window(mlx_image_t *screen);
-
-uint32_t	create_rgbt(int r, int g, int b, int t);
 
 void	draw_floor(mlx_image_t *screen, int draw_end, uint32_t colour, int x);
 

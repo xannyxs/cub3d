@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/07 17:36:20 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/19 22:35:45 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/22 13:11:35 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #define WALL '1'
 #define EMPTY '0'
 
-int	check_unknown(t_map map_data)
+int32_t	check_unknown(t_map map_data)
 {
 	UINT	x;
 	UINT	y;
