@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 21:21:04 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/19 19:45:38 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/20 17:08:08 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ int32_t	main(int argc, char *argv[])
 		return (ERROR);
 	init_sys(&vars);
 	mlx_loop_hook(vars.mlx, &raycasting_hook, &vars);
+	//mlx_loop_hook(vars.mlx, &minimap_hook, &vars);
 	mlx_loop_hook(vars.mlx, &movement_hook, &vars);
 	mlx_loop(vars.mlx);
 	mlx_terminate(vars.mlx);
