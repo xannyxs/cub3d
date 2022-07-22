@@ -6,7 +6,7 @@
 #    By: swofferh <swofferh@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/06/19 21:39:04 by swofferh      #+#    #+#                  #
-#    Updated: 2022/07/20 13:34:04 by xvoorvaa      ########   odam.nl          #
+#    Updated: 2022/07/22 13:48:32 by swofferh      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ LSU		= 	ft_atol.c ft_islower.c ft_nospace.c ft_puthexa.c \
 			ft_isupper.c  ft_putnbr.c ft_wordlen.c ft_putstr.c\
 			ft_lenbase.c ft_putchar.c ft_putocta.c ft_words.c\
 			ft_strjoin_free.c ft_free_array.c ft_print_array.c\
-			ft_putendl.c get_next_line.c ft_malloc.c
+			ft_putendl.c get_next_line.c ft_malloc.c ft_open.c
 
 PFT		=	type_c.c type_s.c type_d.c type_u.c type_p.c type_x.c\
 			percentage.c pfunctions.c preci_width.c ft_printf.c
@@ -42,8 +42,8 @@ LST		=	lst_reverse.c lst_move_front.c lst_move_back.c\
 
 INC 	= inc
 DIR_OBJ = obj
-DIR_LIB = all
-DIR_LSU = extra
+DIR_LIB = libft
+DIR_LSU = libsu
 DIR_LST = lists
 DIR_PFT = printf
 

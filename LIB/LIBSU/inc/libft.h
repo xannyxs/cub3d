@@ -6,7 +6,7 @@
 /*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/28 17:10:52 by swofferh      #+#    #+#                 */
-/*   Updated: 2022/07/20 13:38:32 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/22 13:45:27 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdlib.h>
 # include <stdarg.h>
 
-# include "../printf/printf.h"
+# include "printf.h"
 # include "liblist.h"
 # include "libsu.h"
 
