@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/14 17:14:15 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/22 15:30:49 by swofferh      ########   odam.nl         */
+/*   Updated: 2022/07/22 20:40:00 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,41 +89,50 @@ static int	get_path_data(t_path *path_data, t_textures *textures, t_map *map_dat
 	int		line;
 	char	**array;
 
-	i = 0;
 	line = 0;
 	(void)textures;
 	array = map_data->world_map;
 	while (array[line])
 	{
-		//printf("[%i]\n", line);
-		if((int)array[line][i] >= 0 && (int)array[line][i] <= 32)
+		printf("%i>", line);
+		i = 0;
+		while((int)array[line][i] > 0 && (int)array[line][i] <= 32)
+		{
+			//printf("[%i]", array[line][i]);
+			if ((int)array[line][i] >= 46)
+				break;
+			i++;
+		}
+		printf("[%c]%i\n",array[line][i], i);
+		if (array[line][i] == WALL)
+		{
+			map_data->map_start = line;
+			break ;
+		}
+		if (array[line][i] == '\0')
 		{
 			line++;
-			if (array[line][i] == WALL)
-			{
-				map_data->map_start = line;
-				break ;
-			}
+			continue ;
 		}
-		//printf("%s[%i]\n", array[line], array[line][i+1]);
-		if (array[line][i] == NORTH)
-			path_data->north = ft_strndup(array[line], 3);
+		else if (array[line][i] == NORTH)
+			path_data->north = ft_strdup(&array[line][i + 3]);
 		else if (array[line][i] == SOUTH)
-			path_data->south = ft_strndup(array[line], 3);
+			path_data->south = ft_strdup(&array[line][i + 3]);
 		else if (array[line][i] == WEST)
-			path_data->west = ft_strndup(array[line], 3);
+			path_data->west = ft_strdup(&array[line][i + 3]);
 		else if (array[line][i] == EAST)
-			path_data->east = ft_strndup(array[line], 3);
+			path_data->east = ft_strdup(&array[line][i + 3]);
 		else if (array[line][i] == FLOOR)
-			textures->floor = ft_strndup(array[line], 2);
+			textures->floor = ft_strdup(&array[line][i + 2]);
 		else if (array[line][i] == CEILLING)
-			textures->ceilling = ft_strndup(array[line], 2);
+			textures->ceilling = ft_strdup(&array[line][i + 2]);
 		else
 		{
-			//printf("error[%i][%i] int=%i char=%c%c\n", line, i, array[line][i], array[line][i], array[line][i+1]);
+			printf("\nerror[%i][%i] int=%i char=%c%c\n", line, i, array[line][i], array[line][i], array[line][i+1]);
 			non_fatal_error(NO_PATH);
 			return (ERROR);
 		}
+		//printf(">%s\n", path_data->south);
 		if (array[line][i] == WALL)
 		{
 			map_data->map_start = line;

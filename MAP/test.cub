@@ -1,10 +1,13 @@
-NO IMG/SUPER/grains.png
-SO IMG/SUPER/junkfood.png
-WE IMG/SUPER/ramen.png
-EA IMG/SUPER/leon-milk.png
 
-F 220,1050,202
+       NO IMG/SUPER/grains.png
+    SO IMG/SUPER/junkfood.png
+WE IMG/SUPER/ramen.png
+    EA IMG/SUPER/leon-milk.png
+
+
 C 225,200,100
+F 220,1050,202
+
 
 111111111111111111111111
 100000000110000000000001

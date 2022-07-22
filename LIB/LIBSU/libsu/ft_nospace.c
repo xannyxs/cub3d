@@ -6,16 +6,16 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/07/20 13:29:39 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/20 13:29:48 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/22 20:14:28 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /*
-FT_NOSPACE: 
-removes all spaces...
-returns the new string without spaces
+	FT_NOSPACE: 
+	removes all spaces...
+	returns the new string without spaces
 */
 char	*ft_nospace(char *line)
 {
