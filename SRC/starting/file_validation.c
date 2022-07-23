@@ -6,10 +6,11 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/14 17:14:15 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/22 20:40:00 by swofferh      ########   odam.nl         */
+/*   Updated: 2022/07/23 22:27:12 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <errno.h> /* ERRNO */
 #include "cub3d.h" /* t_vars */
 #include "error.h" /* Error msg */
 #include "libft.h" /* ft_strcmp ft_strndup.c*/
@@ -66,16 +67,19 @@ static void	process_colors(t_textures *textures)
 	while(floor_split[i])
 	{
 		textures->f_rgb[i] = ft_atoi(floor_split[i]);
-		// if (textures->f_rgb[i] < 0 || ft_isdigit(textures->f_rgb[i]) == 0)
-		// 	non_fatal_error(WRONG_NUMBER);
+		if(ft_isdigit(textures->f_rgb[i]) == 0 || textures->f_rgb[i] > 255 || textures->f_rgb[i] < 0)
+			//non_fatal_error(WRONG_NUMBER);
+			exit(errno);			
 		i++;
 	}
 	i = 0;
 	while(ceilling_split[i])
 	{
 		textures->c_rgb[i] = ft_atoi(ceilling_split[i]);
-		// if (textures->f_rgb[i] < 0 || ft_isdigit(textures->f_rgb[i] == 0))
-		// 	non_fatal_error(WRONG_NUMBER);
+		printf("%i(%s)\n", textures->c_rgb[i], ceilling_split[i]);
+		if (ft_isdigit(textures->c_rgb[i]) == 0 || textures->c_rgb[i] < 0 || textures->c_rgb[i] < 0)
+			//non_fatal_error(WRONG_NUMBER);
+			exit(errno);
 		i++;
 	}
 }
@@ -94,7 +98,7 @@ static int	get_path_data(t_path *path_data, t_textures *textures, t_map *map_dat
 	array = map_data->world_map;
 	while (array[line])
 	{
-		printf("%i>", line);
+		//printf("%i>", line);
 		i = 0;
 		while((int)array[line][i] > 0 && (int)array[line][i] <= 32)
 		{
@@ -103,7 +107,7 @@ static int	get_path_data(t_path *path_data, t_textures *textures, t_map *map_dat
 				break;
 			i++;
 		}
-		printf("[%c]%i\n",array[line][i], i);
+		//printf("[%c]%i\n",array[line][i], i);
 		if (array[line][i] == WALL)
 		{
 			map_data->map_start = line;
@@ -128,7 +132,7 @@ static int	get_path_data(t_path *path_data, t_textures *textures, t_map *map_dat
 			textures->ceilling = ft_strdup(&array[line][i + 2]);
 		else
 		{
-			printf("\nerror[%i][%i] int=%i char=%c%c\n", line, i, array[line][i], array[line][i], array[line][i+1]);
+			//printf("\nerror[%i][%i] int=%i char=%c%c\n", line, i, array[line][i], array[line][i], array[line][i+1]);
 			non_fatal_error(NO_PATH);
 			return (ERROR);
 		}
