@@ -6,7 +6,7 @@
 /*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/28 17:10:52 by swofferh      #+#    #+#                 */
-/*   Updated: 2022/07/25 11:52:44 by sofferha      ########   odam.nl         */
+/*   Updated: 2022/07/25 15:10:32 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 
 # include "libft.h"
 
-/* 					Extra functions (outside libft)
+/*					Extra functions (outside libft)
 */
 long				ft_atol(const char *str);
-int	                ft_open(char *cub_file);
+int					ft_open(char *cub_file);
 int					ft_isspace(char c);
 int					ft_isnull(char c);
 int					ft_isupper(int n);

@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 21:22:16 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/25 14:59:02 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/25 14:59:56 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,10 @@ typedef struct s_textures
 */
 typedef struct s_path
 {
-	char		*north;
-	char		*south;
-	char		*east;
-	char		*west;
+	char	*north;
+	char	*south;
+	char	*east;
+	char	*west;
 }	t_path;
 
 /*
