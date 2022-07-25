@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/14 17:14:15 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/23 22:27:12 by swofferh      ########   odam.nl         */
+/*   Updated: 2022/07/25 10:24:37 by sofferha      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,25 +67,46 @@ static void	process_colors(t_textures *textures)
 	while(floor_split[i])
 	{
 		textures->f_rgb[i] = ft_atoi(floor_split[i]);
-		if(ft_isdigit(textures->f_rgb[i]) == 0 || textures->f_rgb[i] > 255 || textures->f_rgb[i] < 0)
-			//non_fatal_error(WRONG_NUMBER);
-			exit(errno);			
+		if(textures->f_rgb[i] > 255 || textures->f_rgb[i] < 0)
+		{
+			non_fatal_error(WRONG_NUMBER);
+			exit(errno);
+		}
 		i++;
 	}
 	i = 0;
 	while(ceilling_split[i])
 	{
 		textures->c_rgb[i] = ft_atoi(ceilling_split[i]);
-		printf("%i(%s)\n", textures->c_rgb[i], ceilling_split[i]);
-		if (ft_isdigit(textures->c_rgb[i]) == 0 || textures->c_rgb[i] < 0 || textures->c_rgb[i] < 0)
-			//non_fatal_error(WRONG_NUMBER);
+		if (textures->c_rgb[i] > 255 || textures->c_rgb[i] < 0)
+		 {
+			non_fatal_error(WRONG_NUMBER);
 			exit(errno);
+		 }
 		i++;
 	}
 }
 
+static int	check_walls(t_path *path_data, t_textures *textures, char *path, int i)	
+{
+	if (path[i] == NORTH)
+		path_data->north = ft_strdup(&path[i + 3]);
+	else if (path[i] == SOUTH)
+		path_data->south = ft_strdup(&path[i + 3]);
+	else if (path[i] == WEST)
+		path_data->west = ft_strdup(&path[i + 3]);
+	else if (path[i] == EAST)
+		path_data->east = ft_strdup(&path[i + 3]);
+	else if (path[i] == FLOOR)
+		textures->floor = ft_strdup(&path[i + 2]);
+	else if (path[i] == CEILLING)
+		textures->ceilling = ft_strdup(&path[i + 2]);
+	else
+		return (ERROR);
+	return (SUCCES);
+}
 /*
-	ft_strndup is protected by ft_malloc
+	Error handling for file input (parser)
 */
 static int	get_path_data(t_path *path_data, t_textures *textures, t_map *map_data)
 {
@@ -94,20 +115,16 @@ static int	get_path_data(t_path *path_data, t_textures *textures, t_map *map_dat
 	char	**array;
 
 	line = 0;
-	(void)textures;
 	array = map_data->world_map;
 	while (array[line])
 	{
-		//printf("%i>", line);
 		i = 0;
 		while((int)array[line][i] > 0 && (int)array[line][i] <= 32)
 		{
-			//printf("[%i]", array[line][i]);
 			if ((int)array[line][i] >= 46)
 				break;
 			i++;
 		}
-		//printf("[%c]%i\n",array[line][i], i);
 		if (array[line][i] == WALL)
 		{
 			map_data->map_start = line;
@@ -118,29 +135,10 @@ static int	get_path_data(t_path *path_data, t_textures *textures, t_map *map_dat
 			line++;
 			continue ;
 		}
-		else if (array[line][i] == NORTH)
-			path_data->north = ft_strdup(&array[line][i + 3]);
-		else if (array[line][i] == SOUTH)
-			path_data->south = ft_strdup(&array[line][i + 3]);
-		else if (array[line][i] == WEST)
-			path_data->west = ft_strdup(&array[line][i + 3]);
-		else if (array[line][i] == EAST)
-			path_data->east = ft_strdup(&array[line][i + 3]);
-		else if (array[line][i] == FLOOR)
-			textures->floor = ft_strdup(&array[line][i + 2]);
-		else if (array[line][i] == CEILLING)
-			textures->ceilling = ft_strdup(&array[line][i + 2]);
-		else
+		if (check_walls(path_data, textures, array[line], i) == ERROR)
 		{
-			//printf("\nerror[%i][%i] int=%i char=%c%c\n", line, i, array[line][i], array[line][i], array[line][i+1]);
 			non_fatal_error(NO_PATH);
-			return (ERROR);
-		}
-		//printf(">%s\n", path_data->south);
-		if (array[line][i] == WALL)
-		{
-			map_data->map_start = line;
-			break ;
+			return(ERROR);
 		}
 		line++;
 	}

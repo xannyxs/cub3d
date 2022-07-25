@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/14 17:58:30 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/23 22:23:59 by swofferh      ########   odam.nl         */
+/*   Updated: 2022/07/25 10:01:37 by sofferha      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # define LAST_LINE_EMPTY "-- Empty line after the world map"
 
 # define PATH_ERROR "-- Something went wrong processing png path. --"
-# define WRONG_NUMBER "-- This program needs input in [0,255] range "
+# define WRONG_NUMBER "-- Colors input needs to be in [0,255] range "
 
 # define GNL_ERROR "-- Something went wrong while reading .cub file --"
 # define NO_PATH "-- Couldn't get any path and colors from file --"
