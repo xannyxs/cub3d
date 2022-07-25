@@ -1,19 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   draw_walls_floor_ceilling.c                        :+:    :+:            */
+/*   draw.c                                             :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/09 16:13:36 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/25 14:31:59 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/25 17:26:22 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "MLX42/MLX42.h"
-#include "libft.h"
+#include "libft.h" /* ft_memset */
 
+/*
+	Get colour value by bitshifting the decimal to hexadecimal.
+*/
 static uint32_t	create_rgb(int r, int g, int b)
 {
 	return (r << 24 | g << 16 | b << 8 | 255);
