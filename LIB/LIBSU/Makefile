@@ -6,7 +6,7 @@
 #    By: swofferh <swofferh@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/06/19 21:39:04 by swofferh      #+#    #+#                  #
-#    Updated: 2022/07/22 13:48:32 by swofferh      ########   odam.nl          #
+#    Updated: 2022/07/25 12:41:54 by sofferha      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,23 @@ include inc/Makepretty.mk
 PROJECT = 	libft
 NAME 	= 	$(PROJECT).a
 CFLAGS 	= 	-Wall -Wextra -Werror
+
+# INC 	= inc
+# DIR_OBJ = obj
+# DIR_LIB = libft
+# DIR_LSU = libsu
+# DIR_LST = lists
+# DIR_PFT = printf
+
+# LIB 	= 	$(shell find $(DIR_LIB) -type f -name "*.c")
+# LSU	= 	$(shell find $(DIR_LSU) -type f -name "*.c")
+# LST	=	$(shell find $(DIR_LST) -type f -name "*.c")
+# PFT	=	$(shell find $(DIR_PFT) -type f -name "*.c")
+
+# O_LIB = $(patsubst $(DIR_LIB)/%,$(DIR_OBJ)/%,$(LIB:.c=.o))
+# O_PFT = $(patsubst $(DIR_PFT)/%,$(DIR_OBJ)/%,$(PFT:.c=.o))
+# O_LST = $(patsubst $(DIR_LST)/%,$(DIR_OBJ)/%,$(LST:.c=.o))
+# O_LSU = $(patsubst $(DIR_LSU)/%,$(DIR_OBJ)/%,$(LSU:.c=.o))
 
 LIB 	= 	ft_atoi.c ft_itoa.c ft_putendl_fd.c ft_strjoin.c ft_strrchr.c\
 			ft_calloc.c  ft_memchr.c  ft_putstr_fd.c  ft_strlcpy.c ft_substr.c\
@@ -25,7 +42,7 @@ LIB 	= 	ft_atoi.c ft_itoa.c ft_putendl_fd.c ft_strjoin.c ft_strrchr.c\
 			ft_isascii.c ft_memmove.c ft_strclen.c ft_strncmp.c\
 			ft_isdigit.c ft_memset.c  ft_strcmp.c  ft_strncpy.c
 
-LSU		= 	ft_atol.c ft_islower.c ft_nospace.c ft_puthexa.c \
+LSU		= 	ft_atol.c ft_islower.c ft_nospace.c ft_isnull.c ft_puthexa.c \
 			ft_isspace.c ft_numlen.c ft_putlen.c ft_strndup.c \
 			ft_isupper.c  ft_putnbr.c ft_wordlen.c ft_putstr.c\
 			ft_lenbase.c ft_putchar.c ft_putocta.c ft_words.c\

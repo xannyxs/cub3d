@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/14 17:14:15 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/25 10:24:37 by sofferha      ########   odam.nl         */
+/*   Updated: 2022/07/25 12:47:31 by sofferha      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ static void	process_colors(t_textures *textures)
 	}
 }
 
-static int	check_walls(t_path *path_data, t_textures *textures, char *path, int i)	
+static int	check_paths(t_path *path_data, t_textures *colors, char *path, int i)	
 {
 	if (path[i] == NORTH)
 		path_data->north = ft_strdup(&path[i + 3]);
@@ -98,44 +98,39 @@ static int	check_walls(t_path *path_data, t_textures *textures, char *path, int 
 	else if (path[i] == EAST)
 		path_data->east = ft_strdup(&path[i + 3]);
 	else if (path[i] == FLOOR)
-		textures->floor = ft_strdup(&path[i + 2]);
+		colors->floor = ft_strdup(&path[i + 2]);
 	else if (path[i] == CEILLING)
-		textures->ceilling = ft_strdup(&path[i + 2]);
+		colors->ceilling = ft_strdup(&path[i + 2]);
 	else
 		return (ERROR);
 	return (SUCCES);
 }
+
 /*
 	Error handling for file input (parser)
 */
-static int	get_path_data(t_path *path_data, t_textures *textures, t_map *map_data)
+static int	get_path_data(t_path *path, t_textures *textures, t_map *map)
 {
 	int		i;
 	int		line;
-	char	**array;
 
 	line = 0;
-	array = map_data->world_map;
-	while (array[line])
+	while (map->world_map[line])
 	{
 		i = 0;
-		while((int)array[line][i] > 0 && (int)array[line][i] <= 32)
-		{
-			if ((int)array[line][i] >= 46)
-				break;
+		while(ft_isspace(map->world_map[line][i]) == TRUE)
 			i++;
-		}
-		if (array[line][i] == WALL)
+		if (map->world_map[line][i] == WALL)
 		{
-			map_data->map_start = line;
+			map->map_start = line;
 			break ;
 		}
-		if (array[line][i] == '\0')
+		if (ft_isnull(map->world_map[line][i]) == TRUE)
 		{
 			line++;
 			continue ;
 		}
-		if (check_walls(path_data, textures, array[line], i) == ERROR)
+		if (check_paths(path, textures, map->world_map[line], i) == ERROR)
 		{
 			non_fatal_error(NO_PATH);
 			return(ERROR);

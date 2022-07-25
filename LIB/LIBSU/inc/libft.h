@@ -6,7 +6,7 @@
 /*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/28 17:10:52 by swofferh      #+#    #+#                 */
-/*   Updated: 2022/07/22 13:45:27 by swofferh      ########   odam.nl         */
+/*   Updated: 2022/07/25 12:43:42 by sofferha      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,6 @@ int					ft_isalpha(int c);
 int					ft_isalnum(int c);
 int					ft_isascii(int c);
 int					ft_isprint(int c);
-
-int					ft_isnull(int n);
 int					ft_isupper(int n);
 int					ft_islower(int n);
 int					ft_isnumsign(int c);
