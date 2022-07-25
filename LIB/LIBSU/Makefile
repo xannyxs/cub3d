@@ -6,7 +6,7 @@
 #    By: swofferh <swofferh@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/06/19 21:39:04 by swofferh      #+#    #+#                  #
-#    Updated: 2022/07/25 16:54:22 by xvoorvaa      ########   odam.nl          #
+#    Updated: 2022/07/25 18:44:26 by xvoorvaa      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,23 +15,6 @@ include inc/Makepretty.mk
 PROJECT = 	libft
 NAME 	= 	$(PROJECT).a
 CFLAGS 	= 	-Wall -Wextra -Werror
-
-# INC 	= inc
-# DIR_OBJ = obj
-# DIR_LIB = libft
-# DIR_LSU = libsu
-# DIR_LST = lists
-# DIR_PFT = printf
-
-# LIB 	= 	$(shell find $(DIR_LIB) -type f -name "*.c")
-# LSU	= 	$(shell find $(DIR_LSU) -type f -name "*.c")
-# LST	=	$(shell find $(DIR_LST) -type f -name "*.c")
-# PFT	=	$(shell find $(DIR_PFT) -type f -name "*.c")
-
-# O_LIB = $(patsubst $(DIR_LIB)/%,$(DIR_OBJ)/%,$(LIB:.c=.o))
-# O_PFT = $(patsubst $(DIR_PFT)/%,$(DIR_OBJ)/%,$(PFT:.c=.o))
-# O_LST = $(patsubst $(DIR_LST)/%,$(DIR_OBJ)/%,$(LST:.c=.o))
-# O_LSU = $(patsubst $(DIR_LSU)/%,$(DIR_OBJ)/%,$(LSU:.c=.o))
 
 LIB 	= 	ft_atoi.c ft_itoa.c ft_putendl_fd.c ft_strjoin.c ft_strrchr.c\
 			ft_calloc.c  ft_memchr.c  ft_putstr_fd.c  ft_strlcpy.c ft_substr.c\

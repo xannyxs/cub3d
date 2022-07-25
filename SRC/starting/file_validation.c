@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/14 17:14:15 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/25 14:49:31 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/25 19:11:26 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ static bool	is_cub_extension(char *argv)
 
 	i = 0;
 	str = ft_split(argv, '.');
-	if (str == NULL)
-		fatal_perror("malloc");
 	while (str[i] != NULL)
 		i++;
 	i--;
@@ -51,9 +49,15 @@ bool	is_cub_file_valid(char *cub_file, t_vars *vars)
 	if (read_file(cub_file, vars))
 		return (false);
 	if (get_path_data(&vars->path_data, &vars->textures, &vars->map_data))
+	{
+		ft_free_array(vars->map_data.world_map);
 		return (false);
+	}
 	process_colors(&vars->textures);
 	if (check_map(&vars->map_data))
+	{
+		ft_free_array(vars->map_data.world_map);
 		return (false);
+	}
 	return (true);
 }

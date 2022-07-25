@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/07/22 12:59:38 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/22 13:01:40 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/25 19:09:30 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,10 @@ static void	load_png_path(t_path *path_data, t_textures *textures)
 	textures->west_wall = mlx_load_png(path_data->west);
 	if (!textures->west_wall)
 		fatal_perror("mlx");
+	free(path_data->north);
+	free(path_data->east);
+	free(path_data->south);
+	free(path_data->west);
 }
 
 /*
