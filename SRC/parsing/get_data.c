@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/07/25 14:44:05 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/25 15:21:56 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/25 18:00:55 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,19 @@
 #define CEILLING 'C'
 #define FLOOR 'F'
 
-static int	check_paths(t_path *path_data, t_textures *colors, \
-	char *path, int i)
+static int	check_paths(t_path *data, t_textures *colors, char *path, int i)
 {
-	if (path[i] == NORTH)
-		path_data->north = ft_strdup(&path[i + 3]);
-	else if (path[i] == SOUTH)
-		path_data->south = ft_strdup(&path[i + 3]);
-	else if (path[i] == WEST)
-		path_data->west = ft_strdup(&path[i + 3]);
-	else if (path[i] == EAST)
-		path_data->east = ft_strdup(&path[i + 3]);
-	else if (path[i] == FLOOR)
+	if (path[i] == NORTH && data->north == NULL)
+		data->north = ft_strdup(&path[i + 3]);
+	else if (path[i] == SOUTH && data->south == NULL)
+		data->south = ft_strdup(&path[i + 3]);
+	else if (path[i] == WEST && data->west == NULL)
+		data->west = ft_strdup(&path[i + 3]);
+	else if (path[i] == EAST && data->east == NULL)
+		data->east = ft_strdup(&path[i + 3]);
+	else if (path[i] == FLOOR && colors->floor == NULL)
 		colors->floor = ft_strdup(&path[i + 2]);
-	else if (path[i] == CEILLING)
+	else if (path[i] == CEILLING && colors->ceiling == NULL)
 		colors->ceiling = ft_strdup(&path[i + 2]);
 	else
 		return (ERROR);

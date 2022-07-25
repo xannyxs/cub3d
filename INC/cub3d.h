@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 21:22:16 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/25 14:59:56 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/25 17:34:29 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +96,6 @@ void	init_sys(t_vars *vars);
 
 void	raycasting_hook(void *param);
 
-void	draw_hook(void *param);
-
 /*
 	FILE CHECK
 */
@@ -121,12 +119,6 @@ bool	check_for_holes(UINT map_data, char *world_map[]);
 void	find_player(t_vars *vars);
 
 bool	is_monitor_valid(mlx_t *mlx);
-
-/*
-	WRAPPED
-*/
-
-int		ft_open(char *cub_file);
 
 /*
 	LINKED LIST

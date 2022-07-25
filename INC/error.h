@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/14 17:58:30 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/25 16:31:27 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/25 18:03:08 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define RBG_ERROR "-- I need three colour inputs --"
 
 # define GNL_ERROR "-- Something went wrong while reading .cub file --"
-# define NO_PATH "-- Couldn't get any path and colors from file --"
+# define NO_PATH "-- File input is invalid, fix the path/colour jonguh --"
 
 # define MISSING_WALL "-- Missing wall surrounding the map --"
 # define MISSING_PLAYER "-- Missing player --"
