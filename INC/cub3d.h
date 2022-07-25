@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 21:22:16 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/22 15:46:34 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/25 14:53:44 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef struct s_textures
 	mlx_texture_t	*south_wall;
 	mlx_image_t		*screen;
 	char			*floor;
-	char			*ceilling;
+	char			*ceiling;
 	int				f_rgb[3];
 	int				c_rgb[3];
 }	t_textures;
@@ -189,5 +189,13 @@ UINT	my_mlx_get_colour(mlx_texture_t *img, UINT x, UINT y);
 UINT	my_mlx_put_pixel(mlx_image_t *img, UINT x, UINT y, UINT colour);
 
 void	my_mlx_resize_window(mlx_t *mlx, t_data *data, mlx_image_t *screen);
+
+/*
+	PARCER
+*/
+
+int		get_path_data(t_path *path, t_textures *textures, t_map *map);
+
+void	process_colors(t_textures *textures);
 
 #endif

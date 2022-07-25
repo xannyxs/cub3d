@@ -6,24 +6,13 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/14 17:14:15 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/25 12:47:31 by sofferha      ########   odam.nl         */
+/*   Updated: 2022/07/25 14:49:31 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <errno.h> /* ERRNO */
 #include "cub3d.h" /* t_vars */
 #include "error.h" /* Error msg */
-#include "libft.h" /* ft_strcmp ft_strndup.c*/
-
-#define WALL '1'
-
-#define NORTH 'N'
-#define SOUTH 'S'
-#define WEST 'W'
-#define EAST 'E'
-
-#define CEILLING 'C'
-#define FLOOR 'F'
+#include "libft.h" /* ft_strcmp */
 
 /*
 	Function that checks if the map file has a ".cub"
@@ -49,95 +38,6 @@ static bool	is_cub_extension(char *argv)
 	ft_free_array(str);
 	non_fatal_error(NONVALID_FILE);
 	return (false);
-}
-
-/*
-	First it turns the RGB string from the parser into a array of ints[3]
-	then checks for errors (if negative numbers, if isalpha(), and max 255)
-*/
-static void	process_colors(t_textures *textures)
-{
-	int 	i;
-	char 	**floor_split;
-	char	**ceilling_split;
-
-	i = 0;
-	floor_split = ft_split(textures->floor, ',');
-	ceilling_split = ft_split(textures->ceilling, ',');
-	while(floor_split[i])
-	{
-		textures->f_rgb[i] = ft_atoi(floor_split[i]);
-		if(textures->f_rgb[i] > 255 || textures->f_rgb[i] < 0)
-		{
-			non_fatal_error(WRONG_NUMBER);
-			exit(errno);
-		}
-		i++;
-	}
-	i = 0;
-	while(ceilling_split[i])
-	{
-		textures->c_rgb[i] = ft_atoi(ceilling_split[i]);
-		if (textures->c_rgb[i] > 255 || textures->c_rgb[i] < 0)
-		 {
-			non_fatal_error(WRONG_NUMBER);
-			exit(errno);
-		 }
-		i++;
-	}
-}
-
-static int	check_paths(t_path *path_data, t_textures *colors, char *path, int i)	
-{
-	if (path[i] == NORTH)
-		path_data->north = ft_strdup(&path[i + 3]);
-	else if (path[i] == SOUTH)
-		path_data->south = ft_strdup(&path[i + 3]);
-	else if (path[i] == WEST)
-		path_data->west = ft_strdup(&path[i + 3]);
-	else if (path[i] == EAST)
-		path_data->east = ft_strdup(&path[i + 3]);
-	else if (path[i] == FLOOR)
-		colors->floor = ft_strdup(&path[i + 2]);
-	else if (path[i] == CEILLING)
-		colors->ceilling = ft_strdup(&path[i + 2]);
-	else
-		return (ERROR);
-	return (SUCCES);
-}
-
-/*
-	Error handling for file input (parser)
-*/
-static int	get_path_data(t_path *path, t_textures *textures, t_map *map)
-{
-	int		i;
-	int		line;
-
-	line = 0;
-	while (map->world_map[line])
-	{
-		i = 0;
-		while(ft_isspace(map->world_map[line][i]) == TRUE)
-			i++;
-		if (map->world_map[line][i] == WALL)
-		{
-			map->map_start = line;
-			break ;
-		}
-		if (ft_isnull(map->world_map[line][i]) == TRUE)
-		{
-			line++;
-			continue ;
-		}
-		if (check_paths(path, textures, map->world_map[line], i) == ERROR)
-		{
-			non_fatal_error(NO_PATH);
-			return(ERROR);
-		}
-		line++;
-	}
-	return (SUCCES);
 }
 
 /*
