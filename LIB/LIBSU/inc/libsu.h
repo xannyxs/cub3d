@@ -6,7 +6,7 @@
 /*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/28 17:10:52 by swofferh      #+#    #+#                 */
-/*   Updated: 2022/07/25 15:10:32 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/25 16:50:44 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 /*					Extra functions (outside libft)
 */
 long				ft_atol(const char *str);
+int					ft_strtoi(const char *str);
 int					ft_open(char *cub_file);
 int					ft_isspace(char c);
 int					ft_isnull(char c);

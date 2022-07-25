@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/14 17:58:30 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/25 15:06:53 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/25 16:31:27 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 
 # define PATH_ERROR "-- Something went wrong processing png path --"
 # define WRONG_NUMBER "-- Colors input needs to be in [0,255] range --"
+# define RBG_ERROR "-- I need three colour inputs --"
 
 # define GNL_ERROR "-- Something went wrong while reading .cub file --"
 # define NO_PATH "-- Couldn't get any path and colors from file --"

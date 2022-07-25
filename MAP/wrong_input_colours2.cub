@@ -3,9 +3,12 @@ SO IMG/Wolfenstein/greystone.png
 WE IMG/Wolfenstein/wood.png
 EA IMG/Wolfenstein/redbrick.png
 
-F 220,100,0
-C 225,-8,66
+F 220,3,              0
+C 225,3,0
 
+
+
+sfdfd
 11111
 10001
 10N01
