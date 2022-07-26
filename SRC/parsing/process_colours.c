@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/07/25 15:08:39 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/25 16:56:41 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/26 17:33:19 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,7 @@ static void	process_floor(t_textures *textures)
 		textures->f_rgb[i] = ft_strtoi(floor_split[i]);
 		if (!(textures->f_rgb[i] <= 255 && textures->f_rgb[i] >= 0) || \
 			errno == EINVAL)
-		{
-			non_fatal_error(WRONG_NUMBER);
-			exit(ERROR);
-		}
+			fatal_perror("cub3d");
 		i++;
 	}
 	ft_free_array(floor_split);
@@ -54,10 +51,7 @@ static void	process_ceiling(t_textures *textures)
 		textures->c_rgb[i] = ft_strtoi(ceiling_split[i]);
 		if (!(textures->c_rgb[i] <= 255 && textures->c_rgb[i] >= 0) || \
 			errno == EINVAL)
-		{
-			non_fatal_error(WRONG_NUMBER);
-			exit(ERROR);
-		}
+			fatal_perror("cub3d");
 		i++;
 	}
 	ft_free_array(ceiling_split);
