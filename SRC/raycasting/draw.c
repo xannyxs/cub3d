@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/09 16:13:36 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/25 17:26:22 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/26 20:59:41 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ void	reset_window(mlx_image_t *screen)
 
 void	draw_ceiling(mlx_image_t *screen, int draw_start, uint32_t color, int x)
 {
-	int	y;
+	UINT	y;
 
 	y = 0;
-	while (y < draw_start)
+	while (y <= (UINT) draw_start && y < HEIGHT)
 	{
 		mlx_put_pixel(screen, x, y, color);
 		y++;
@@ -41,10 +41,10 @@ void	draw_ceiling(mlx_image_t *screen, int draw_start, uint32_t color, int x)
 
 void	draw_floor(mlx_image_t *screen, int draw_end, uint32_t color, int x)
 {
-	int	y;
+	UINT	y;
 
 	y = draw_end;
-	while (y < (int) screen->height - 1)
+	while (y < screen->height - 1)
 	{
 		mlx_put_pixel(screen, x, y, color);
 		y++;
