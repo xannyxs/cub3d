@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/14 17:14:15 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/25 19:11:26 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/27 16:53:07 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@
 	Function that checks if the map file has a ".cub"
 	extention at the end.
 */
-static bool	is_cub_extension(char *argv)
+static bool	is_cub_extension(char *cub_file)
 {
 	int		i;
 	char	**str;
 
 	i = 0;
-	str = ft_split(argv, '.');
+	str = ft_split(cub_file, '.');
 	while (str[i] != NULL)
 		i++;
 	i--;
@@ -38,6 +38,23 @@ static bool	is_cub_extension(char *argv)
 	return (false);
 }
 
+static bool	file_has_name(char *cub_file)
+{
+	char	*temp;
+
+	temp = cub_file;
+	while (ft_strchr(temp, '/') != NULL)
+		temp = ft_strchr(temp, '/') + 1;
+	if (!temp)
+	{
+		if (ft_strlen(cub_file) - 4 == 0)
+			return (false);
+	}
+	else if (ft_strlen(temp) - 4 == 0)
+		return (false);
+	return (true);
+}
+
 /*
 	No error msgs here!
 	Do it in the functions that are called here.
@@ -45,6 +62,8 @@ static bool	is_cub_extension(char *argv)
 bool	is_cub_file_valid(char *cub_file, t_vars *vars)
 {
 	if (is_cub_extension(cub_file) == false)
+		return (false);
+	if (file_has_name(cub_file) == false)
 		return (false);
 	if (read_file(cub_file, vars))
 		return (false);
