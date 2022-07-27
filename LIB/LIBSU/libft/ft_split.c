@@ -6,7 +6,7 @@
 /*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/13 20:53:06 by swofferh      #+#    #+#                 */
-/*   Updated: 2022/07/19 23:38:29 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/25 16:03:26 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,6 @@ char	**ft_split(char const *s, char c)
 	if (!(s))
 		return (NULL);
 	words = (char **)ft_malloc(sizeof(char *) * (ft_words(s, c) + 1));
-	if (!(words))
-		return (NULL);
 	copy_words(s, c, words);
 	return (words);
 }

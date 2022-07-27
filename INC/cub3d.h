@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 21:22:16 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/20 16:59:16 by swofferh      ########   odam.nl         */
+/*   Updated: 2022/07/25 17:34:29 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef struct s_textures
 	mlx_texture_t	*south_wall;
 	mlx_image_t		*screen;
 	char			*floor;
-	char			*ceilling;
+	char			*ceiling;
 	int				f_rgb[3];
 	int				c_rgb[3];
 }	t_textures;
@@ -59,10 +59,10 @@ typedef struct s_textures
 */
 typedef struct s_path
 {
-	char		*north;
-	char		*south;
-	char		*east;
-	char		*west;
+	char	*north;
+	char	*south;
+	char	*east;
+	char	*west;
 }	t_path;
 
 /*
@@ -92,11 +92,9 @@ typedef struct s_vars
 	CUB3D
 */
 
-int32_t	main(int argc, char *argv[]);
+void	init_sys(t_vars *vars);
 
 void	raycasting_hook(void *param);
-
-void	draw_hook(void *param);
 
 /*
 	FILE CHECK
@@ -121,12 +119,6 @@ bool	check_for_holes(UINT map_data, char *world_map[]);
 void	find_player(t_vars *vars);
 
 bool	is_monitor_valid(mlx_t *mlx);
-
-/*
-	WRAPPED
-*/
-
-int		ft_open(char *cub_file);
 
 /*
 	LINKED LIST
@@ -167,8 +159,6 @@ void	draw_wall(t_data *data, t_textures texture, \
 
 void	reset_window(mlx_image_t *screen);
 
-uint32_t	create_rgbt(int r, int g, int b, int t);
-
 void	draw_floor(mlx_image_t *screen, int draw_end, uint32_t colour, int x);
 
 void	draw_ceiling(mlx_image_t *screen, int draw_start, \
@@ -191,5 +181,13 @@ UINT	my_mlx_get_colour(mlx_texture_t *img, UINT x, UINT y);
 UINT	my_mlx_put_pixel(mlx_image_t *img, UINT x, UINT y, UINT colour);
 
 void	my_mlx_resize_window(mlx_t *mlx, t_data *data, mlx_image_t *screen);
+
+/*
+	PARCER
+*/
+
+int		get_path_data(t_path *path, t_textures *textures, t_map *map);
+
+void	process_colors(t_textures *textures);
 
 #endif

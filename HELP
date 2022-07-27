@@ -12,11 +12,17 @@
     (X) memo save colors as char (max ascii 256) > not ints
     () error handling for wrong colors
         () protect ATOI
-        () >255 || <0 negative alpha
+        () > 255 || < 0 negative alpha
         () when there are more spaces
-            () beginning of map
-            () between path
-        () floor ceiling same colors
+            (x) beginning of map
+            (x) negative number
+            (x) Spaces between numbers
+            () non digits
+            (x) between path
+            (x) More colours, less colours
+            (x) Nothing
+            (x) text and tabs before map
+        () floor ceiling same colors?
 (x) make run
 
 
