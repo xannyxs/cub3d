@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/14 13:50:40 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/19 22:10:05 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/27 18:03:11 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 # define RAYCAST_H
 
 # define UINT unsigned int
+
+enum e_side
+{
+	EW,
+	NS
+};
 
 /*
 	All raytracing data.

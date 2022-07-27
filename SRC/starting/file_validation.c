@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/14 17:14:15 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/27 16:53:07 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/27 17:09:27 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,8 @@ static bool	file_has_name(char *cub_file)
 	temp = cub_file;
 	while (ft_strchr(temp, '/') != NULL)
 		temp = ft_strchr(temp, '/') + 1;
-	if (!temp)
-	{
-		if (ft_strlen(cub_file) - 4 == 0)
-			return (false);
-	}
+	if (!temp && ft_strlen(cub_file) - 4 == 0)
+		return (false);
 	else if (ft_strlen(temp) - 4 == 0)
 		return (false);
 	return (true);

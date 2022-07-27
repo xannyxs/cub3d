@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 21:22:16 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/25 17:34:29 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/27 18:20:35 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,11 +158,6 @@ void	draw_wall(t_data *data, t_textures texture, \
 	mlx_texture_t *wall, UINT x);
 
 void	reset_window(mlx_image_t *screen);
-
-void	draw_floor(mlx_image_t *screen, int draw_end, uint32_t colour, int x);
-
-void	draw_ceiling(mlx_image_t *screen, int draw_start, \
-	uint32_t colour, int x);
 
 /*
 	RAYCASTING

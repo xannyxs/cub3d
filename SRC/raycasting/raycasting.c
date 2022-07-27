@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/07 19:27:12 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/25 17:29:49 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/27 18:52:05 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 
 #define WALL '1'
 
+/**
+ * @brief Set the ray pos object (point of view function)
+ * camera / ray / map directions
+ */
 static void	set_ray_pos(t_data *data, UINT x)
 {
 	data->camera_x = 2 * x / (double) data->screen_width - 1;
@@ -24,7 +28,10 @@ static void	set_ray_pos(t_data *data, UINT x)
 }
 
 /*
-	Checks how far the player is from a wall.
+	Checks how far the player is from walls (from a diagonal perspective).
+	steps: to check the direction I'm walking.
+	First checks for x direction, then y direction.
+	See delta cast: https://lodev.org/cgtutor/raycasting.html
 	See video: https://www.youtube.com/watch?v=NbSee-XM7WA
 */
 static void	set_ray_delta(t_data *d)
@@ -52,6 +59,13 @@ static void	set_ray_delta(t_data *d)
 	}
 }
 
+/**
+ * @brief Uses math to check the distance from the player to the wall.
+ *  checks what side of wall it is on
+ * 
+ * @param data (for side distance)
+ * @param world_map (for location of wall on map)
+ */
 static void	perform_dda(t_data *data, char *world_map[])
 {
 	while (true)
@@ -73,6 +87,14 @@ static void	perform_dda(t_data *data, char *world_map[])
 	}
 }
 
+/**
+ * @brief	uses math to check where to start drawing the walls by
+ * 			splitting the lines in the middle
+ * 
+ * @param data 	screen_hight is for the vertical line from toop
+ * 				to bottom of screen. Line_hight for how tall a
+ * 				wall is (vertical line from floor to roof)
+ */
 static void	calculate_height(t_data *data)
 {
 	if (data->side == 0)
@@ -88,6 +110,13 @@ static void	calculate_height(t_data *data)
 		data->draw_end = data->screen_height - 1;
 }
 
+/**
+ * @brief 
+ * 	 ______________________ x (width)
+ * 	|
+ * 	|
+ *  y (height)
+ */
 void	raycasting_hook(void *param)
 {
 	UINT	x;

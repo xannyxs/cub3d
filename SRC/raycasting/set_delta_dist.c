@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/16 20:41:03 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/18 17:37:51 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/27 18:51:03 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,14 @@
 
 #include <math.h> /* Fabs */
 
+/**
+ * @brief This function rounds up the numbers to absolute decimals
+ * Fabs makes negative numbers positive.
+ * See: https://www.programiz.com/c-programming/library-function/math.h/fabs
+ * 
+ * 
+ * @param data fabs sets huge double vars into absolute doubles
+ */
 void	set_delta_dist(t_data *data)
 {
 	if (data->raydir_x == 0)

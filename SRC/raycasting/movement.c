@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/10 14:24:22 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/27 16:29:24 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/27 18:48:38 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,15 @@
 
 #define TURN 0.05
 #define WALK 0.06 /* Cannot be lower than 0.06 */
-#define WALL '0'
+#define EMPTY '0'
 
+/**
+ * @brief	Changes the direction of the player by changing the plane_x
+ * 			and plane_y of the player.
+ * 			image https://lodev.org/cgtutor/images/raycastingcamerarotate.gif
+ * @param s = data
+ * @param turn 
+ */
 void	rotate(t_data *s, double turn)
 {
 	double	old_dir_x;
@@ -53,41 +60,44 @@ static void	strafing_movement(mlx_t *mlx, char *map[], t_data *s)
 	if (mlx_is_key_down(mlx, MLX_KEY_A))
 	{
 		if (map[(int)(s->pos_y)][(int)(s->pos_x - s->dir_y * (WALK + 0.01))] \
-			== WALL)
+			== EMPTY)
 			s->pos_x -= s->dir_y * WALK;
 		if (map[(int)(s->pos_y + s->dir_x * (WALK + 0.01))][(int)(s->pos_x)] \
-			== WALL)
+			== EMPTY)
 			s->pos_y += s->dir_x * WALK;
 	}
 	if (mlx_is_key_down(mlx, MLX_KEY_D))
 	{
 		if (map[(int)(s->pos_y)][(int)(s->pos_x + s->dir_y * (WALK + 0.01))] \
-			== WALL)
+			== EMPTY)
 			s->pos_x += s->dir_y * WALK;
 		if (map[(int)(s->pos_y - s->dir_x * (WALK + 0.01))][(int)(s->pos_x)] \
-			== WALL)
+			== EMPTY)
 			s->pos_y -= s->dir_x * WALK;
 	}
 }
 
+/*
+	EMPTY = zeors on map '0'
+*/
 static void	walk_movement(mlx_t *mlx, char *map[], t_data *s)
 {
 	if (mlx_is_key_down(mlx, MLX_KEY_S))
 	{
 		if (map[(int)(s->pos_y)][(int)(s->pos_x - s->dir_x * (WALK + 0.01))] \
-			== WALL)
+			== EMPTY)
 			s->pos_x -= s->dir_x * WALK;
 		if (map[(int)(s->pos_y - s->dir_y * (WALK + 0.01))][(int)(s->pos_x)] \
-			== WALL)
+			== EMPTY)
 			s->pos_y -= s->dir_y * WALK;
 	}
 	if (mlx_is_key_down(mlx, MLX_KEY_W))
 	{
 		if (map[(int)(s->pos_y)][(int)(s->pos_x + s->dir_x * (WALK + 0.01))] \
-			== WALL)
+			== EMPTY)
 			s->pos_x += s->dir_x * WALK;
 		if (map[(int)(s->pos_y + s->dir_y * (WALK + 0.01))][(int)(s->pos_x)] \
-			== WALL)
+			== EMPTY)
 			s->pos_y += s->dir_y * WALK;
 	}
 }
