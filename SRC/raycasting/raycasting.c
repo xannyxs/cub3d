@@ -6,14 +6,11 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/07 19:27:12 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/19 22:07:19 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/25 17:29:49 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "raycast.h"
 #include "cub3d.h"
-
-#include <math.h>
 
 #define WALL '1'
 

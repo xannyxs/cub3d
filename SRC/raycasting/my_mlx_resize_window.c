@@ -6,11 +6,12 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/27 14:47:27 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/19 19:55:59 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/25 17:29:20 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include "MLX42/MLX42.h"
 
 /*
 	Checks if the window has been resized.

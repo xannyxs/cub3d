@@ -6,7 +6,7 @@
 #    By: swofferh <swofferh@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/06/19 21:39:04 by swofferh      #+#    #+#                  #
-#    Updated: 2022/07/22 13:48:32 by swofferh      ########   odam.nl          #
+#    Updated: 2022/07/25 18:44:26 by xvoorvaa      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,12 +25,13 @@ LIB 	= 	ft_atoi.c ft_itoa.c ft_putendl_fd.c ft_strjoin.c ft_strrchr.c\
 			ft_isascii.c ft_memmove.c ft_strclen.c ft_strncmp.c\
 			ft_isdigit.c ft_memset.c  ft_strcmp.c  ft_strncpy.c
 
-LSU		= 	ft_atol.c ft_islower.c ft_nospace.c ft_puthexa.c \
+LSU		= 	ft_atol.c ft_islower.c ft_nospace.c ft_isnull.c ft_puthexa.c \
 			ft_isspace.c ft_numlen.c ft_putlen.c ft_strndup.c \
 			ft_isupper.c  ft_putnbr.c ft_wordlen.c ft_putstr.c\
 			ft_lenbase.c ft_putchar.c ft_putocta.c ft_words.c\
 			ft_strjoin_free.c ft_free_array.c ft_print_array.c\
-			ft_putendl.c get_next_line.c ft_malloc.c ft_open.c
+			ft_putendl.c get_next_line.c ft_malloc.c ft_open.c \
+			ft_strtoi.c
 
 PFT		=	type_c.c type_s.c type_d.c type_u.c type_p.c type_x.c\
 			percentage.c pfunctions.c preci_width.c ft_printf.c

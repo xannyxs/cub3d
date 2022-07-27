@@ -6,7 +6,7 @@
 #    By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/01 14:31:21 by xvoorvaa      #+#    #+#                  #
-#    Updated: 2022/07/22 13:47:48 by swofferh      ########   odam.nl          #
+#    Updated: 2022/07/25 17:10:04 by xvoorvaa      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,5 +85,10 @@ run: all
 
 cub: all
 	./$(NAME) MAP/subject.cub
+
+norm:
+	norminette INC
+	norminette SRC
+	norminette LIB/LIBSU
 
 .PHONY:	all clean fclean re

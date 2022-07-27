@@ -6,11 +6,13 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/21 12:26:59 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/19 22:39:57 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/25 17:28:41 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "MLX42/MLX42.h"
+
+#define UINT unsigned int
 
 UINT	my_mlx_put_pixel(mlx_image_t *img, UINT x, UINT y, UINT colour)
 {

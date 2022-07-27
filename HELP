@@ -11,9 +11,21 @@
 (x) mlx collors F/C parsing on s_map (RED,GREEN,BLUE) intensity
     (X) memo save colors as char (max ascii 256) > not ints
     () error handling for wrong colors
-        () >255 || <0 negative alpha
-        () when 
-    ()mae run
+        () protect ATOI
+        () > 255 || < 0 negative alpha
+        () when there are more spaces
+            (x) beginning of map
+            (x) negative number
+            (x) Spaces between numbers
+            () non digits
+            (x) between path
+            (x) More colours, less colours
+            (x) Nothing
+            (x) text and tabs before map
+        () floor ceiling same colors?
+(x) make run
+
+
 ---- DISCUSS
 
 () bonus health bar without sprints?

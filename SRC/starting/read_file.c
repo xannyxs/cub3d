@@ -6,18 +6,19 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/14 18:25:30 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/17 13:26:19 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/22 13:28:16 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-#include "error.h" /* GNL ERROR */
 #include "libft.h"
+#include "error.h" /* GNL ERROR */
 
-#include <fcntl.h> /* open */
 #include <unistd.h> /* close */
-#include <stdlib.h> /* malloc */
 
+/*
+	Mallocs the size of the list and puts its content from list to 2D array.
+*/
 static void	alloc_list_to_array(t_map *map_data, t_node **file_content)
 {
 	int		i;
@@ -36,6 +37,9 @@ static void	alloc_list_to_array(t_map *map_data, t_node **file_content)
 	ft_free_list(file_content);
 }
 
+/*
+	Grabs the lines from a file and puts it in a linked list
+*/
 static int	get_lines(char *cub_file, t_node **file_content)
 {
 	int		fd;
@@ -60,6 +64,9 @@ static int	get_lines(char *cub_file, t_node **file_content)
 	return (SUCCES);
 }
 
+/*
+	Checks if there is an empty line after the world_map
+*/
 static bool	no_empty_line(char *world_map[])
 {
 	UINT	y;
@@ -78,7 +85,7 @@ static bool	no_empty_line(char *world_map[])
 /*
 	Reads file of user by using "get_next_line"
 	and puts it in a linked list.
-	It will convert the linked list to an 2D Array.
+	It will convert the linked list to a 2D Array.
 */
 int	read_file(char *cub_file, t_vars *vars)
 {
