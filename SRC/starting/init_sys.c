@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/07/22 12:59:38 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/25 19:09:30 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/28 17:29:03 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@
 
 static void	set_values(t_vars *vars)
 {
-	vars->data.dir_x = -1;
+	vars->data.dir_x = 1;
 	vars->data.dir_y = 0;
 	vars->data.plane_x = 0;
 	vars->data.plane_y = 0.66;
 	find_player(vars);
-	if (vars->data.player_char == 'N')
+	if (vars->data.player_char == 'S')
 		rotate(&vars->data, M_PI / 2);
-	else if (vars->data.player_char == 'S')
+	else if (vars->data.player_char == 'N')
 		rotate(&vars->data, M_PI * 1.5);
 	else if (vars->data.player_char == 'W')
 		rotate(&vars->data, M_PI);

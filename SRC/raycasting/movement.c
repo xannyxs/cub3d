@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/10 14:24:22 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/27 18:48:38 by swofferh      ########   odam.nl         */
+/*   Updated: 2022/07/28 17:22:03 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ void	rotate(t_data *s, double turn)
 */
 static void	player_rotation(mlx_t *mlx, t_data *s)
 {
-	if (mlx_is_key_down(mlx, MLX_KEY_LEFT))
-		rotate(s, TURN);
 	if (mlx_is_key_down(mlx, MLX_KEY_RIGHT))
+		rotate(s, TURN);
+	if (mlx_is_key_down(mlx, MLX_KEY_LEFT))
 		rotate(s, -TURN);
 }
 
@@ -57,7 +57,7 @@ static void	player_rotation(mlx_t *mlx, t_data *s)
 */
 static void	strafing_movement(mlx_t *mlx, char *map[], t_data *s)
 {
-	if (mlx_is_key_down(mlx, MLX_KEY_A))
+	if (mlx_is_key_down(mlx, MLX_KEY_D))
 	{
 		if (map[(int)(s->pos_y)][(int)(s->pos_x - s->dir_y * (WALK + 0.01))] \
 			== EMPTY)
@@ -66,7 +66,7 @@ static void	strafing_movement(mlx_t *mlx, char *map[], t_data *s)
 			== EMPTY)
 			s->pos_y += s->dir_x * WALK;
 	}
-	if (mlx_is_key_down(mlx, MLX_KEY_D))
+	if (mlx_is_key_down(mlx, MLX_KEY_A))
 	{
 		if (map[(int)(s->pos_y)][(int)(s->pos_x + s->dir_y * (WALK + 0.01))] \
 			== EMPTY)
