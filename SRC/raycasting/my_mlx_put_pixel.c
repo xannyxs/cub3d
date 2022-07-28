@@ -15,7 +15,7 @@
 #define UINT unsigned int
 
 /**
- * @brief	Takes the refrence of the pixel of an image.
+ * @brief	Takes the reference of the pixel of an image.
  * 			I then "fill" the pixel with the colour value.
  * 
  * @param img 
