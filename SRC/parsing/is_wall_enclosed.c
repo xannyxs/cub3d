@@ -15,10 +15,6 @@
 
 #define WALL '1'
 
-/*
-	NEEDS A CLEANUP!
-*/
-
 static int	trace_next_wall_under(char *world_map[], UINT x, UINT y)
 {
 	UINT	temp_x;

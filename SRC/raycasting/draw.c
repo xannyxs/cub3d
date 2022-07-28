@@ -16,7 +16,7 @@
 
 /*
 	Colour input: R, G, B, Transparent
-	Get value by bitshifting the decimal to hexadecimal.
+	Get value by bit shifting the decimal to hexadecimal.
 */
 static uint32_t	create_rgb(int r, int g, int b)
 {

@@ -16,7 +16,7 @@
 
 /*
 	Function that checks if the map file has a ".cub"
-	extention at the end.
+	extension at the end.
 */
 static bool	is_cub_extension(char *cub_file)
 {
