@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/07/22 12:59:38 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/28 17:29:03 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/28 19:06:41 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ static void	load_png_path(t_path *path_data, t_textures *textures)
 	The MLX_image_to_window only needs to be called once,
 	because of mlx_loop_hook(). It will be called automatically.
 	Added a window limit. Otherwise it will slow the cub3d program too much.
+
 */
 void	init_sys(t_vars *vars)
 {

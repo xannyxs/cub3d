@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/27 14:47:27 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/25 17:29:20 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/28 19:05:59 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 /*
 	Checks if the window has been resized.
 	if TRUE, it will send the new window size to the raycast function.
+	
 
 	There is a maximum & minimum of the window size.
 */

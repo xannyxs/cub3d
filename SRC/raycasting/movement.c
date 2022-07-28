@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/10 14:24:22 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/28 17:22:03 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/28 19:06:06 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 
 /**
  * @brief	Changes the direction of the player by changing the plane_x
+ * 
  * 			and plane_y of the player.
  * 			image https://lodev.org/cgtutor/images/raycastingcamerarotate.gif
  * @param s = data

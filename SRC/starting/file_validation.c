@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/14 17:14:15 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/27 17:09:27 by swofferh      ########   odam.nl         */
+/*   Updated: 2022/07/28 19:06:36 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 /*
 	Function that checks if the map file has a ".cub"
 	extension at the end.
+
 */
 static bool	is_cub_extension(char *cub_file)
 {

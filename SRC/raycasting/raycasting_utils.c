@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/07/19 22:07:09 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/28 18:43:05 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/28 19:05:55 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
  * @brief With this function we know de coordinates of the wall.
  * 			Initializes the size of the image to the raycast struct
  * 			  Uses math library for function floor that rounds up numbers.
+ * 
  * 				For example, floor(0.5) is 0.0, and floor(-0.5) is -1.0.
  * @param d 
  * @param wall The texture of the wall with all the texture information in it.

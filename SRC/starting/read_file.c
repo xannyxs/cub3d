@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/14 18:25:30 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/22 13:28:16 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/28 19:06:45 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 
 /*
 	Mallocs the size of the list and puts its content from list to 2D array.
+
 */
 static void	alloc_list_to_array(t_map *map_data, t_node **file_content)
 {

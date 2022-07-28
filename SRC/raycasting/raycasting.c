@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/07 19:27:12 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/28 18:44:32 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/28 19:05:41 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 /**
  * @brief Set the ray pos object (point of view function)
  * camera / ray / map directions
+ * 
  */
 static void	set_ray_pos(t_data *data, UINT x)
 {

@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/07 17:33:39 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/19 22:36:08 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/28 19:06:32 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 
 /*
 	I check if the map has wall on the left & right sides.
+
 
 	At the end I check if there are any holes in the map,
 	and if they are viable.
