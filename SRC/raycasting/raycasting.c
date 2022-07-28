@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/07 19:27:12 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/28 17:10:08 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/07/28 18:44:32 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,13 +74,13 @@ static void	perform_dda(t_data *data, char *world_map[])
 		{
 			data->side_dist_x += data->delta_dist_x;
 			data->map_x += data->step_x;
-			data->side = 0;
+			data->side = EW;
 		}
 		else
 		{
 			data->side_dist_y += data->delta_dist_y;
 			data->map_y += data->step_y;
-			data->side = 1;
+			data->side = NS;
 		}
 		if (world_map[data->map_y][data->map_x] == WALL)
 			break ;
@@ -97,7 +97,7 @@ static void	perform_dda(t_data *data, char *world_map[])
  */
 static void	calculate_height(t_data *data)
 {
-	if (data->side == 0)
+	if (data->side == EW)
 		data->perp_wall_dist = data->side_dist_x - data->delta_dist_x;
 	else
 		data->perp_wall_dist = data->side_dist_y - data->delta_dist_y;

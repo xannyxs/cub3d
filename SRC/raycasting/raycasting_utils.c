@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/07/19 22:07:09 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/27 18:29:12 by swofferh      ########   odam.nl         */
+/*   Updated: 2022/07/28 18:43:05 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ static void	calc_texture(t_data *d, mlx_texture_t *wall, char *world_map[])
 		d->wall_x = d->pos_x + d->perp_wall_dist * d->raydir_x;
 	d->wall_x -= floor((d->wall_x));
 	d->tex_x = (int)(d->wall_x * (double) d->tex_width);
-	if (d->side == EW && d->raydir_x > 0)
+	if (d->side == EW && d->raydir_x < 0)
 		d->tex_x = d->tex_width - d->tex_x - 1;
-	if (d->side == NS && d->raydir_y < 0)
+	if (d->side == NS && d->raydir_y > 0)
 		d->tex_x = d->tex_width - d->tex_x - 1;
 	d->step = 1.0 * d->tex_height / d->line_height;
 	d->tex_pos = (d->draw_start - d->screen_height / 2 + d->line_height / 2) \
