@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/14 17:14:15 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/28 19:06:36 by swofferh      ########   odam.nl         */
+/*   Updated: 2022/08/02 17:59:28 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,25 @@ static bool	file_has_name(char *cub_file)
 	return (true);
 }
 
+/* 
+	Checks for spaces before paths
+*/
+static void	process_paths(t_vars *vars)
+{
+	printf("%s\n", vars->path_data.north);
+	ft_nospace(vars->path_data.north);
+	printf("%s\n", vars->path_data.north);
+	ft_nospace(vars->path_data.south);
+	ft_nospace(vars->path_data.east);
+	ft_nospace(vars->path_data.west);
+}
+
+static void	process_data(t_vars *vars)
+{
+	process_colors(&vars->textures);
+	process_paths(vars);
+}
+
 /*
 	No error msgs here!
 	Do it in the functions that are called here.
@@ -70,7 +89,7 @@ bool	is_cub_file_valid(char *cub_file, t_vars *vars)
 		ft_free_array(vars->map_data.world_map);
 		return (false);
 	}
-	process_colors(&vars->textures);
+	process_data(vars);
 	if (check_map(&vars->map_data))
 	{
 		ft_free_array(vars->map_data.world_map);

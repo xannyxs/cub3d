@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/14 17:58:30 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/25 18:03:08 by xvoorvaa      ########   odam.nl         */
+/*   Updated: 2022/08/01 22:01:54 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,11 @@
 # define PATH_ERROR "-- Something went wrong processing png path --"
 # define WRONG_NUMBER "-- Colors input needs to be in [0,255] range --"
 # define RBG_ERROR "-- I need three colour inputs --"
+# define FLOOR_ERROR "-- I need floor input --"
+# define CEILING_ERROR "-- I need ceiling input --"
 
 # define GNL_ERROR "-- Something went wrong while reading .cub file --"
-# define NO_PATH "-- File input is invalid, fix the path/colour jonguh --"
+# define NO_PATH "-- File input is invalid, fix the path/colour data --"
 
 # define MISSING_WALL "-- Missing wall surrounding the map --"
 # define MISSING_PLAYER "-- Missing player --"
@@ -39,7 +41,7 @@
 */
 
 void	non_fatal_error(char *msg);
-
+void	error_msg(char *msg);
 void	fatal_perror(char *msg);
 
 #endif

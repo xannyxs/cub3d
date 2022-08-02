@@ -6,7 +6,7 @@
 #    By: swofferh <swofferh@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/06/19 21:39:04 by swofferh      #+#    #+#                  #
-#    Updated: 2022/07/25 18:44:26 by xvoorvaa      ########   odam.nl          #
+#    Updated: 2022/08/02 17:57:25 by swofferh      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ LSU		= 	ft_atol.c ft_islower.c ft_nospace.c ft_isnull.c ft_puthexa.c \
 			ft_lenbase.c ft_putchar.c ft_putocta.c ft_words.c\
 			ft_strjoin_free.c ft_free_array.c ft_print_array.c\
 			ft_putendl.c get_next_line.c ft_malloc.c ft_open.c \
-			ft_strtoi.c
+			ft_strtoi.c ft_lenspace.c ft_less_c_len.c
 
 PFT		=	type_c.c type_s.c type_d.c type_u.c type_p.c type_x.c\
 			percentage.c pfunctions.c preci_width.c ft_printf.c
