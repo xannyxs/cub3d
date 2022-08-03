@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/14 17:14:15 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/08/02 17:59:28 by swofferh      ########   odam.nl         */
+/*   Updated: 2022/08/03 15:52:30 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,10 @@ static bool	file_has_name(char *cub_file)
 */
 static void	process_paths(t_vars *vars)
 {
-	printf("%s\n", vars->path_data.north);
-	ft_nospace(vars->path_data.north);
-	printf("%s\n", vars->path_data.north);
-	ft_nospace(vars->path_data.south);
-	ft_nospace(vars->path_data.east);
-	ft_nospace(vars->path_data.west);
+	vars->path_data.north = ft_nospace(vars->path_data.north);
+	vars->path_data.south = ft_nospace(vars->path_data.south);
+	vars->path_data.east = ft_nospace(vars->path_data.east);
+	vars->path_data.west = ft_nospace(vars->path_data.west);
 }
 
 static void	process_data(t_vars *vars)

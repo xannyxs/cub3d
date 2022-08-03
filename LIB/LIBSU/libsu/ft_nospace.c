@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/07/20 13:29:39 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/07/22 20:14:28 by swofferh      ########   odam.nl         */
+/*   Updated: 2022/08/03 15:42:57 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ char	*ft_nospace(char *line)
 	i = 0;
 	x = 0;
 	len = 0;
+	if (!line)
+		return (NULL);
 	len = ft_less_c_len(line, ' ');
 	str = (char *)ft_malloc(sizeof(char) * len);
 	while (line[i])
@@ -39,5 +41,6 @@ char	*ft_nospace(char *line)
 		i++;
 	}
 	str[x] = '\0';
+	free(line);
 	return (str);
 }

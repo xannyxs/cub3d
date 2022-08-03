@@ -6,7 +6,7 @@
 /*   By: swofferh <swofferh@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/28 17:10:52 by swofferh      #+#    #+#                 */
-/*   Updated: 2022/08/02 17:55:27 by swofferh      ########   odam.nl         */
+/*   Updated: 2022/08/03 15:08:16 by xvoorvaa      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char				*ft_strndup(char *s, int start);
 /*   My LEN functions */
 
 int					ft_numlen(int n);
-int                 ft_lenspace(char *str);
+int					ft_lenspace(char *str);
 size_t				ft_lenbase(long long nbr, int base);
 int					ft_wordlen(char const *str, int i, char space);
 int					ft_strclen(char *str, char c);
@@ -57,7 +57,7 @@ int					ft_textsize(const char *str);
 
 /*  My WORDS functions */
 
-char	            *ft_nospace(char *line);
+char				*ft_nospace(char *line);
 int					ft_words(char const *str, char space);
 char				*ft_nospace(char *line);
 
