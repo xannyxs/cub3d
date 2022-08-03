@@ -57,8 +57,5 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
-.gitmodules
-.vscode/settings.json
+
 IMG/PNG/SUPER/.DS_Store
-.idea/misc.xml
-.idea/vcs.xml

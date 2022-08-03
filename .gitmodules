@@ -1,0 +1,3 @@
+[submodule "MLX42"]
+	path = LIB/MLX42
+	url = https://github.com/codam-coding-college/MLX42
