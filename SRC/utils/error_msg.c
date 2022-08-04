@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/14 17:48:49 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/08/02 15:25:27 by swofferh      ########   odam.nl         */
+/*   Updated: 2022/08/04 14:35:10 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 
 void	non_fatal_error(char *msg)
 {
+	write(STDERR_FILENO, "\n", 1);
 	write(STDERR_FILENO, RED, 8);
 	write(STDERR_FILENO, "Error\n", 6);
 	write(STDERR_FILENO, HYEL, 8);
@@ -33,14 +34,15 @@ void	non_fatal_error(char *msg)
 
 void	error_msg(char *msg)
 {
-	write(STDERR_FILENO, HYEL, 8);
+	write(STDERR_FILENO, "\n", 1);
 	non_fatal_error(msg);
-	write(STDERR_FILENO, RESET, 5);
+	write(STDERR_FILENO, "\n", 1);
 	exit(1);
 }
 
 void	fatal_perror(char *msg)
 {
+	write(STDERR_FILENO, "\n", 1);
 	write(STDERR_FILENO, HYEL, 8);
 	perror(msg);
 	write(STDERR_FILENO, RESET, 5);

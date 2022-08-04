@@ -6,7 +6,7 @@
 /*   By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/07/25 14:44:05 by xvoorvaa      #+#    #+#                 */
-/*   Updated: 2022/08/02 15:40:33 by swofferh      ########   odam.nl         */
+/*   Updated: 2022/08/04 14:40:10 by swofferh      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 #define WALL '1'
 
+/*
+	Parsing 'WE' 'NO' 'EA' 'SO' input in files, also 'F' 'C'
+*/
 static int	check_paths(t_path *data, t_textures *colors, char *path, int i)
 {
 	if (path[i] == 'N' && path[i + 1] == 'O' && data->north == NULL)
@@ -25,9 +28,9 @@ static int	check_paths(t_path *data, t_textures *colors, char *path, int i)
 		data->west = ft_strdup(&path[i + 3]);
 	else if (path[i] == 'E' && path[i + 1] == 'A' && data->east == NULL)
 		data->east = ft_strdup(&path[i + 3]);
-	else if (path[i] == 'F' && colors->floor == NULL)
+	else if (path[i] == 'F' && path[i + 1] == ' ' && colors->floor == NULL)
 		colors->floor = ft_strdup(&path[i + 2]);
-	else if (path[i] == 'C' && colors->ceiling == NULL)
+	else if (path[i] == 'C' && path[i + 1] == ' ' && colors->ceiling == NULL)
 		colors->ceiling = ft_strdup(&path[i + 2]);
 	else
 		return (ERROR);
