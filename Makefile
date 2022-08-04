@@ -6,13 +6,13 @@
 #    By: xvoorvaa <xvoorvaa@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/01 14:31:21 by xvoorvaa      #+#    #+#                  #
-#    Updated: 2022/07/28 16:00:59 by swofferh      ########   odam.nl          #
+#    Updated: 2022/08/04 14:48:33 by swofferh      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 include INC/Makepretty.mk
 
-NAME			=	cub3d
+NAME			=	cub3D
 CFLAGS			=	-Wall -Wextra -Werror
 OBJ_DIR			=	OBJ
 SRC_DIR			=	SRC
