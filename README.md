@@ -1,4 +1,4 @@
-# cub3D - My first RayCaster with MLX42
+# cub3D - Our first RayCaster with MLX42
 
 ### Final grade: <br>
 [![xvoorvaa's 42 cub3d Score](https://badge42.vercel.app/api/v2/cl1l0g8q3005209mm02a81gfy/project/2629189)](https://github.com/JaeSeoKim/badge42)
