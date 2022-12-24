@@ -78,9 +78,6 @@ void	nbr_zero(t_info *node, int nbr, int len)
 
 void	nbr_neg(t_info *node, unsigned int nbr)
 {
-	int	neg;
-
-	neg = nbr * -1;
 	if (node->flag == NOFLAG)
 		pt_putlen(node, ' ', node->width - ft_maxof(node->precision, 10));
 	if (node->precision > 10)

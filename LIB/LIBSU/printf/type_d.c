@@ -104,9 +104,7 @@ void	ft_d_argument(t_info *node)
 {
 	int	nbr;
 	int	len;
-	int	sign;
 
-	sign = 0;
 	nbr = va_arg(node->argument, int);
 	len = ft_lenbase(nbr, 10);
 	if (nbr == 0)

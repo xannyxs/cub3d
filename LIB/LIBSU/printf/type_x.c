@@ -86,14 +86,12 @@ void	zero_nbr(t_info *node, int len)
 void	ft_x_argument(t_info *node)
 {
 	unsigned int	nbr;
-	int				neg;
 	int				len;
 	char			c;
 
 	nbr = (unsigned int)va_arg(node->argument, unsigned int);
 	len = ft_lenbase(nbr, 16);
 	c = node->conversion;
-	neg = nbr;
 	if (nbr == 0)
 		zero_nbr(node, len);
 	else if (!node->period)

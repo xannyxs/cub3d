@@ -25,6 +25,7 @@ t_list	*lst_map(t_list *node, void *(*f)(void *), void (*del)(void *))
 	t_list		*head;
 	void		*content;
 
+	(void) content;
 	if (!node)
 		return (0);
 	head = NULL;
