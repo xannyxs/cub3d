@@ -37,6 +37,16 @@ static int	check_paths(t_path *data, t_textures *colors, char *path, int i)
 	return (SUCCES);
 }
 
+static void init_paths(t_path *path, t_textures *colors)
+{
+	path->north = NULL;
+	path->south = NULL;
+	path->east = NULL;
+	path->west = NULL;
+	colors->floor = NULL;
+	colors->ceiling = NULL;
+}
+
 /*
 	Error handling for file input (parser)
 */
@@ -46,6 +56,7 @@ int	get_path_data(t_path *path, t_textures *textures, t_map *map)
 	int	line;
 
 	line = 0;
+	init_paths(path, textures);
 	while (map->world_map[line])
 	{
 		i = ft_lenspace(map->world_map[line]);
