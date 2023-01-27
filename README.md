@@ -31,3 +31,6 @@ To exit the game, press ``ESC`` or click the red cross.
 https://lodev.org/cgtutor/raycasting.html <br>
 https://www.youtube.com/watch?v=gYRrGTC7GtA <br>
 https://github.com/xvoorvaa/cub_test3r <-- My own tester <br>
+
+## Contact
+Created by [Xander](https://github.com/xvoorvaa/) & [Swenne](https://github.com/swennehacks)
